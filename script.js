@@ -81,13 +81,19 @@ function initScrollSpy() {
    2. GITHUB API FETCH & LOCALSTORAGE CACHING (10 MINUTES TTL)
    -------------------------------------------------------------------------- */
 const GITHUB_USERNAME = 's4muelxl';
-const CACHE_KEY = 'github_repos_s4muelxl_v2';
-const CACHE_TIME_KEY = 'github_repos_timestamp_s4muelxl_v2';
+const CACHE_KEY = 'github_repos_s4muelxl_v3';
+const CACHE_TIME_KEY = 'github_repos_timestamp_s4muelxl_v3';
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 Minutos
 
 async function initGitHubProjects() {
   const container = document.getElementById('projectsContainer');
   if (!container) return;
+
+  // Limpa chaves de cache legadas para aplicar os novos filtros imediatamente
+  try {
+    localStorage.removeItem('github_repos_s4muelxl_v1');
+    localStorage.removeItem('github_repos_s4muelxl_v2');
+  } catch (e) {}
 
   // Render Skeletons
   renderSkeletons(container, 4);
@@ -120,7 +126,7 @@ async function getRepositories() {
   }
 
   // Faz a chamada real à API pública do GitHub
-  const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=12`);
+  const response = await fetch(`https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=15`);
   
   if (!response.ok) {
     throw new Error(`Erro na API do GitHub (${response.status})`);
@@ -128,12 +134,15 @@ async function getRepositories() {
 
   const repos = await response.json();
   
-  // Filtra forks, repos arquivados e o repositório com o nome do usuário 's4muelxl'
+  // Filtra forks, repos arquivados, repos de perfil ('s4muelxl') e repos do próprio portfólio ('portifolio', 'devportifolio')
   const filteredRepos = repos.filter(repo => {
     const nameLower = (repo.name || '').toLowerCase();
-    return !repo.fork && !repo.archived && nameLower !== GITHUB_USERNAME.toLowerCase() && nameLower !== 's4muelxl';
+    const isSelfProfile = nameLower === GITHUB_USERNAME.toLowerCase() || nameLower === 's4muelxl';
+    const isPortfolioMeta = nameLower.includes('portifolio') || nameLower.includes('portfolio') || nameLower.includes('devportifolio');
+    return !repo.fork && !repo.archived && !isSelfProfile && !isPortfolioMeta;
   });
-  const finalRepos = filteredRepos.length > 0 ? filteredRepos : repos;
+
+  const finalRepos = filteredRepos.length > 0 ? filteredRepos : repos.filter(repo => !repo.fork && !repo.archived);
 
   // Salva no LocalStorage
   try {

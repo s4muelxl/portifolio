@@ -125,6 +125,11 @@ body {
   letter-spacing: -0.5px;
 }
 
+.header-container nav {
+  margin-left: 2.5rem;
+  margin-right: auto;
+}
+
 .nav-menu {
   display: flex;
   align-items: center;
@@ -903,6 +908,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  .header-container nav {
+    margin: 0;
+  }
+
   .mobile-only-action {
     display: block;
     width: 100%;
