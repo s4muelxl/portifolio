@@ -81,8 +81,8 @@ function initScrollSpy() {
    2. GITHUB API FETCH & LOCALSTORAGE CACHING (10 MINUTES TTL)
    -------------------------------------------------------------------------- */
 const GITHUB_USERNAME = 's4muelxl';
-const CACHE_KEY = 'github_repos_s4muelxl_v1';
-const CACHE_TIME_KEY = 'github_repos_timestamp_s4muelxl_v1';
+const CACHE_KEY = 'github_repos_s4muelxl_v2';
+const CACHE_TIME_KEY = 'github_repos_timestamp_s4muelxl_v2';
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 Minutos
 
 async function initGitHubProjects() {
@@ -128,8 +128,11 @@ async function getRepositories() {
 
   const repos = await response.json();
   
-  // Filtra forks e repos sem descrição se houver repos próprios suficientes
-  const filteredRepos = repos.filter(repo => !repo.fork && !repo.archived);
+  // Filtra forks, repos arquivados e o repositório com o nome do usuário 's4muelxl'
+  const filteredRepos = repos.filter(repo => {
+    const nameLower = (repo.name || '').toLowerCase();
+    return !repo.fork && !repo.archived && nameLower !== GITHUB_USERNAME.toLowerCase() && nameLower !== 's4muelxl';
+  });
   const finalRepos = filteredRepos.length > 0 ? filteredRepos : repos;
 
   // Salva no LocalStorage
