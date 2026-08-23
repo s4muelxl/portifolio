@@ -158,10 +158,19 @@ function renderSkeletons(container, count) {
 }
 
 function renderProjects(container, repos) {
-  const displayRepos = repos.slice(0, 6); // Exibe os 6 principais
+  // Ordena por estrelas e por descrição válida primeiro
+  const sortedRepos = [...repos].sort((a, b) => {
+    if (b.stargazers_count !== a.stargazers_count) return b.stargazers_count - a.stargazers_count;
+    if (a.description && !b.description) return -1;
+    if (!a.description && b.description) return 1;
+    return new Date(b.updated_at) - new Date(a.updated_at);
+  });
 
-  container.innerHTML = displayRepos.map(repo => {
-    const lang = repo.language || 'Code';
+  // Exibe apenas os 4 projetos mais importantes e em destaque
+  const displayRepos = sortedRepos.slice(0, 4);
+
+  const cardsHtml = displayRepos.map(repo => {
+    const lang = repo.language || 'Software';
     const langIcon = getLanguageIcon(lang);
     const updatedDate = new Date(repo.updated_at).toLocaleDateString('pt-BR', {
       day: '2-digit',
@@ -169,7 +178,7 @@ function renderProjects(container, repos) {
       year: 'numeric'
     });
 
-    const description = repo.description || 'Projeto desenvolvido por Samuel Alves em Engenharia de Software.';
+    const description = repo.description || 'Projeto em Engenharia de Software e desenvolvimento de sistemas por Samuel Alves.';
 
     return `
       <article class="project-card">
@@ -196,6 +205,17 @@ function renderProjects(container, repos) {
       </article>
     `;
   }).join('');
+
+  // Adiciona o grid e um botão elegante para ver o restante no GitHub
+  container.innerHTML = `
+    ${cardsHtml}
+    <div style="grid-column: 1 / -1; text-align: center; margin-top: 1.5rem;">
+      <a href="https://github.com/${GITHUB_USERNAME}?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn-outline" style="font-size: 0.92rem; padding: 0.85rem 1.8rem;">
+        <span>Ver todos os repositórios no GitHub (${repos.length})</span>
+        <span>→</span>
+      </a>
+    </div>
+  `;
 }
 
 function renderErrorState(container) {
