@@ -1,9 +1,6 @@
 {
   "name": "samuel-alves-portfolio",
   "version": 2,
-  "public": true,
-  "buildCommand": "echo 'Portfolio estático - sem build necessário'",
-  "outputDirectory": "./",
   "headers": [
     {
       "source": "/(.*)",
