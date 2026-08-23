@@ -81,18 +81,19 @@ function initScrollSpy() {
    2. GITHUB API FETCH & LOCALSTORAGE CACHING (10 MINUTES TTL)
    -------------------------------------------------------------------------- */
 const GITHUB_USERNAME = 's4muelxl';
-const CACHE_KEY = 'github_repos_s4muelxl_v3';
-const CACHE_TIME_KEY = 'github_repos_timestamp_s4muelxl_v3';
+const CACHE_KEY = 'github_repos_s4muelxl_v4';
+const CACHE_TIME_KEY = 'github_repos_timestamp_s4muelxl_v4';
 const CACHE_TTL_MS = 10 * 60 * 1000; // 10 Minutos
 
 async function initGitHubProjects() {
   const container = document.getElementById('projectsContainer');
   if (!container) return;
 
-  // Limpa chaves de cache legadas para aplicar os novos filtros imediatamente
+  // Limpa chaves de cache legadas para aplicar o novo projeto bmi9.lol imediatamente
   try {
     localStorage.removeItem('github_repos_s4muelxl_v1');
     localStorage.removeItem('github_repos_s4muelxl_v2');
+    localStorage.removeItem('github_repos_s4muelxl_v3');
   } catch (e) {}
 
   // Render Skeletons
@@ -170,8 +171,12 @@ function renderSkeletons(container, count) {
 }
 
 function renderProjects(container, repos) {
-  // Ordena por estrelas e por descrição válida primeiro
+  // Destaca o projeto bmi9.lol no topo se ele existir entre os repositórios públicos
   const sortedRepos = [...repos].sort((a, b) => {
+    const aIsBmi = (a.name || '').toLowerCase().includes('bmi9');
+    const bIsBmi = (b.name || '').toLowerCase().includes('bmi9');
+    if (aIsBmi && !bIsBmi) return -1;
+    if (!aIsBmi && bIsBmi) return 1;
     if (b.stargazers_count !== a.stargazers_count) return b.stargazers_count - a.stargazers_count;
     if (a.description && !b.description) return -1;
     if (!a.description && b.description) return 1;
