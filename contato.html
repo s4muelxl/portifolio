@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato | Samuel Alves</title>
+  <meta name="description" content="Entre em contato com Samuel Alves para projetos, estágio ou freelance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+  <div class="page-orb page-orb--left" aria-hidden="true"></div>
+  <div class="page-orb page-orb--right" aria-hidden="true"></div>
+
+  <header class="site-header" id="topo">
+    <div class="container navbar">
+      <a href="index.html" class="brand" aria-label="Ir para o início" data-i18n-aria="nav.home">
+        <strong class="brand-logo"><span class="brand-samuel">Samuel</span> <span class="brand-alves">Alves</span></strong>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">Menu</button>
+      <nav class="nav" id="navMenu" aria-label="Navegação principal">
+        <a href="index.html" data-i18n="nav.home">Início</a>
+        <a href="about.html" data-i18n="nav.about">Sobre</a>
+        <a href="especialidades.html" data-i18n="nav.services">Especialidades</a>
+        <a href="projetos.html" data-i18n="nav.projects">Projetos</a>
+        <a href="formacao.html" data-i18n="nav.education">Formação</a>
+        <a href="contato.html" class="is-active" data-i18n="nav.contact">Contato</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-cta" href="contato.html" data-i18n="nav.cta">Falar sobre projeto</a>
+        <div class="lang-switcher">
+          <button class="lang-btn" data-lang="pt-BR">PT</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="en-US">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="contato">
+      <div class="container contact-shell reveal">
+        <div class="contact-copy">
+          <p class="section-index">Contato</p>
+          <h2>Se o projeto precisa de base técnica e uma interface com intenção, eu topo conversar.</h2>
+          <p>Use o formulário ou fale comigo pelos canais abaixo. A ideia é simples: transformar boas referências em produto funcional, bonito e bem resolvido.</p>
+          <div class="contact-info">
+            <article>
+              <strong>Email</strong>
+              <a href="mailto:samuel.alves.dev@gmail.com">samuel.alves.dev@gmail.com</a>
+            </article>
+            <article>
+              <strong>Telefone</strong>
+              <a href="tel:+5511987654321">(11) 98765-4321</a>
+            </article>
+            <article>
+              <strong>Localização</strong>
+              <p>São Paulo, Brasil</p>
+            </article>
+          </div>
+          <div class="contact-links">
+            <a href="https://www.linkedin.com/in/samuel-alves-277015332" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
+            <a href="https://github.com/s4muelxl" target="_blank" rel="noopener noreferrer">💻 GitHub</a>
+            <a href="https://instagram.com/s4muelxl" target="_blank" rel="noopener noreferrer">📸 Instagram</a>
+          </div>
+        </div>
+        <form id="contactForm" class="contact-form" novalidate>
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="voce@dominio.com" required>
+          <label for="assunto">Assunto</label>
+          <input type="text" id="assunto" name="assunto" placeholder="Ex: Proposta de projeto, Estágio, Freelance" required>
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" rows="5" placeholder="Conte o contexto do seu projeto ou oportunidade." required></textarea>
+          <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+          <p class="form-feedback" id="formFeedback" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-layout">
+      <p>© <span id="currentYear"></span> Samuel Alves.</p>
+      <p>Feito em HTML, CSS e JavaScript com direção editorial-tech.</p>
+    </div>
+  </footer>
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

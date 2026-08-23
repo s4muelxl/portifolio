@@ -1,0 +1,84 @@
+{
+  "name": "Samuel Alves | Portfólio de Engenheiro de Software",
+  "short_name": "Samuel Alves",
+  "description": "Portfólio profissional de Samuel Alves, engenheiro de software com expertise em full stack, dados e IA.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0c0a14",
+  "theme_color": "#8b5cf6",
+  "categories": ["technology", "developer"],
+  "screenshots": [
+    {
+      "src": "assets/screenshot-mobile.png",
+      "sizes": "540x720",
+      "type": "image/png",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "assets/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Ver Projetos",
+      "short_name": "Projetos",
+      "description": "Conheça os projetos de Samuel",
+      "url": "/projetos.html?utm_source=pwa",
+      "icons": [
+        {
+          "src": "assets/icon-shortcut-projetos.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Iniciar Conversa",
+      "short_name": "Contato",
+      "description": "Entre em contato com Samuel",
+      "url": "/contato.html?utm_source=pwa",
+      "icons": [
+        {
+          "src": "assets/icon-shortcut-contato.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/shared",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "image",
+          "accept": ["image/png", "image/jpeg"]
+        }
+      ]
+    }
+  }
+}
