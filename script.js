@@ -1,110 +1,35 @@
-/* ==========================================================================
-   PORTFÓLIO SAMUEL ALVES — INTERAÇÕES ESSENCIAIS
-   Sem dependência da API do GitHub no cliente.
-   ========================================================================== */
+document.addEventListener('DOMContentLoaded',()=>{
+  const root=document.documentElement;
+  const navToggle=document.getElementById('navToggle');
+  const navMenu=document.getElementById('navMenu');
+  const themeToggle=document.getElementById('themeToggle');
+  const progress=document.getElementById('scrollProgress');
+  const savedTheme=localStorage.getItem('portfolio-theme');
+  if(savedTheme==='light'||savedTheme==='dark') root.dataset.theme=savedTheme;
+  updateThemeIcon();
 
-document.addEventListener('DOMContentLoaded', () => {
-  initMobileMenu();
-  initScrollSpy();
-  initProjectFilters();
-  setCurrentYear();
+  function updateThemeIcon(){if(themeToggle) themeToggle.textContent=root.dataset.theme==='light'?'☀':'☾'}
+  themeToggle?.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='light'?'dark':'light';localStorage.setItem('portfolio-theme',root.dataset.theme);updateThemeIcon()});
+
+  navToggle?.addEventListener('click',()=>{const open=navMenu?.classList.toggle('open');navToggle.setAttribute('aria-expanded',String(Boolean(open)));navToggle.textContent=open?'×':'☰'});
+  navMenu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navMenu.classList.remove('open');navToggle?.setAttribute('aria-expanded','false');if(navToggle)navToggle.textContent='☰'}));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){navMenu?.classList.remove('open');closePalette()}});
+
+  const updateProgress=()=>{if(!progress)return;const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'};
+  addEventListener('scroll',updateProgress,{passive:true});updateProgress();
+
+  const revealEls=[...document.querySelectorAll('.reveal')];
+  if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');io.unobserve(entry.target)}}),{threshold:.1,rootMargin:'0px 0px -40px'});revealEls.forEach(el=>io.observe(el))}else revealEls.forEach(el=>el.classList.add('is-visible'));
+
+  const filterButtons=[...document.querySelectorAll('[data-project-filter]')];
+  const cards=[...document.querySelectorAll('[data-project-card]')];
+  filterButtons.forEach(btn=>btn.addEventListener('click',()=>{const filter=btn.dataset.projectFilter;filterButtons.forEach(b=>{const active=b===btn;b.classList.toggle('active',active);b.setAttribute('aria-pressed',String(active))});cards.forEach(card=>{const cats=(card.dataset.projectCategory||'').split(/\s+/);card.hidden=filter!=='all'&&!cats.includes(filter)})}));
+
+  const palette=document.getElementById('commandBackdrop');
+  const paletteOpen=document.getElementById('paletteOpen');
+  const paletteClose=document.getElementById('paletteClose');
+  function openPalette(){if(!palette)return;palette.hidden=false;document.body.style.overflow='hidden';palette.querySelector('a')?.focus()}
+  function closePalette(){if(!palette)return;palette.hidden=true;document.body.style.overflow=''}
+  paletteOpen?.addEventListener('click',openPalette);paletteClose?.addEventListener('click',closePalette);palette?.addEventListener('click',e=>{if(e.target===palette)closePalette()});palette?.querySelectorAll('a').forEach(a=>a.addEventListener('click',closePalette));
+  document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();palette?.hidden?openPalette():closePalette()}});
 });
-
-function initMobileMenu() {
-  const toggleBtn = document.getElementById('mobileMenuToggle');
-  const navMenu = document.getElementById('navMenu');
-
-  if (!toggleBtn || !navMenu) return;
-
-  const closeMenu = () => {
-    navMenu.classList.remove('open');
-    toggleBtn.setAttribute('aria-expanded', 'false');
-    toggleBtn.textContent = '☰';
-    toggleBtn.setAttribute('aria-label', 'Abrir menu de navegação');
-  };
-
-  toggleBtn.addEventListener('click', () => {
-    const isOpen = navMenu.classList.toggle('open');
-    toggleBtn.setAttribute('aria-expanded', String(isOpen));
-    toggleBtn.textContent = isOpen ? '✕' : '☰';
-    toggleBtn.setAttribute('aria-label', isOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação');
-  });
-
-  navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => closeMenu());
-  });
-
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') closeMenu();
-  });
-
-  document.addEventListener('click', event => {
-    if (!navMenu.classList.contains('open')) return;
-    if (navMenu.contains(event.target) || toggleBtn.contains(event.target)) return;
-    closeMenu();
-  });
-}
-
-function initScrollSpy() {
-  const navLinks = Array.from(document.querySelectorAll('.nav-link[href^="#"]'));
-  const sections = navLinks
-    .map(link => document.querySelector(link.getAttribute('href')))
-    .filter(Boolean);
-
-  if (!navLinks.length || !sections.length || !('IntersectionObserver' in window)) return;
-
-  const observer = new IntersectionObserver(entries => {
-    const visible = entries
-      .filter(entry => entry.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-    if (!visible) return;
-
-    navLinks.forEach(link => {
-      const active = link.getAttribute('href') === `#${visible.target.id}`;
-      link.classList.toggle('active', active);
-      if (active) link.setAttribute('aria-current', 'location');
-      else link.removeAttribute('aria-current');
-    });
-  }, {
-    rootMargin: '-25% 0px -60% 0px',
-    threshold: [0.01, 0.15, 0.4]
-  });
-
-  sections.forEach(section => observer.observe(section));
-}
-
-function initProjectFilters() {
-  const buttons = Array.from(document.querySelectorAll('[data-project-filter]'));
-  const cards = Array.from(document.querySelectorAll('[data-project-card]'));
-
-  if (!buttons.length || !cards.length) return;
-
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      const filter = button.dataset.projectFilter || 'all';
-
-      buttons.forEach(item => {
-        const isActive = item === button;
-        item.classList.toggle('active', isActive);
-        item.setAttribute('aria-pressed', String(isActive));
-      });
-
-      cards.forEach(card => {
-        const categories = (card.dataset.projectCategory || '').split(/\s+/).filter(Boolean);
-        const shouldShow = filter === 'all' || categories.includes(filter);
-        card.hidden = !shouldShow;
-      });
-    });
-  });
-
-  const initiallyActive = buttons.find(button => button.classList.contains('active')) || buttons[0];
-  buttons.forEach(button => button.setAttribute('aria-pressed', String(button === initiallyActive)));
-}
-
-function setCurrentYear() {
-  const year = String(new Date().getFullYear());
-  document.querySelectorAll('#currentYear').forEach(element => {
-    element.textContent = year;
-  });
-}
