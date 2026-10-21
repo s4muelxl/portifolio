@@ -1,6 +1,6 @@
 # Samuel Alves — Portfólio de Engenharia de Software
 
-Portfólio profissional de **Samuel Alves**, estudante de Engenharia de Software, publicado em **https://s4muelxl.com**.
+Portfólio profissional de **Samuel Alves**, estudante de Engenharia de Software, publicado em **https://www.s4muelxl.com**.
 
 O projeto apresenta uma seleção editorial de trabalhos reais em desenvolvimento de software, produtos web, PWA, comunicação em tempo real, automação e dados — sem gerar cards fictícios ou depender da API do GitHub no navegador.
 
@@ -65,7 +65,7 @@ Depois acesse `http://localhost:8000`.
 
 ## Links profissionais
 
-- Site: https://s4muelxl.com
+- Site: https://www.s4muelxl.com
 - GitHub: https://github.com/s4muelxl
 - LinkedIn: https://linkedin.com/in/samuel-alves-277015332
 
