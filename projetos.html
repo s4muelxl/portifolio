@@ -3,233 +3,331 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projetos | Samuel Alves</title>
-  <meta name="description" content="Projetos de Samuel Alves em frontend, backend, IA e dados.">
+  <title>Projetos | Samuel Alves — Engenharia de Software</title>
+  <meta name="description" content="Estudos de caso de Samuel Alves: NEXO, Cabeça de Gelo, SaberX, BMI9 e automações em Python.">
+  <link rel="canonical" href="https://s4muelxl.com/projetos.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Projetos | Samuel Alves">
+  <meta property="og:description" content="Produtos e sistemas reais em full-stack, PWA, WebRTC, dados e automação.">
+  <meta property="og:url" content="https://s4muelxl.com/projetos.html">
+  <meta name="theme-color" content="#020817">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="portfolio-v2.css?v=20261021">
 </head>
 <body>
-  <div class="page-noise" aria-hidden="true"></div>
-  <div class="page-orb page-orb--left" aria-hidden="true"></div>
-  <div class="page-orb page-orb--right" aria-hidden="true"></div>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
 
-  <header class="site-header" id="topo">
-    <div class="container navbar">
-      <a href="index.html" class="brand" aria-label="Ir para o início" data-i18n-aria="nav.home">
-        <strong class="brand-logo"><span class="brand-samuel">Samuel</span> <span class="brand-alves">Alves</span></strong>
+  <header class="header">
+    <div class="container header-container">
+      <a href="index.html" class="brand-logo" aria-label="Voltar para o início">
+        <span class="brand-badge" aria-hidden="true">SA</span>
+        <span>Samuel Alves</span>
       </a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
-        Menu
-      </button>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navMenu">☰</button>
 
-      <nav class="nav" id="navMenu" aria-label="Navegação principal">
-        <a href="index.html" data-i18n="nav.home">Início</a>
-        <a href="about.html" data-i18n="nav.about">Sobre</a>
-        <a href="especialidades.html" data-i18n="nav.services">Especialidades</a>
-        <a href="projetos.html" class="is-active" data-i18n="nav.projects">Projetos</a>
-        <a href="formacao.html" data-i18n="nav.education">Formação</a>
-        <a href="contato.html" data-i18n="nav.contact">Contato</a>
+      <nav aria-label="Navegação principal">
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="index.html#sobre" class="nav-link">Sobre</a></li>
+          <li><a href="index.html#habilidades" class="nav-link">Habilidades</a></li>
+          <li><a href="#projetos" class="nav-link active">Projetos</a></li>
+          <li><a href="index.html#formacao" class="nav-link">Formação</a></li>
+          <li><a href="index.html#contato" class="nav-link">Contato</a></li>
+          <li class="mobile-only-action">
+            <a href="assets/curriculo_samuel_alves_dev_v2.pdf" download="Curriculo_Samuel_Alves.pdf" class="btn-primary">Baixar CV ↓</a>
+          </li>
+        </ul>
       </nav>
 
-      <div class="header-actions">
-        <a class="header-cta" href="contato.html" data-i18n="nav.cta">Falar sobre projeto</a>
-        <div class="lang-switcher">
-          <button class="lang-btn" data-lang="pt-BR">PT</button>
-          <span class="lang-divider">|</span>
-          <button class="lang-btn" data-lang="en-US">EN</button>
-        </div>
-      </div>
+      <a href="assets/curriculo_samuel_alves_dev_v2.pdf" download="Curriculo_Samuel_Alves.pdf" class="btn-header-cv">Baixar CV ↓</a>
     </div>
   </header>
 
-  <main>
-    <section class="hero hero--inner" id="projetos-hero">
-      <div class="container">
-        <div class="hero-copy reveal" style="--delay: 0.05s;">
-          <p class="eyebrow">Portfólio / Projetos em destaque</p>
-          <h1>
-            Projetos que representam minha
-            <span class="hero-highlight">evolução técnica.</span>
-          </h1>
-          <p class="hero-text">
-            Uma seleção de ideias que representam meu interesse por interfaces bem desenhadas, back-end funcional e experimentação com IA e dados.
+  <main id="conteudo">
+    <section class="project-page-hero">
+      <div class="container project-page-hero-grid">
+        <div>
+          <p class="hero-kicker"><span class="status-dot" aria-hidden="true"></span> Estudos de caso reais</p>
+          <h1 class="project-page-title">Projetos que mostram <span class="text-gradient">como eu penso e construo software.</span></h1>
+          <p class="project-page-description">
+            Esta página não é uma lista automática de repositórios. É uma seleção dos projetos que melhor representam meu trabalho, com problema, solução, arquitetura, stack e decisões de engenharia.
           </p>
         </div>
+
+        <aside class="project-page-note">
+          <span class="project-page-note-label">Princípio</span>
+          <strong>Sem projetos fictícios.</strong>
+          <p>O conteúdo abaixo vem de aplicações e repositórios que eu realmente desenvolvo.</p>
+        </aside>
       </div>
     </section>
 
-    <section class="section" id="projetos">
+    <section class="section section--projects-page" id="projetos">
       <div class="container">
-        <div class="filters reveal" role="group" aria-label="Filtrar projetos por categoria">
-          <button class="filter-btn active" type="button" data-filter="all">Todos</button>
-          <button class="filter-btn" type="button" data-filter="frontend">Frontend</button>
-          <button class="filter-btn" type="button" data-filter="backend">Back-end</button>
-          <button class="filter-btn" type="button" data-filter="ia">IA</button>
-          <button class="filter-btn" type="button" data-filter="dados">Dados</button>
+        <div class="project-filter-bar" role="group" aria-label="Filtrar projetos por categoria">
+          <button class="project-filter-button active" type="button" data-project-filter="all">Todos</button>
+          <button class="project-filter-button" type="button" data-project-filter="produto">Produto</button>
+          <button class="project-filter-button" type="button" data-project-filter="realtime">Tempo real</button>
+          <button class="project-filter-button" type="button" data-project-filter="sistemas">Sistemas</button>
+          <button class="project-filter-button" type="button" data-project-filter="automacao">Automação</button>
         </div>
 
-        <div class="projects-grid">
-          <!-- PROJETO HONDA (DESTAQUE ESPECIAL) -->
-          <article class="project-card project-card--feature reveal project-card--honda" data-category="backend" style="--delay: 0.05s;">
-            <div class="project-meta">
-              <span data-i18n="projects.honda_cat">Infraestrutura & Pintura Epóxi</span>
-              <span data-i18n="projects.honda_tag">⭐ Destaque - Concessionária Honda</span>
-            </div>
-            
-            <div class="project-gallery-wrapper">
-              <!-- Visual principal com suporte a Curtida de Clique Duplo -->
-              <div class="project-gallery-main" id="hondaGalleryMain">
-                <img src="assets/honda5.jpg" alt="Concessionária Honda Finalizada" id="hondaMainImg">
-                <div class="like-overlay-heart"><svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+        <div class="case-study-list">
+          <article class="case-study" id="nexo" data-project-card data-project-category="produto sistemas">
+            <div class="case-study-header">
+              <div>
+                <div class="case-study-labels">
+                  <span class="case-label">01</span>
+                  <span class="case-label case-label--accent">Produto pessoal</span>
+                  <span class="case-label">Código privado</span>
+                </div>
+                <h2>NEXO</h2>
+                <p class="case-study-lead">Um hub pessoal mobile-first para concentrar treino, rotina, evolução corporal, finanças, investimentos e inteligência em uma experiência única.</p>
               </div>
-              
-              <!-- Miniaturas para navegação -->
-              <div class="project-gallery-thumbs">
-                <img src="assets/honda1.jpg" alt="Fase 1 - Elevadores" class="thumb" onclick="switchHondaImage(this, 1)">
-                <img src="assets/honda2.jpg" alt="Fase 2 - Galpão Vazio" class="thumb" onclick="switchHondaImage(this, 2)">
-                <img src="assets/honda3.jpg" alt="Fase 3 - Epóxi Detalhe" class="thumb" onclick="switchHondaImage(this, 3)">
-                <img src="assets/honda4.jpg" alt="Fase 4 - Galpão Amplo" class="thumb" onclick="switchHondaImage(this, 4)">
-                <img src="assets/honda5.jpg" alt="Fase 5 - Honda Concluída" class="thumb active" onclick="switchHondaImage(this, 5)">
+              <div class="case-study-actions">
+                <a href="https://nexo-ten-mu.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-primary">Abrir aplicação ↗</a>
               </div>
             </div>
 
-            <h3 data-i18n="projects.honda_title">Revitalização e Pintura Epóxi de Oficina - Concessionária Honda</h3>
-            <p data-i18n="projects.honda_desc">
-              Execução completa de revitalização física de alto padrão para a área de serviço da Concessionária Honda. Aplicação de revestimento epóxi auto-nivelante brilhante de alta resistência mecânica e química, demarcação técnica de zonas de trabalho, rotas logísticas e delimitação de elevadores hidráulicos.
-            </p>
-            <ul class="project-points">
-              <li data-i18n="projects.honda_point1">Acabamento estético premium com superfície brilhante e reflexiva auto-nivelante.</li>
-              <li data-i18n="projects.honda_point2">Divisão funcional por cores: áreas de serviço (verde), tráfego (vermelho/marrom) e faixas de segurança (amarelo).</li>
-              <li data-i18n="projects.honda_point3">Alta resistência mecânica a cargas e resistência química contra óleos e fluidos automotivos.</li>
-              <li data-i18n="projects.honda_point4">Sinalização logística com demarcação de faixas e setas de tráfego de alto contraste.</li>
-            </ul>
-
-            <div class="project-footer">
-              <div class="stack-pills">
-                <span>Piso Epóxi</span>
-                <span>Engenharia Física</span>
-                <span>Layout de Oficina</span>
-                <span>Sinalização Industrial</span>
+            <div class="case-study-grid">
+              <div class="case-block">
+                <span class="case-block-title">Problema</span>
+                <p>Informações pessoais importantes ficam espalhadas entre apps, planilhas, notas e lembretes. O NEXO nasceu para reunir esses domínios sem transformar a experiência em um painel pesado ou fragmentado.</p>
               </div>
-              
-              <div class="project-actions-row">
-                <!-- Sistema de Curtidas Estilo Instagram/TikTok -->
-                <button class="like-button" id="hondaLikeBtn" aria-label="Curtir este projeto">
-                  <span class="like-icon-wrapper">
-                    <svg class="heart-outline" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                    <svg class="heart-filled" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                  </span>
-                  <span class="like-count" id="hondaLikeCount">0</span>
-                </button>
-                
-                <div class="project-actions">
-                  <a class="btn btn-secondary" href="contato.html" data-i18n="projects.cta_interested">Interessado?</a>
+              <div class="case-block">
+                <span class="case-block-title">Solução</span>
+                <p>PWA com navegação mobile-first, autenticação, persistência, planos de treino configuráveis, registros históricos, agenda, finanças, investimentos, notificações e um Agent híbrido para análises e apoio contextual.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-block-title">Arquitetura</span>
+                <ul class="case-list">
+                  <li>Expo Router + React Native Web no frontend.</li>
+                  <li>Supabase Auth, PostgreSQL, RLS e Edge Functions.</li>
+                  <li>TanStack Query para dados remotos e Zustand para estado global.</li>
+                  <li>Service Worker, manifest e comportamento PWA standalone.</li>
+                  <li>Testes, typecheck, lint e build web no fluxo de qualidade.</li>
+                </ul>
+              </div>
+              <div class="case-block case-block--stack">
+                <span class="case-block-title">Stack principal</span>
+                <div class="project-stack project-stack--large">
+                  <span>Expo 57</span><span>React 19</span><span>React Native Web</span><span>TypeScript</span><span>Supabase</span><span>PostgreSQL</span><span>TanStack Query</span><span>Zustand</span><span>Jest</span><span>Vercel</span>
                 </div>
               </div>
             </div>
           </article>
 
-          <article class="project-card project-card--feature reveal" data-category="frontend" style="--delay: 0.05s;">
-            <div class="project-meta">
-              <span>Frontend & Orchestrator</span>
-              <span>Projeto 01</span>
-            </div>
-            <h3>Micro-Frontend Dashboard & UI Engine</h3>
-            <p>Painel corporativo de alta performance construído em TypeScript e Next.js. O sistema orquestra múltiplos micro-frontends independentes, consumindo dados em tempo real via WebSockets e consultas otimizadas com GraphQL.</p>
-            <ul class="project-points">
-              <li>Páginas com Server-Side Rendering (SSR) e carregamento otimizado.</li>
-              <li>Tipagem estática estrita e controle de estado reativo complexo.</li>
-              <li>Acessibilidade avançada seguindo as diretrizes WCAG e WAI-ARIA.</li>
-            </ul>
-            <div class="project-footer">
-              <div class="stack-pills">
-                <span>TypeScript</span>
-                <span>React.js</span>
-                <span>Next.js</span>
-                <span>GraphQL</span>
-                <span>WebSockets</span>
-              </div>
-              <div class="project-actions">
-                <a class="btn btn-secondary" href="contato.html">Conversar sobre essa ideia</a>
-                <a class="btn btn-ghost" href="https://github.com/s4muelxl" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <article class="case-study" id="cbcdegelo" data-project-card data-project-category="produto realtime">
+            <div class="case-study-header">
+              <div>
+                <div class="case-study-labels">
+                  <span class="case-label">02</span>
+                  <span class="case-label case-label--accent">WebRTC / SFU</span>
+                  <span class="case-label">Código privado</span>
+                </div>
+                <h2>Cabeça de Gelo</h2>
+                <p class="case-study-lead">Plataforma web privada de comunicação para grupos, com salas temporárias, voz e compartilhamento de tela, construída com foco em baixa latência e estabilidade.</p>
               </div>
             </div>
-          </article>
 
-          <article class="project-card reveal" data-category="backend" style="--delay: 0.12s;">
-            <div class="project-meta">
-              <span>Back-end & Infra</span>
-              <span>Projeto 02</span>
-            </div>
-            <h3>High-Throughput API Gateway & Router</h3>
-            <p>Serviço crítico de roteamento e gateway de APIs desenvolvido em Go e Rust. Capaz de gerenciar milhares de requisições por segundo com baixa latência, integrando controle de fluxo (Rate Limiting) no Redis e comunicação gRPC.</p>
-            <div class="stack-pills">
-              <span>Go</span>
-              <span>Rust</span>
-              <span>gRPC</span>
-              <span>Redis</span>
-              <span>PostgreSQL</span>
-              <span>Docker</span>
-            </div>
-            <div class="project-actions">
-              <a class="btn btn-secondary" href="https://github.com/s4muelxl" target="_blank" rel="noopener noreferrer">Ver GitHub</a>
-            </div>
-          </article>
-
-          <article class="project-card reveal" data-category="ia" style="--delay: 0.19s;">
-            <div class="project-meta">
-              <span>IA & LLM</span>
-              <span>Projeto 03</span>
-            </div>
-            <h3>Autonomous RAG Agent Orchestrator</h3>
-            <p>Agente inteligente de IA construído com LlamaIndex e PyTorch para busca semântica em bases de conhecimento distribuídas, utilizando bancos de dados vetoriais (Vector DB) para recuperação contextual de alta relevância.</p>
-            <div class="stack-pills">
-              <span>Python</span>
-              <span>PyTorch</span>
-              <span>LangChain</span>
-              <span>LlamaIndex</span>
-              <span>Pinecone</span>
-            </div>
-            <div class="project-actions">
-              <a class="btn btn-secondary" href="https://github.com/s4muelxl" target="_blank" rel="noopener noreferrer">Ver GitHub</a>
+            <div class="case-study-grid">
+              <div class="case-block">
+                <span class="case-block-title">Problema</span>
+                <p>Comunicação de voz e tela em navegador exige tratar rede instável, dispositivos diferentes, reconexão, qualidade adaptativa e sincronização de múltiplos participantes sem degradar a experiência.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-block-title">Solução</span>
+                <p>Aplicação com salas temporárias, permissões, áudio, screen share, SFU, simulcast, presets de qualidade e rotinas de reconexão. O projeto evolui por testes reais de qualidade e conectividade.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-block-title">Engenharia</span>
+                <ul class="case-list">
+                  <li>WebRTC para captura e transporte de mídia.</li>
+                  <li>LiveKit como camada SFU e SDK de servidor para tokens.</li>
+                  <li>Simulcast e seleção dinâmica de camadas de vídeo.</li>
+                  <li>Backoff exponencial com jitter para reconexão.</li>
+                  <li>Vitest, typecheck e auditorias no processo de release.</li>
+                </ul>
+              </div>
+              <div class="case-block case-block--stack">
+                <span class="case-block-title">Stack principal</span>
+                <div class="project-stack project-stack--large">
+                  <span>Next.js 14</span><span>React 18</span><span>TypeScript</span><span>WebRTC</span><span>LiveKit</span><span>Tailwind CSS</span><span>Vitest</span>
+                </div>
+              </div>
             </div>
           </article>
 
-          <article class="project-card reveal" data-category="dados" style="--delay: 0.26s;">
-            <div class="project-meta">
-              <span>Cloud & DevOps</span>
-              <span>Projeto 04</span>
+          <article class="case-study" id="saberx" data-project-card data-project-category="produto sistemas">
+            <div class="case-study-header">
+              <div>
+                <div class="case-study-labels">
+                  <span class="case-label">03</span>
+                  <span class="case-label case-label--accent">Sistema empresarial</span>
+                  <span class="case-label">Repositório público</span>
+                </div>
+                <h2>SaberX</h2>
+                <p class="case-study-lead">Sistema web de cotação, compras e vendas criado para substituir planilhas operacionais por um fluxo estruturado, auditável e multiusuário.</p>
+              </div>
+              <div class="case-study-actions">
+                <a href="https://github.com/s4muelxl/saberx" target="_blank" rel="noopener noreferrer" class="btn-outline">Ver GitHub ↗</a>
+              </div>
             </div>
-            <h3>Cloud Analytics Infrastructure & K8s Pipeline</h3>
-            <p>Arquitetura de dados para processamento distribuído na nuvem utilizando Apache Spark e Terraform IAC. Orquestrado de forma totalmente containerizada sob clusters Kubernetes na AWS com CI/CD estruturado.</p>
-            <div class="stack-pills">
-              <span>AWS</span>
-              <span>Terraform</span>
-              <span>Kubernetes</span>
-              <span>Docker</span>
-              <span>Apache Spark</span>
-              <span>CI/CD</span>
-            </div>
-            <div class="project-actions">
-              <a class="btn btn-secondary" href="https://github.com/s4muelxl" target="_blank" rel="noopener noreferrer">Ver GitHub</a>
+
+            <div class="case-study-grid">
+              <div class="case-block">
+                <span class="case-block-title">Problema</span>
+                <p>Mapas de cotação em planilhas ficam difíceis de versionar, validar e auditar quando o volume de fornecedores, produtos e regras de compra cresce.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-block-title">Solução</span>
+                <p>Aplicação com produtos, fornecedores, cotações, pedidos, orçamentos, relatórios e um motor de validação que preserva regras de cálculo do processo original.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-block-title">Engenharia</span>
+                <ul class="case-list">
+                  <li>Frontend React + TypeScript com Vite.</li>
+                  <li>Supabase Auth e PostgreSQL como backend.</li>
+                  <li>RLS multi-tenant por organização.</li>
+                  <li>Exportação de planilhas e relatórios em PDF.</li>
+                  <li>Testes unitários com Vitest.</li>
+                </ul>
+              </div>
+              <div class="case-block case-block--stack">
+                <span class="case-block-title">Stack principal</span>
+                <div class="project-stack project-stack--large">
+                  <span>React 18</span><span>TypeScript</span><span>Vite</span><span>Tailwind CSS</span><span>Supabase</span><span>PostgreSQL</span><span>Recharts</span><span>Vitest</span>
+                </div>
+              </div>
             </div>
           </article>
+
+          <article class="case-study" id="bmi9" data-project-card data-project-category="produto sistemas automacao">
+            <div class="case-study-header">
+              <div>
+                <div class="case-study-labels">
+                  <span class="case-label">04</span>
+                  <span class="case-label case-label--accent">Produto para empresa real</span>
+                  <span class="case-label">Repositório público</span>
+                </div>
+                <h2>BMI9</h2>
+                <p class="case-study-lead">Plataforma institucional e fluxo de orçamentos para uma empresa de construção civil e pisos industriais, com geração de proposta, captação de leads e entrega resiliente.</p>
+              </div>
+              <div class="case-study-actions">
+                <a href="https://github.com/s4muelxl/bmi9.lol" target="_blank" rel="noopener noreferrer" class="btn-outline">Ver GitHub ↗</a>
+              </div>
+            </div>
+
+            <div class="case-study-grid">
+              <div class="case-block">
+                <span class="case-block-title">Problema</span>
+                <p>Um site institucional sozinho não resolvia o fluxo comercial. Era necessário transformar o contato inicial em uma jornada de orçamento com dados estruturados e proposta pronta para envio.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-block-title">Solução</span>
+                <p>Frontend leve, formulário validado, geração de PDF no backend, envio transacional com fallback, internacionalização e endpoints serverless para apoiar o processo comercial.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-block-title">Engenharia</span>
+                <ul class="case-list">
+                  <li>Frontend vanilla para reduzir peso no cliente.</li>
+                  <li>Backend principal em Python + Flask.</li>
+                  <li>Envio via Resend com fallback SMTP.</li>
+                  <li>Redis/Vercel KV para persistência e cache.</li>
+                  <li>Medidas de segurança, CSP, rate limiting e sanitização.</li>
+                </ul>
+              </div>
+              <div class="case-block case-block--stack">
+                <span class="case-block-title">Stack principal</span>
+                <div class="project-stack project-stack--large">
+                  <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Python</span><span>Flask</span><span>Redis</span><span>Resend</span><span>Vercel</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="case-study" id="receipt-generator" data-project-card data-project-category="automacao">
+            <div class="case-study-header">
+              <div>
+                <div class="case-study-labels">
+                  <span class="case-label">05</span>
+                  <span class="case-label case-label--accent">Automação em Python</span>
+                  <span class="case-label">Repositório público</span>
+                </div>
+                <h2>Receipt Generator</h2>
+                <p class="case-study-lead">CLI em Python para gerar recibos de vendas padronizados, com cálculo automático, validação de entrada e histórico em arquivos locais.</p>
+              </div>
+              <div class="case-study-actions">
+                <a href="https://github.com/s4muelxl/receipt-generator-py" target="_blank" rel="noopener noreferrer" class="btn-outline">Ver GitHub ↗</a>
+              </div>
+            </div>
+
+            <div class="case-study-grid">
+              <div class="case-block">
+                <span class="case-block-title">Problema</span>
+                <p>Recibos preenchidos manualmente consomem tempo e aumentam a chance de erro em cálculo, formatação e identificação de pedidos.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-block-title">Solução</span>
+                <p>Ferramenta de linha de comando com cadastro dinâmico de itens, validação de moeda, cálculo de subtotais e total, identificador único e exportação UTF-8.</p>
+              </div>
+              <div class="case-block">
+                <span class="case-block-title">Decisões técnicas</span>
+                <ul class="case-list">
+                  <li>Python 3.8+ sem dependências externas.</li>
+                  <li>Validação para entradas inválidas e valores negativos.</li>
+                  <li>Persistência simples e portável em arquivos de texto.</li>
+                  <li>Execução direta por terminal ou script no Windows.</li>
+                </ul>
+              </div>
+              <div class="case-block case-block--stack">
+                <span class="case-block-title">Stack principal</span>
+                <div class="project-stack project-stack--large">
+                  <span>Python 3</span><span>datetime</span><span>os</span><span>sys</span><span>CLI</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="projects-end-cta">
+          <div>
+            <p class="section-eyebrow">Código e evolução</p>
+            <h2>Quer ver o restante?</h2>
+            <p>Os repositórios públicos, histórico de commits e projetos menores continuam disponíveis no GitHub.</p>
+          </div>
+          <a href="https://github.com/s4muelxl?tab=repositories" target="_blank" rel="noopener noreferrer" class="btn-primary">Abrir GitHub ↗</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-layout">
-      <p>© <span id="currentYear"></span> Samuel Alves.</p>
-      <p>Feito em HTML, CSS e JavaScript com direção editorial-tech.</p>
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <span class="brand-badge" aria-hidden="true">SA</span>
+        <div>
+          <strong class="footer-name">Samuel Alves</strong>
+          <span class="footer-role">Engenharia de Software • São Paulo, SP</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Início</a>
+        <a href="https://github.com/s4muelxl" target="_blank" rel="noopener noreferrer" class="footer-link">GitHub</a>
+        <a href="https://linkedin.com/in/samuel-alves-277015332" target="_blank" rel="noopener noreferrer" class="footer-link">LinkedIn</a>
+        <a href="mailto:corporativosamuel8877alves@gmail.com" class="footer-link">E-mail</a>
+      </div>
+      <div class="footer-copy">© <span id="currentYear">2026</span> Samuel Alves.</div>
     </div>
   </footer>
 
-  <script src="i18n.js"></script>
-  <script src="script.js"></script>
+  <script src="script.js?v=20261021" defer></script>
 </body>
 </html>

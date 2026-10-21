@@ -1,6 +1,48 @@
 {
   "name": "samuel-alves-portfolio",
   "version": 2,
+  "redirects": [
+    {
+      "source": "/about.html",
+      "destination": "/#sobre",
+      "permanent": true
+    },
+    {
+      "source": "/about",
+      "destination": "/#sobre",
+      "permanent": true
+    },
+    {
+      "source": "/especialidades.html",
+      "destination": "/#habilidades",
+      "permanent": true
+    },
+    {
+      "source": "/especialidades",
+      "destination": "/#habilidades",
+      "permanent": true
+    },
+    {
+      "source": "/formacao.html",
+      "destination": "/#formacao",
+      "permanent": true
+    },
+    {
+      "source": "/formacao",
+      "destination": "/#formacao",
+      "permanent": true
+    },
+    {
+      "source": "/contato.html",
+      "destination": "/#contato",
+      "permanent": true
+    },
+    {
+      "source": "/contato",
+      "destination": "/#contato",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -12,10 +54,6 @@
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
         },
         {
           "key": "Referrer-Policy",
@@ -31,7 +69,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://api.github.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api.github.com;"
+          "value": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; form-action 'self'; upgrade-insecure-requests"
         }
       ]
     },
@@ -49,7 +87,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=2592000"
+          "value": "public, max-age=3600, must-revalidate"
         }
       ]
     },
@@ -58,7 +96,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=2592000"
+          "value": "public, max-age=3600, must-revalidate"
         }
       ]
     }
