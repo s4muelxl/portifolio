@@ -1,0 +1,18 @@
+{
+  "lighthouseVersion": "12.8.2",
+  "fetchTime": "2026-10-21T21:28:31.660Z",
+  "environment": "localhost / Chromium 133 / mobile simulation",
+  "scores": {
+    "performance": 1,
+    "accessibility": 1,
+    "best-practices": 1,
+    "seo": 1
+  },
+  "metrics": {
+    "first-contentful-paint": "0.9 s",
+    "largest-contentful-paint": "1.2 s",
+    "total-blocking-time": "0 ms",
+    "cumulative-layout-shift": "0",
+    "speed-index": "0.9 s"
+  }
+}
