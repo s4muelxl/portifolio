@@ -1,27 +1,9 @@
-# robots.txt for Samuel Alves Portfolio
-# Instruções para web crawlers e search engines
-
+# Samuel Alves — Portfolio
 User-agent: *
 Allow: /
 Disallow: /assets/private/
 Disallow: /admin/
-Disallow: /*.json$
 Disallow: /.htaccess
 Disallow: /node_modules/
 
-# Sitemaps (uncomment when available)
-# Sitemap: https://samuelves.com/sitemap.xml
-# Sitemap: https://samuelves.com/sitemap-projects.xml
-
-# Crawl delay (seconds)
-Crawl-delay: 1
-
-# Disallow specific user agents
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
+Sitemap: https://s4muelxl.com/sitemap.xml
