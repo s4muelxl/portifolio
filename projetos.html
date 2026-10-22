@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-build="20261022f">
+<html lang="pt-BR" data-build="20261022g">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,14 +7,21 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
   <title>Projetos — Samuel Alves</title>
-  <meta name="description" content="Projetos de Samuel Alves: NEXO, Cabeça de Gelo, BMI9, SaberX e automações em Python.">
+  <meta name="description" content="Projetos de Samuel Alves: NEXO, Cabeça de Gelo, BMI9, SaberX e automações em Python. Decisões técnicas, arquitetura e implementação.">
   <link rel="canonical" href="https://s4muelxl.com/projetos.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Projetos — Samuel Alves">
+  <meta property="og:description" content="Projetos reais, decisões técnicas e implementação em software, dados e sistemas web.">
+  <meta property="og:url" content="https://s4muelxl.com/projetos.html">
+  <meta property="og:image" content="https://s4muelxl.com/assets/samuel-profile.webp?v=20261022-instagramfix">
+  <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#050505">
-  <meta name="portfolio-build" content="20261022f">
+  <meta name="portfolio-build" content="20261022g">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portfolio-v8.css?v=20261022f">
+  <link rel="stylesheet" href="portfolio-v8.css?v=20261022g">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -52,10 +59,10 @@
       <div class="shell projects-title-grid">
         <div class="reveal">
           <p class="mono-label">PROJETOS</p>
-          <h1>Trabalho real, decisões técnicas e evolução.</h1>
+          <h1>Projetos, decisões técnicas e o que aprendi construindo.</h1>
         </div>
         <div class="projects-intro reveal">
-          <p>Esta página não usa mockups para fingir produto. Os projetos são apresentados pelo problema que resolvem, pela arquitetura utilizada e pelas funcionalidades realmente implementadas.</p>
+          <p>Os projetos abaixo mostram o problema, as decisões de engenharia, a implementação e como cada solução foi validada. A página inicial oferece a leitura rápida; aqui ficam os detalhes técnicos.</p>
           <a href="https://github.com/s4muelxl?tab=repositories" target="_blank" rel="noopener noreferrer">Abrir todos os repositórios ↗</a>
         </div>
       </div>
@@ -86,20 +93,13 @@
             </div>
           </div>
 
-          <div class="case-columns">
-            <div>
-              <h3>Contexto</h3>
-              <p>O NEXO centraliza áreas pessoais que normalmente ficam espalhadas entre vários aplicativos: treino, rotina, refeições, finanças, investimentos e inteligência contextual.</p>
-            </div>
-            <div>
-              <h3>Engenharia</h3>
-              <ul><li>Expo Router, React Native Web e TypeScript strict</li><li>Supabase Auth, PostgreSQL, RLS e Edge Functions</li><li>TanStack Query, Zustand, retry e fila offline</li><li>Web Push, Service Worker e PWA standalone</li><li>Jest, lint, typecheck e build web no CI</li></ul>
-            </div>
-            <div>
-              <h3>Recursos</h3>
-              <ul><li>Planos de treino configuráveis e histórico de evolução</li><li>Rotina e compromissos persistidos</li><li>Receitas, despesas, patrimônio e investimentos</li><li>NEXO Agent híbrido com regras locais e providers de IA</li><li>Segurança com RLS em dados do usuário</li></ul>
-            </div>
+          <div class="case-columns case-columns-deep">
+            <div><h3>Contexto e escopo</h3><p>O NEXO concentra treino, rotina, refeições, finanças, investimentos e inteligência contextual em um PWA/mobile-first. O desafio é manter domínios diferentes coerentes sem transformar a interface em vários aplicativos desconectados.</p></div>
+            <div><h3>Decisões de engenharia</h3><ul><li>Expo Router + React Native Web para compartilhar estrutura entre experiência mobile e web</li><li>TanStack Query para dados remotos e Zustand para estado local</li><li>Regras determinísticas locais antes de recorrer a providers de IA</li><li>Retry inteligente e fila offline para operações que podem sobreviver a perda de conexão</li></ul></div>
+            <div><h3>Segurança e dados</h3><ul><li>Supabase Auth, PostgreSQL e RLS nas tabelas de dados do usuário</li><li>Edge Functions para operações server-side</li><li>Credenciais privilegiadas mantidas fora do frontend</li><li>Web Push e Service Worker integrados ao PWA</li></ul></div>
+            <div><h3>Validação</h3><ul><li>Lint e TypeScript strict</li><li>Testes unitários com Jest</li><li>Typecheck e testes das Edge Functions</li><li>Build web reproduzível para o artefato publicado na Vercel</li></ul></div>
           </div>
+          <p class="case-limit"><strong>Escopo do case.</strong> A apresentação descreve funcionalidades e arquitetura verificáveis no repositório; não atribui métricas de uso ou impacto que não estejam medidas.</p>
           <div class="case-tech">Expo · React 19 · React Native · TypeScript · Supabase · PostgreSQL · Deno · Jest · Vercel</div>
         </article>
 
@@ -131,45 +131,28 @@
             </div>
           </div>
 
-          <div class="case-columns">
-            <div><h3>Contexto</h3><p>Plataforma web privada para grupos de amigos, focada em comunicação por voz, compartilhamento de tela, baixa latência e estabilidade.</p></div>
-            <div><h3>Engenharia</h3><ul><li>Next.js, React, TypeScript e Tailwind</li><li>WebRTC, STUN/TURN e codec Opus</li><li>LiveKit SFU e tokens validados no backend</li><li>Simulcast com múltiplas camadas de qualidade</li><li>Reconexão com backoff, jitter, RTT e monitoramento</li></ul></div>
-            <div><h3>Recursos</h3><ul><li>Salas temporárias com permissões OWNER / ADMIN / MEMBER</li><li>Canais de voz dinâmicos</li><li>Mute, deafen e seleção de dispositivos</li><li>Compartilhamento de tela e presets de qualidade</li><li>Testes unitários e simulações de carga</li></ul></div>
+          <div class="case-columns case-columns-deep">
+            <div><h3>Contexto e problema</h3><p>Plataforma privada para grupos de amigos com voz e compartilhamento de tela. O problema central é manter uma experiência simples enquanto conexão, mídia e qualidade mudam em tempo real.</p></div>
+            <div><h3>Desafio técnico</h3><ul><li>WebRTC com ICE/STUN/TURN e codec Opus</li><li>SFU LiveKit para distribuição de mídia</li><li>Simulcast para múltiplas camadas de qualidade</li><li>Reconexão com backoff, jitter e leitura de RTT</li></ul></div>
+            <div><h3>Decisões de produto</h3><ul><li>Salas temporárias e hierarquia OWNER / ADMIN / MEMBER</li><li>Canais de voz dinâmicos</li><li>Controles de mute, deafen e dispositivos</li><li>Interfaces distintas para desktop e mobile quando a ergonomia exige</li></ul></div>
+            <div><h3>Validação</h3><ul><li>Vitest para testes unitários</li><li>Validação de typecheck, lint e build</li><li>Simulações documentadas de 30 usuários e múltiplos compartilhamentos</li><li>Monitoramento de FPS, memória, RTT e estados de reconexão na implementação</li></ul></div>
           </div>
+          <p class="case-limit"><strong>Escopo do case.</strong> Simulações de carga são apresentadas como simulações; metas de latência e qualidade não são tratadas como resultado de produção sem medição correspondente.</p>
           <div class="case-tech">Next.js · React · TypeScript · WebRTC · LiveKit · Opus · Vitest</div>
         </article>
 
         <article class="case-detail reveal" id="bmi9">
           <header>
             <div><span class="case-index">03</span><p class="project-meta">CLIENTE REAL · WEB / BACKEND</p><h2>BMI9</h2></div>
-            <div class="case-links"><a href="https://github.com/s4muelxl/bmi9.lol" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+            <div class="case-links"><a href="https://www.bmi9.com.br/" target="_blank" rel="noopener noreferrer">Site ↗</a><a href="https://github.com/s4muelxl/bmi9.lol" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
           </header>
-          <div class="case-columns">
-            <div>
-              <h3>Contexto</h3>
-              <p>Plataforma institucional e de captação de leads desenvolvida para uma empresa real do setor de construção civil e pisos industriais.</p>
-            </div>
-            <div>
-              <h3>Engenharia</h3>
-              <ul>
-                <li>Frontend vanilla com HTML5, CSS3 e JavaScript</li>
-                <li>Backend Python/Flask em funções serverless</li>
-                <li>Geração dinâmica de propostas em PDF</li>
-                <li>Resend com fallback SMTP</li>
-                <li>Internacionalização pt-BR / en-US</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Segurança & Produto</h3>
-              <ul>
-                <li>Rate limiting e sanitização de inputs</li>
-                <li>CSP, HSTS e proteção de cabeçalhos</li>
-                <li>Fluxo comercial com formulário e WhatsApp</li>
-                <li>Área administrativa protegida por token</li>
-                <li>SEO, acessibilidade e dados anonimizados</li>
-              </ul>
-            </div>
+          <div class="case-columns case-columns-deep">
+            <div><h3>Contexto e problema</h3><p>Site institucional e fluxo de captação de leads para uma empresa real de pisos industriais. A solução precisava apresentar serviços e obras e levar o visitante de interesse a orçamento sem uma stack pesada no cliente.</p></div>
+            <div><h3>Decisões de engenharia</h3><ul><li>HTML, CSS e JavaScript vanilla no frontend</li><li>Python/Flask em funções serverless no backend</li><li>Propostas em PDF geradas no servidor</li><li>i18n pt-BR / en-US com preferência persistida</li></ul></div>
+            <div><h3>Resiliência e segurança</h3><ul><li>Resend como rota principal de e-mail com fallback SMTP</li><li>Sanitização de entradas e rate limiting</li><li>CSP, HSTS, X-Frame-Options e outros cabeçalhos de proteção</li><li>Área administrativa protegida por token</li></ul></div>
+            <div><h3>Validação e escopo</h3><ul><li>Fluxo comercial integra formulário, PDF e WhatsApp</li><li>SEO e semântica fazem parte da implementação</li><li>Dados demonstrativos são anonimizados</li><li>O repositório é publicado com autorização para portfólio</li></ul></div>
           </div>
+          <p class="case-limit"><strong>Escopo do case.</strong> O portfólio demonstra a implementação técnica; resultados comerciais e métricas de conversão não são inferidos sem dados medidos.</p>
           <div class="case-tech">HTML5 · CSS3 · JavaScript · Python · Flask · Redis · Vercel</div>
         </article>
 
@@ -249,13 +232,13 @@
 
   <div class="media-lightbox" id="mediaLightbox" hidden aria-hidden="true">
     <button class="lightbox-backdrop" id="lightboxBackdrop" type="button" aria-label="Fechar imagem"></button>
-    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle" aria-describedby="lightboxCaption">
       <div class="lightbox-head"><div><span class="mono-label">SCREENSHOT REAL</span><strong id="lightboxTitle">Projeto</strong></div><button id="lightboxClose" type="button" aria-label="Fechar">×</button></div>
       <div class="lightbox-stage" id="lightboxStage"></div>
       <div class="lightbox-foot"><span id="lightboxCaption"></span><span>ESC para fechar</span></div>
     </div>
   </div>
 
-  <script src="script-v8.js?v=20261022f" defer></script>
+  <script src="script-v8.js?v=20261022g" defer></script>
 </body>
 </html>

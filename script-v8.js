@@ -1,12 +1,14 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  const CURRENT_BUILD='20261022f';
+  const CURRENT_BUILD='20261022g';
   const pageBuild=document.documentElement.dataset.build||'';
   if(pageBuild!==CURRENT_BUILD){
     try{
       const u=new URL(window.location.href);
-      u.searchParams.set('rev',CURRENT_BUILD);
-      window.location.replace(u.toString());
-      return;
+      if(u.searchParams.get('rev')!==CURRENT_BUILD){
+        u.searchParams.set('rev',CURRENT_BUILD);
+        window.location.replace(u.toString());
+        return;
+      }
     }catch{}
   }
 
@@ -14,11 +16,18 @@ document.addEventListener('DOMContentLoaded',()=>{
   const navMenu=document.getElementById('navMenu');
   const navBackdrop=document.getElementById('navBackdrop');
   const progress=document.getElementById('scrollProgress');
+  const pageMain=document.querySelector('main');
+  const pageFooter=document.querySelector('.site-footer');
+  const brand=document.querySelector('.brand');
   let menuTimer=null;
   let menuPreviousFocus=null;
 
+  const setBackgroundInert=(value)=>{
+    [pageMain,pageFooter,brand].forEach(el=>{if(el instanceof HTMLElement) el.inert=value});
+  };
+
   const openNav=()=>{
-    if(!navMenu||!navToggle) return;
+    if(!navMenu||!navToggle||window.innerWidth>760) return;
     if(menuTimer) clearTimeout(menuTimer);
     menuPreviousFocus=document.activeElement;
     if(navBackdrop){
@@ -28,28 +37,36 @@ document.addEventListener('DOMContentLoaded',()=>{
     navMenu.classList.add('open');
     navToggle.classList.add('active');
     navToggle.setAttribute('aria-expanded','true');
+    navToggle.setAttribute('aria-label','Fechar menu');
     document.body.classList.add('menu-open');
+    setBackgroundInert(true);
     const firstLink=navMenu.querySelector('.nav-link');
     if(firstLink instanceof HTMLElement) firstLink.focus();
   };
 
   const closeNav=(restoreFocus=false)=>{
     if(!navMenu||!navToggle) return;
+    const wasOpen=navMenu.classList.contains('open');
     navMenu.classList.remove('open');
     navToggle.classList.remove('active');
     navToggle.setAttribute('aria-expanded','false');
+    navToggle.setAttribute('aria-label','Abrir menu');
     document.body.classList.remove('menu-open');
+    setBackgroundInert(false);
     navBackdrop?.classList.remove('open');
+    if(menuTimer) clearTimeout(menuTimer);
     menuTimer=setTimeout(()=>{
       if(navBackdrop&&!navMenu.classList.contains('open')) navBackdrop.hidden=true;
     },260);
-    if(restoreFocus&&menuPreviousFocus instanceof HTMLElement) menuPreviousFocus.focus();
+    if(wasOpen&&restoreFocus&&menuPreviousFocus instanceof HTMLElement) menuPreviousFocus.focus();
   };
 
   navToggle?.addEventListener('click',()=>navMenu?.classList.contains('open')?closeNav(true):openNav());
   navBackdrop?.addEventListener('click',()=>closeNav(true));
   navMenu?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>closeNav(false)));
-  window.addEventListener('resize',()=>{if(window.innerWidth>760) closeNav(false)},{passive:true});
+  const syncNavViewport=()=>{if(window.innerWidth>760) closeNav(false)};
+  window.addEventListener('resize',syncNavViewport,{passive:true});
+  window.addEventListener('orientationchange',syncNavViewport,{passive:true});
 
   const updateProgress=()=>{
     if(!progress) return;
@@ -60,10 +77,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   updateProgress();
 
   const revealEls=[...document.querySelectorAll('.reveal')];
-  if('IntersectionObserver' in window){
+  const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window&&!reduceMotion){
+    revealEls.forEach(el=>el.classList.add('reveal-pending'));
     const observer=new IntersectionObserver(entries=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
+          entry.target.classList.remove('reveal-pending');
           entry.target.classList.add('is-visible');
           observer.unobserve(entry.target);
         }
@@ -175,6 +195,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   const lightboxStage=document.getElementById('lightboxStage');
   const lightboxTitle=document.getElementById('lightboxTitle');
   const lightboxCaption=document.getElementById('lightboxCaption');
+  const lightboxDialog=mediaLightbox?.querySelector('.lightbox-dialog');
   let lightboxPreviousFocus=null;
 
   const closeLightbox=()=>{
@@ -182,6 +203,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     mediaLightbox.hidden=true;
     mediaLightbox.setAttribute('aria-hidden','true');
     document.body.classList.remove('modal-open');
+    if(pageMain instanceof HTMLElement) pageMain.inert=false;
+    if(pageFooter instanceof HTMLElement) pageFooter.inert=false;
     if(lightboxStage) lightboxStage.innerHTML='';
     if(lightboxPreviousFocus instanceof HTMLElement) lightboxPreviousFocus.focus();
   };
@@ -195,6 +218,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     mediaLightbox.hidden=false;
     mediaLightbox.setAttribute('aria-hidden','false');
     document.body.classList.add('modal-open');
+    if(pageMain instanceof HTMLElement) pageMain.inert=true;
+    if(pageFooter instanceof HTMLElement) pageFooter.inert=true;
     lightboxStage.classList.toggle('is-phone',mode==='mobile');
     const image=document.createElement('img');
     image.className='lightbox-image';
@@ -230,7 +255,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     const getConfig=()=>galleryConfigs[type][mode]||galleryConfigs[type].mobile||galleryConfigs[type].desktop;
 
     const preloadNeighbors=(config)=>{
-      if(!config?.files?.length) return;
+      if(!config?.files?.length||navigator.connection?.saveData) return;
       [index-1,index+1].forEach(raw=>{
         const i=(raw+config.files.length)%config.files.length;
         const img=new Image();
@@ -268,6 +293,14 @@ document.addEventListener('DOMContentLoaded',()=>{
       });
       preloadNeighbors(config);
     };
+
+    if(frame instanceof HTMLImageElement){
+      frame.addEventListener('error',()=>{
+        carousel.classList.add('has-media-error');
+        if(captionEl) captionEl.textContent='Imagem indisponível';
+      });
+      frame.addEventListener('load',()=>carousel.classList.remove('has-media-error'));
+    }
 
     const move=delta=>{index+=delta;render()};
     prev?.addEventListener('click',()=>move(-1));
@@ -311,8 +344,16 @@ document.addEventListener('DOMContentLoaded',()=>{
       closeNav(true);
       return;
     }
+    if(event.key==='Tab'&&mediaLightbox&&!mediaLightbox.hidden&&lightboxDialog){
+      const focusables=[...lightboxDialog.querySelectorAll('button:not([disabled]),a[href]')].filter(el=>el.offsetParent!==null);
+      if(!focusables.length) return;
+      const first=focusables[0],last=focusables[focusables.length-1];
+      if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
+      else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+      return;
+    }
     if(event.key==='Tab'&&navMenu?.classList.contains('open')){
-      const focusables=[...navMenu.querySelectorAll('a[href],button:not([disabled])')].filter(el=>el.offsetParent!==null);
+      const focusables=[navToggle,...navMenu.querySelectorAll('a[href],button:not([disabled])')].filter(el=>el instanceof HTMLElement&&el.offsetParent!==null);
       if(!focusables.length) return;
       const first=focusables[0],last=focusables[focusables.length-1];
       if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}

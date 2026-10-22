@@ -4,22 +4,22 @@
   "redirects": [
     {
       "source": "/about.html",
-      "destination": "/#sobre",
+      "destination": "/#inicio",
       "permanent": true
     },
     {
       "source": "/about",
-      "destination": "/#sobre",
+      "destination": "/#inicio",
       "permanent": true
     },
     {
       "source": "/especialidades.html",
-      "destination": "/#habilidades",
+      "destination": "/#competencias",
       "permanent": true
     },
     {
       "source": "/especialidades",
-      "destination": "/#habilidades",
+      "destination": "/#competencias",
       "permanent": true
     },
     {
