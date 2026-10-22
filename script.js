@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded',()=>{
+  const CURRENT_BUILD='20261022d';
+  const pageBuild=document.documentElement.dataset.build||'';
+  if(pageBuild!==CURRENT_BUILD){
+    try{
+      const u=new URL(window.location.href);
+      u.searchParams.set('rev',CURRENT_BUILD);
+      window.location.replace(u.toString());
+      return;
+    }catch{}
+  }
+
   const navToggle=document.getElementById('navToggle');
   const navMenu=document.getElementById('navMenu');
   const navClose=document.getElementById('navClose');
@@ -35,10 +46,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(restoreFocus&&menuPreviousFocus instanceof HTMLElement) menuPreviousFocus.focus();
   };
 
-  navToggle?.addEventListener('click',()=>{
-    if(navMenu?.classList.contains('open')) closeNav(true);
-    else openNav();
-  });
+  navToggle?.addEventListener('click',()=>navMenu?.classList.contains('open')?closeNav(true):openNav());
   navClose?.addEventListener('click',()=>closeNav(true));
   navBackdrop?.addEventListener('click',()=>closeNav(true));
   navMenu?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>closeNav(false)));
@@ -63,9 +71,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       });
     },{threshold:.07,rootMargin:'0px 0px -24px'});
     revealEls.forEach(el=>observer.observe(el));
-  }else{
-    revealEls.forEach(el=>el.classList.add('is-visible'));
-  }
+  }else revealEls.forEach(el=>el.classList.add('is-visible'));
 
   const sections=[...document.querySelectorAll('main section[id]')];
   const links=[...document.querySelectorAll('.nav-link[href^="#"]')];
@@ -87,10 +93,24 @@ document.addEventListener('DOMContentLoaded',()=>{
     nexo:{
       title:'NEXO',
       mobile:{
-        count:12,
-        sprite:'assets/nexo-mobile-sprite.webp',
+        files:[
+          'assets/gallery/nexo-01-home-v3.webp',
+          'assets/gallery/nexo-02-today-v3.webp',
+          'assets/gallery/nexo-03-workout-v3.webp',
+          'assets/gallery/nexo-04-routine-v3.webp',
+          'assets/gallery/nexo-05-meals-v3.webp',
+          'assets/gallery/nexo-06-finances-v3.webp',
+          'assets/gallery/nexo-07-investments-v3.webp',
+          'assets/gallery/nexo-08-notifications-v3.webp',
+          'assets/gallery/nexo-09-avatar-v3.webp',
+          'assets/gallery/nexo-10-exercise-v3.webp',
+          'assets/gallery/nexo-11-insights-v3.webp',
+          'assets/gallery/nexo-12-analytics-v3.webp',
+          'assets/gallery/nexo-13-agent-v3.webp'
+        ],
         captions:[
-          'Início · visão do dia e NEXO Score',
+          'Início · visão geral e NEXO Score',
+          'Início · treino do dia e indicadores',
           'Treino · sessão e frequência semanal',
           'Rotina · agenda e checklist diário',
           'Refeições · plano alimentar e registros',
@@ -108,8 +128,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     cbc:{
       title:'Cabeça de Gelo',
       desktop:{
-        count:5,
-        sprite:'assets/cbc-desktop-sprite.webp',
+        files:[
+          'assets/gallery/cbc-desktop-01-home-v3.webp',
+          'assets/gallery/cbc-desktop-02-create-room-v3.webp',
+          'assets/gallery/cbc-desktop-03-room-created-v3.webp',
+          'assets/gallery/cbc-desktop-04-stage-v3.webp',
+          'assets/gallery/cbc-desktop-05-share-v3.webp'
+        ],
         captions:[
           'Home desktop · entrada e criação de sala',
           'Criar sala · modal desktop',
@@ -119,14 +144,24 @@ document.addEventListener('DOMContentLoaded',()=>{
         ]
       },
       mobile:{
-        count:8,
-        sprite:'assets/cbc-mobile-sprite.webp',
+        files:[
+          'assets/gallery/cbc-mobile-01-home-dark-v3.webp',
+          'assets/gallery/cbc-mobile-02-home-light-v3.webp',
+          'assets/gallery/cbc-mobile-03-create-room-v3.webp',
+          'assets/gallery/cbc-mobile-04-room-created-v3.webp',
+          'assets/gallery/cbc-mobile-05-stage-light-v3.webp',
+          'assets/gallery/cbc-mobile-06-stage-dark-v3.webp',
+          'assets/gallery/cbc-mobile-07-chat-v3.webp',
+          'assets/gallery/cbc-mobile-08-members-v3.webp',
+          'assets/gallery/cbc-mobile-09-channels-v3.webp'
+        ],
         captions:[
           'Home mobile · tema escuro',
           'Home mobile · tema claro',
           'Criar sala · formulário mobile',
           'Sala criada · credenciais e convite',
-          'Palco · interface mobile',
+          'Palco mobile · tema claro',
+          'Palco mobile · tema escuro',
           'Chat da sala',
           'Membros da sala',
           'Canais de voz'
@@ -152,7 +187,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(lightboxPreviousFocus instanceof HTMLElement) lightboxPreviousFocus.focus();
   };
 
-  const openLightbox=(carousel,frame,viewport,caption)=>{
+  const openLightbox=(carousel,frame,caption)=>{
     if(!mediaLightbox||!lightboxStage||!frame) return;
     lightboxPreviousFocus=document.activeElement;
     const type=carousel.dataset.carousel;
@@ -162,12 +197,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     mediaLightbox.setAttribute('aria-hidden','false');
     document.body.classList.add('modal-open');
     lightboxStage.classList.toggle('is-phone',mode==='mobile');
-    const sprite=document.createElement('span');
-    sprite.className='gallery-sprite';
-    sprite.style.backgroundImage=frame.style.backgroundImage;
-    sprite.style.backgroundSize=frame.style.backgroundSize;
-    sprite.style.backgroundPosition=frame.style.backgroundPosition;
-    lightboxStage.appendChild(sprite);
+    const image=document.createElement('img');
+    image.className='lightbox-image';
+    image.src=frame.currentSrc||frame.src;
+    image.alt=frame.alt||caption||'Screenshot real do projeto';
+    image.decoding='async';
+    lightboxStage.appendChild(image);
     if(lightboxTitle) lightboxTitle.textContent=project+' · '+(mode==='mobile'?'Mobile':'Desktop');
     if(lightboxCaption) lightboxCaption.textContent=caption||'Screenshot real do projeto';
     lightboxClose?.focus();
@@ -195,18 +230,29 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const getConfig=()=>galleryConfigs[type][mode]||galleryConfigs[type].mobile||galleryConfigs[type].desktop;
 
+    const preloadNeighbors=(config)=>{
+      if(!config?.files?.length) return;
+      [index-1,index+1].forEach(raw=>{
+        const i=(raw+config.files.length)%config.files.length;
+        const img=new Image();
+        img.src=config.files[i];
+      });
+    };
+
     const render=()=>{
       const config=getConfig();
-      const count=config.count;
+      const count=config.files.length;
       index=((index%count)+count)%count;
       carousel.dataset.mode=mode;
       carousel.dataset.count=String(count);
-      if(frame){
-        frame.dataset.sprite=config.sprite;
-        frame.style.backgroundImage='url("'+config.sprite+'")';
-        frame.style.backgroundSize=(count*100)+'% 100%';
-        frame.style.backgroundPosition=(count<=1?0:(index/(count-1))*100)+'% center';
+
+      if(frame instanceof HTMLImageElement){
+        frame.src=config.files[index];
+        frame.alt=config.captions[index]||'Screenshot real';
+        frame.removeAttribute('width');
+        frame.removeAttribute('height');
       }
+
       if(viewport){
         viewport.classList.toggle('gallery-phone',mode==='mobile');
         viewport.classList.toggle('gallery-desktop',mode!=='mobile');
@@ -220,6 +266,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         btn.classList.toggle('active',active);
         btn.setAttribute('aria-pressed',String(active));
       });
+      preloadNeighbors(config);
     };
 
     const move=delta=>{index+=delta;render()};
@@ -252,7 +299,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     viewport?.addEventListener('click',event=>{
       if(Date.now()-lastSwipeAt<350){event.preventDefault();return}
       const config=getConfig();
-      openLightbox(carousel,frame,viewport,config.captions[index]);
+      openLightbox(carousel,frame,config.captions[index]);
     });
 
     render();
@@ -264,7 +311,6 @@ document.addEventListener('DOMContentLoaded',()=>{
       closeNav(true);
       return;
     }
-
     if(event.key==='Tab'&&navMenu?.classList.contains('open')){
       const focusables=[...navMenu.querySelectorAll('a[href],button:not([disabled])')].filter(el=>el.offsetParent!==null);
       if(!focusables.length) return;
