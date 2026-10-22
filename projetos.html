@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portfolio-v5.css?v=20261022">
+  <link rel="stylesheet" href="portfolio-v6.css?v=20261022a">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -18,20 +18,33 @@
 
   <header class="site-header">
     <div class="shell nav-shell">
-      <a class="brand" href="index.html"><span class="brand-mark">SA</span><span class="brand-name">Samuel Alves</span></a>
-      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu">☰</button>
+      <a class="brand" href="index.html" aria-label="Samuel Alves — início"><span class="brand-mark">SA</span><span class="brand-name">Samuel Alves</span></a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu"><span></span><span></span><span></span></button>
       <nav class="main-nav" aria-label="Navegação principal">
         <div class="nav-menu" id="navMenu">
-          <a class="nav-link active" href="#projetos">Projetos</a>
-          <a class="nav-link" href="index.html#competencias">Competências</a>
-          <a class="nav-link" href="index.html#certificacoes">Cursos</a>
-          <a class="nav-link" href="index.html#formacao">Formação</a>
-          <a class="nav-link" href="index.html#contato">Contato</a>
+          <div class="mobile-menu-head">
+            <div><span class="mono-label">NAVEGAÇÃO</span><strong>Samuel Alves</strong></div>
+            <button class="mobile-menu-close" id="navClose" type="button" aria-label="Fechar menu">×</button>
+          </div>
+          <div class="mobile-menu-links">
+            <a class="nav-link active" data-nav-index="01" href="#projetos">Projetos</a>
+            <a class="nav-link" data-nav-index="02" href="index.html#competencias">Competências</a>
+            <a class="nav-link" data-nav-index="03" href="index.html#certificacoes">Cursos & certificações</a>
+            <a class="nav-link" data-nav-index="04" href="index.html#formacao">Formação</a>
+            <a class="nav-link" data-nav-index="05" href="index.html#contato">Contato</a>
+          </div>
+          <div class="mobile-menu-actions">
+            <a href="https://github.com/s4muelxl" target="_blank" rel="noopener noreferrer">GitHub <span>↗</span></a>
+            <a href="https://www.linkedin.com/in/samuel-alves-277015332" target="_blank" rel="noopener noreferrer">LinkedIn <span>↗</span></a>
+            <a href="assets/Curriculo_Samuel_Alves.pdf" download>Currículo <span>↓</span></a>
+          </div>
+          <p class="mobile-menu-note">Engenharia de Software · São Paulo, SP</p>
         </div>
       </nav>
       <a class="nav-cv" href="assets/Curriculo_Samuel_Alves.pdf" download>Currículo PDF</a>
     </div>
   </header>
+  <button class="nav-backdrop" id="navBackdrop" type="button" aria-label="Fechar menu" hidden></button>
 
   <main id="conteudo">
     <section class="projects-hero">
@@ -54,6 +67,24 @@
             <div><span class="case-index">01</span><p class="project-meta">PRODUTO PESSOAL · PWA / MOBILE-FIRST</p><h2>NEXO</h2></div>
             <div class="case-links"><a href="https://nexo-ten-mu.vercel.app" target="_blank" rel="noopener noreferrer">Aplicação ↗</a><a href="https://github.com/s4muelxl/nexo" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
           </header>
+
+          <div class="case-gallery-wrap">
+            <div class="project-gallery nexo-gallery" data-carousel="nexo" data-mode="mobile" data-count="12" tabindex="0" aria-label="Galeria de telas reais do NEXO">
+              <div class="gallery-toolbar">
+                <div><span class="gallery-live-dot"></span><strong>NEXO</strong><small>Mobile · screenshots reais</small></div>
+                <span class="gallery-counter" data-carousel-count>01 / 12</span>
+              </div>
+              <button class="gallery-viewport gallery-phone" type="button" data-carousel-open aria-label="Ampliar screenshot do NEXO">
+                <span class="gallery-sprite" data-carousel-frame data-sprite="assets/nexo-mobile-sprite.webp"></span>
+                <span class="gallery-open-label">Ampliar ↗</span>
+              </button>
+              <div class="gallery-footer">
+                <div class="gallery-caption"><span class="mono-label">TELA</span><strong data-carousel-caption>Início · visão do dia e NEXO Score</strong></div>
+                <div class="gallery-controls"><button type="button" data-carousel-prev aria-label="Screenshot anterior">←</button><div class="gallery-progress" aria-hidden="true"><span data-carousel-progress></span></div><button type="button" data-carousel-next aria-label="Próximo screenshot">→</button></div>
+              </div>
+            </div>
+          </div>
+
           <div class="case-columns">
             <div>
               <h3>Contexto</h3>
@@ -61,23 +92,11 @@
             </div>
             <div>
               <h3>Engenharia</h3>
-              <ul>
-                <li>Expo Router, React Native Web e TypeScript strict</li>
-                <li>Supabase Auth, PostgreSQL, RLS e Edge Functions</li>
-                <li>TanStack Query, Zustand, retry e fila offline</li>
-                <li>Web Push, Service Worker e PWA standalone</li>
-                <li>Jest, lint, typecheck e build web no CI</li>
-              </ul>
+              <ul><li>Expo Router, React Native Web e TypeScript strict</li><li>Supabase Auth, PostgreSQL, RLS e Edge Functions</li><li>TanStack Query, Zustand, retry e fila offline</li><li>Web Push, Service Worker e PWA standalone</li><li>Jest, lint, typecheck e build web no CI</li></ul>
             </div>
             <div>
               <h3>Recursos</h3>
-              <ul>
-                <li>Planos de treino configuráveis e histórico de evolução</li>
-                <li>Rotina e compromissos persistidos</li>
-                <li>Receitas, despesas, patrimônio e investimentos</li>
-                <li>NEXO Agent híbrido com regras locais e providers de IA</li>
-                <li>Segurança com RLS em dados do usuário</li>
-              </ul>
+              <ul><li>Planos de treino configuráveis e histórico de evolução</li><li>Rotina e compromissos persistidos</li><li>Receitas, despesas, patrimônio e investimentos</li><li>NEXO Agent híbrido com regras locais e providers de IA</li><li>Segurança com RLS em dados do usuário</li></ul>
             </div>
           </div>
           <div class="case-tech">Expo · React 19 · React Native · TypeScript · Supabase · PostgreSQL · Deno · Jest · Vercel</div>
@@ -88,31 +107,33 @@
             <div><span class="case-index">02</span><p class="project-meta">REALTIME · WEBRTC / SFU</p><h2>Cabeça de Gelo</h2></div>
             <div class="case-links"><a href="https://github.com/s4muelxl/cbcdegelo" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
           </header>
+
+          <div class="case-gallery-wrap case-gallery-wide">
+            <div class="project-gallery cbc-gallery" data-carousel="cbc" data-mode="desktop" data-count="5" tabindex="0" aria-label="Galeria de telas reais do Cabeça de Gelo">
+              <div class="gallery-toolbar">
+                <div><span class="gallery-live-dot"></span><strong>Cabeça de Gelo</strong><small>screenshots reais</small></div>
+                <div class="gallery-mode-switch" role="group" aria-label="Escolher versão do Cabeça de Gelo">
+                  <button type="button" data-gallery-mode="desktop" class="active" aria-pressed="true">Desktop</button>
+                  <button type="button" data-gallery-mode="mobile" aria-pressed="false">Mobile</button>
+                </div>
+              </div>
+              <div class="cbc-stage-wrap">
+                <button class="gallery-viewport gallery-desktop" type="button" data-carousel-open aria-label="Ampliar screenshot do Cabeça de Gelo">
+                  <span class="gallery-sprite" data-carousel-frame data-sprite="assets/cbc-desktop-sprite.webp"></span>
+                  <span class="gallery-open-label">Ampliar ↗</span>
+                </button>
+              </div>
+              <div class="gallery-footer">
+                <div class="gallery-caption"><span class="gallery-counter" data-carousel-count>01 / 05</span><strong data-carousel-caption>Home · entrada e criação de sala</strong></div>
+                <div class="gallery-controls"><button type="button" data-carousel-prev aria-label="Screenshot anterior">←</button><div class="gallery-progress" aria-hidden="true"><span data-carousel-progress></span></div><button type="button" data-carousel-next aria-label="Próximo screenshot">→</button></div>
+              </div>
+            </div>
+          </div>
+
           <div class="case-columns">
-            <div>
-              <h3>Contexto</h3>
-              <p>Plataforma web privada para grupos de amigos, focada em comunicação por voz, compartilhamento de tela, baixa latência e estabilidade.</p>
-            </div>
-            <div>
-              <h3>Engenharia</h3>
-              <ul>
-                <li>Next.js, React, TypeScript e Tailwind</li>
-                <li>WebRTC, STUN/TURN e codec Opus</li>
-                <li>LiveKit SFU e tokens validados no backend</li>
-                <li>Simulcast com múltiplas camadas de qualidade</li>
-                <li>Reconexão com backoff, jitter, RTT e monitoramento</li>
-              </ul>
-            </div>
-            <div>
-              <h3>Recursos</h3>
-              <ul>
-                <li>Salas temporárias com permissões OWNER / ADMIN / MEMBER</li>
-                <li>Canais de voz dinâmicos</li>
-                <li>Mute, deafen e seleção de dispositivos</li>
-                <li>Compartilhamento de tela e presets de qualidade</li>
-                <li>Testes unitários e simulações de carga</li>
-              </ul>
-            </div>
+            <div><h3>Contexto</h3><p>Plataforma web privada para grupos de amigos, focada em comunicação por voz, compartilhamento de tela, baixa latência e estabilidade.</p></div>
+            <div><h3>Engenharia</h3><ul><li>Next.js, React, TypeScript e Tailwind</li><li>WebRTC, STUN/TURN e codec Opus</li><li>LiveKit SFU e tokens validados no backend</li><li>Simulcast com múltiplas camadas de qualidade</li><li>Reconexão com backoff, jitter, RTT e monitoramento</li></ul></div>
+            <div><h3>Recursos</h3><ul><li>Salas temporárias com permissões OWNER / ADMIN / MEMBER</li><li>Canais de voz dinâmicos</li><li>Mute, deafen e seleção de dispositivos</li><li>Compartilhamento de tela e presets de qualidade</li><li>Testes unitários e simulações de carga</li></ul></div>
           </div>
           <div class="case-tech">Next.js · React · TypeScript · WebRTC · LiveKit · Opus · Vitest</div>
         </article>
@@ -195,6 +216,15 @@
     </div>
   </footer>
 
-  <script src="script.js?v=20261022" defer></script>
+  <div class="media-lightbox" id="mediaLightbox" hidden aria-hidden="true">
+    <button class="lightbox-backdrop" id="lightboxBackdrop" type="button" aria-label="Fechar imagem"></button>
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+      <div class="lightbox-head"><div><span class="mono-label">SCREENSHOT REAL</span><strong id="lightboxTitle">Projeto</strong></div><button id="lightboxClose" type="button" aria-label="Fechar">×</button></div>
+      <div class="lightbox-stage" id="lightboxStage"></div>
+      <div class="lightbox-foot"><span id="lightboxCaption"></span><span>ESC para fechar</span></div>
+    </div>
+  </div>
+
+  <script src="script.js?v=20261022a" defer></script>
 </body>
 </html>
