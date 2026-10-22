@@ -288,3 +288,6 @@ img{max-width:100%}
   *{scroll-behavior:auto!important;transition:none!important;animation:none!important}
   .reveal{opacity:1;transform:none}
 }
+.nexo-authentic-note{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;min-height:330px;padding:34px;border:1px dashed rgba(57,198,255,.22);border-radius:20px;background:radial-gradient(circle at 80% 20%,rgba(11,143,232,.08),transparent 38%),#05090f}
+.nexo-authentic-note strong{margin:8px 0 6px;font:700 24px/1.1 var(--display);letter-spacing:-.025em}
+.nexo-authentic-note p{max-width:620px;margin:0 0 20px;color:var(--muted);font-size:12px}
