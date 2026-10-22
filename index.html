@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portfolio-v6.css?v=20261022a">
+  <link rel="stylesheet" href="portfolio-v6.css?v=20261022b">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -232,17 +232,48 @@
             </div>
           </article>
 
-          <article class="project-row reveal">
+          <article class="project-row project-receipt reveal">
             <div class="project-number">05</div>
             <div class="project-copy">
-              <div class="project-meta">AUTOMAÇÃO · PYTHON</div>
-              <h3>Receipt Generator</h3>
-              <p>CLI em Python que valida dados, calcula pedidos automaticamente, gera identificador único e salva recibos formatados para envio.</p>
-              <div class="tech-line">Python 3 · CLI · datetime · persistência em arquivo</div>
+              <div class="project-meta">AUTOMAÇÃO · PYTHON CLI</div>
+              <h3>Gerador de Recibos <span class="project-alias">Receipt Generator</span></h3>
+              <p>Automação em Python para gerar comprovantes e recibos de pedidos com itens dinâmicos, cálculo automático, validação de entradas e histórico em arquivos de texto.</p>
+              <ul>
+                <li>Subtotais e valor total calculados automaticamente em reais</li>
+                <li>Identificador único e timestamp para cada recibo</li>
+                <li>Exportação UTF-8 pronta para copiar e enviar por WhatsApp ou e-mail</li>
+              </ul>
+              <div class="tech-line">Python 3 · datetime · os · sys · CLI · persistência em arquivo</div>
             </div>
             <div class="project-actions">
               <a href="https://github.com/s4muelxl/receipt-generator-py" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <a href="projetos.html#receipt-generator">Estudo de caso →</a>
             </div>
+            <div class="receipt-preview" aria-label="Simulação visual baseada na saída real do Gerador de Recibos">
+                <div class="receipt-terminal" aria-hidden="true">
+                  <div class="receipt-window-bar"><span></span><span></span><span></span><small>python · receipt-generator</small></div>
+                  <div class="terminal-lines">
+                    <span><b>$</b> python main.py</span>
+                    <span><em>Cliente</em> João Silva</span>
+                    <span><em>Pagamento</em> Pix</span>
+                    <span><em>Itens</em> 2 produtos adicionados</span>
+                    <span class="terminal-success">✓ Total calculado: R$ 169,70</span>
+                    <span class="terminal-success">✓ Recibo salvo em /recibos</span>
+                  </div>
+                </div>
+                <div class="receipt-paper" aria-hidden="true">
+                  <div class="receipt-paper-head">
+                    <span class="receipt-icon">▧</span>
+                    <div><strong>COMPROVANTE / RECIBO</strong><small>#20260925-171520</small></div>
+                  </div>
+                  <div class="receipt-meta-line"><span>25/09/2026 · 17:15</span><span>Pix</span></div>
+                  <div class="receipt-client"><small>CLIENTE</small><strong>João Silva</strong></div>
+                  <div class="receipt-item"><span><b>2×</b> Camiseta Algodão</span><strong>R$ 119,80</strong></div>
+                  <div class="receipt-item"><span><b>1×</b> Boné Aba Reta</span><strong>R$ 49,90</strong></div>
+                  <div class="receipt-total"><span>VALOR TOTAL</span><strong>R$ 169,70</strong></div>
+                  <div class="receipt-note">Entrega via Sedex · arquivo .txt UTF-8</div>
+                </div>
+              </div>
           </article>
         </div>
 
