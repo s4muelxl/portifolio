@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portfolio-v6.css?v=20261022a">
+  <link rel="stylesheet" href="portfolio-v6.css?v=20261022b">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -187,15 +187,45 @@
 
         <article class="case-detail reveal" id="receipt-generator">
           <header>
-            <div><span class="case-index">05</span><p class="project-meta">AUTOMAÇÃO · PYTHON CLI</p><h2>Receipt Generator</h2></div>
+            <div><span class="case-index">05</span><p class="project-meta">AUTOMAÇÃO · PYTHON CLI</p><h2>Gerador de Recibos <span class="case-alias">Receipt Generator</span></h2></div>
             <div class="case-links"><a href="https://github.com/s4muelxl/receipt-generator-py" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
           </header>
-          <div class="case-columns">
-            <div><h3>Problema</h3><p>Reduzir erros de cálculo e tempo gasto formatando comprovantes e recibos manualmente em operações comerciais.</p></div>
-            <div><h3>Recursos</h3><ul><li>Itens e quantidades dinâmicas</li><li>Cálculo automático em reais</li><li>Validação e tratamento de entradas</li><li>Timestamp e identificador único</li></ul></div>
-            <div><h3>Implementação</h3><ul><li>Python 3 sem dependências externas</li><li>Persistência em arquivos .txt UTF-8</li><li>Execução direta no terminal</li><li>Script auxiliar para Windows</li></ul></div>
+
+          <div class="receipt-case-visual">
+            <div class="receipt-visual-label"><span class="mono-label">SIMULAÇÃO VISUAL</span><p>Baseada no formato de saída documentado no projeto real.</p></div>
+            <div class="receipt-preview" aria-label="Simulação visual baseada na saída real do Gerador de Recibos">
+                <div class="receipt-terminal" aria-hidden="true">
+                  <div class="receipt-window-bar"><span></span><span></span><span></span><small>python · receipt-generator</small></div>
+                  <div class="terminal-lines">
+                    <span><b>$</b> python main.py</span>
+                    <span><em>Cliente</em> João Silva</span>
+                    <span><em>Pagamento</em> Pix</span>
+                    <span><em>Itens</em> 2 produtos adicionados</span>
+                    <span class="terminal-success">✓ Total calculado: R$ 169,70</span>
+                    <span class="terminal-success">✓ Recibo salvo em /recibos</span>
+                  </div>
+                </div>
+                <div class="receipt-paper" aria-hidden="true">
+                  <div class="receipt-paper-head">
+                    <span class="receipt-icon">▧</span>
+                    <div><strong>COMPROVANTE / RECIBO</strong><small>#20260925-171520</small></div>
+                  </div>
+                  <div class="receipt-meta-line"><span>25/09/2026 · 17:15</span><span>Pix</span></div>
+                  <div class="receipt-client"><small>CLIENTE</small><strong>João Silva</strong></div>
+                  <div class="receipt-item"><span><b>2×</b> Camiseta Algodão</span><strong>R$ 119,80</strong></div>
+                  <div class="receipt-item"><span><b>1×</b> Boné Aba Reta</span><strong>R$ 49,90</strong></div>
+                  <div class="receipt-total"><span>VALOR TOTAL</span><strong>R$ 169,70</strong></div>
+                  <div class="receipt-note">Entrega via Sedex · arquivo .txt UTF-8</div>
+                </div>
+              </div>
           </div>
-          <div class="case-tech">Python 3 · datetime · os · sys · CLI</div>
+
+          <div class="case-columns">
+            <div><h3>Problema</h3><p>Reduzir erros de cálculo e tempo gasto formatando comprovantes e recibos manualmente em vendas feitas por WhatsApp, redes sociais ou atendimento direto.</p></div>
+            <div><h3>Recursos</h3><ul><li>Itens, quantidades e valores unitários dinâmicos</li><li>Subtotais e total em formato monetário brasileiro</li><li>Validação de vírgula/ponto e bloqueio de entradas inválidas</li><li>Timestamp e identificador único por recibo</li></ul></div>
+            <div><h3>Implementação</h3><ul><li>Python 3.8+ sem bibliotecas externas</li><li>Arquivos .txt UTF-8 na pasta recibos/</li><li>Execução pelo terminal ou executar.bat no Windows</li><li>Módulos nativos datetime, os e sys</li></ul></div>
+          </div>
+          <div class="case-tech">Python 3 · datetime · os · sys · CLI · UTF-8</div>
         </article>
       </div>
     </section>

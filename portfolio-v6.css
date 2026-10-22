@@ -596,3 +596,120 @@ body.menu-open,body.modal-open{overflow:hidden}
   .gallery-sprite,.nav-menu,.nav-toggle>span,.nav-backdrop,.gallery-viewport,.skill-block,.cert-card,.side-block{transition:none!important}
   .lightbox-dialog{animation:none}
 }
+
+
+/* ===== Receipt Generator visual proof ===== */
+.project-alias,.case-alias{
+  color:#74746f;
+  font:500 .42em/1.2 var(--mono);
+  letter-spacing:0;
+  vertical-align:middle;
+  white-space:nowrap;
+}
+.project-receipt{
+  grid-template-columns:58px minmax(0,1fr) 150px;
+  padding-bottom:34px;
+}
+.receipt-preview{
+  grid-column:2 / -1;
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(260px,.72fr);
+  gap:16px;
+  margin-top:12px;
+  padding:16px;
+  border:1px solid #292929;
+  border-radius:18px;
+  background:
+    radial-gradient(circle at 0 0,rgba(255,255,255,.035),transparent 31%),
+    #080808;
+  box-shadow:inset 0 1px rgba(255,255,255,.025),0 20px 60px rgba(0,0,0,.22);
+}
+.receipt-terminal,.receipt-paper{
+  min-width:0;
+  overflow:hidden;
+  border:1px solid #303030;
+  box-shadow:0 16px 40px rgba(0,0,0,.32);
+}
+.receipt-terminal{
+  align-self:stretch;
+  border-radius:13px;
+  background:#050505;
+  color:#cfcfca;
+  font:500 10px/1.85 var(--mono);
+}
+.receipt-window-bar{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  min-height:36px;
+  padding:0 12px;
+  border-bottom:1px solid #252525;
+  background:#0e0e0e;
+}
+.receipt-window-bar>span{width:7px;height:7px;border-radius:50%;background:#454541}
+.receipt-window-bar small{margin-left:6px;color:#6f6f6a;font:500 8px var(--mono)}
+.terminal-lines{display:flex;flex-direction:column;padding:17px 18px}
+.terminal-lines span{display:block}
+.terminal-lines b{color:#f2f2ed;font-weight:600}
+.terminal-lines em{
+  display:inline-block;
+  width:92px;
+  color:#777772;
+  font-style:normal;
+}
+.terminal-success{color:#deded9}
+.receipt-paper{
+  position:relative;
+  padding:19px;
+  border-radius:10px;
+  background:#ededE8;
+  color:#111;
+  font-family:var(--mono);
+  transform:rotate(.6deg);
+  transform-origin:center;
+}
+.receipt-paper::before,.receipt-paper::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  height:6px;
+  background:linear-gradient(135deg,transparent 4px,#ededE8 0) 0 0/8px 8px repeat-x;
+}
+.receipt-paper::before{top:-5px;transform:rotate(180deg)}
+.receipt-paper::after{bottom:-5px}
+.receipt-paper-head{display:flex;align-items:center;gap:10px;padding-bottom:13px;border-bottom:1px dashed #a4a49f}
+.receipt-paper-head>div{display:flex;flex-direction:column}
+.receipt-paper-head strong{font-size:10px;letter-spacing:.04em}
+.receipt-paper-head small{margin-top:2px;color:#656560;font-size:7px}
+.receipt-icon{display:grid;place-items:center;width:30px;height:30px;border:1px solid #a9a9a4;border-radius:7px;font-size:15px}
+.receipt-meta-line{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px dashed #b4b4ae;color:#5c5c58;font-size:7px}
+.receipt-client{display:flex;flex-direction:column;padding:10px 0;border-bottom:1px dashed #b4b4ae}
+.receipt-client small{color:#70706b;font-size:6px;letter-spacing:.12em}
+.receipt-client strong{font-size:9px}
+.receipt-item{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px dotted #c0c0ba;font-size:7.5px}
+.receipt-item span{min-width:0}
+.receipt-item b{font-weight:700}
+.receipt-item strong{white-space:nowrap}
+.receipt-total{display:flex;justify-content:space-between;gap:10px;padding:13px 0 9px;font-size:8px;font-weight:700}
+.receipt-total strong{font-size:12px}
+.receipt-note{padding-top:8px;border-top:1px dashed #aaa;color:#666;font-size:6.5px}
+.receipt-case-visual{margin:27px 0 32px}
+.receipt-case-visual .receipt-preview{grid-column:auto;margin-top:10px}
+.receipt-visual-label{display:flex;justify-content:space-between;gap:18px;align-items:end}
+.receipt-visual-label p{margin:0;color:#777772;font-size:9px}
+
+@media(max-width:980px){
+  .project-receipt .receipt-preview{grid-column:2}
+}
+@media(max-width:760px){
+  .receipt-preview{grid-template-columns:1fr minmax(220px,.72fr)}
+  .receipt-paper{transform:none}
+}
+@media(max-width:620px){
+  .project-receipt{grid-template-columns:1fr}
+  .project-receipt .receipt-preview{grid-column:1}
+  .receipt-preview{grid-template-columns:1fr;padding:12px}
+  .receipt-paper{width:min(320px,100%);margin:0 auto}
+  .receipt-visual-label{align-items:flex-start;flex-direction:column;gap:4px}
+}
