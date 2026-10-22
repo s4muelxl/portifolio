@@ -83,40 +83,40 @@ document.addEventListener('DOMContentLoaded',()=>{
     nexo:{
       title:'NEXO',
       mobile:{images:[
-        img('assets/gallery/nexo-01-home-v3.png','Início · visão do dia e NEXO Score',1170,2532),
-        img('assets/gallery/nexo-02-today-v3.png','Hoje · treino do dia, atalhos e seus números',1170,2532),
-        img('assets/gallery/nexo-03-workout-v3.png','Treino · sessão, frequência semanal e descanso',1170,2532),
-        img('assets/gallery/nexo-04-routine-v3.png','Rotina · agenda, compromissos e checklist',1170,2532),
-        img('assets/gallery/nexo-05-meals-v3.png','Refeições · plano alimentar e registros',1170,2532),
-        img('assets/gallery/nexo-06-finances-v3.png','Finanças · saldo, receitas, despesas e dívidas',1170,2532),
-        img('assets/gallery/nexo-07-investments-v3.png','Investimentos · carteira e desempenho',1170,2532),
-        img('assets/gallery/nexo-08-notifications-v3.png','Central NEXO · notificações e prioridades',1170,2532),
-        img('assets/gallery/nexo-09-avatar-v3.png','Avatares · personalização do perfil',1170,2532),
-        img('assets/gallery/nexo-10-exercise-v3.png','Execução · guia visual de exercício',1170,2532),
-        img('assets/gallery/nexo-11-insights-v3.png','Insights · evolução do score',1170,2532),
-        img('assets/gallery/nexo-12-analytics-v3.png','Análises · volume, músculos e nutrição',1170,2532),
-        img('assets/gallery/nexo-13-agent-v3.png','NEXO Agent · contexto entre dados pessoais',1170,2532)
+        img('assets/gallery/nexo-01-home-v3.webp','Início · visão do dia e NEXO Score',1170,2532),
+        img('assets/gallery/nexo-02-today-v3.webp','Hoje · treino do dia, atalhos e seus números',1170,2532),
+        img('assets/gallery/nexo-03-workout-v3.webp','Treino · sessão, frequência semanal e descanso',1170,2532),
+        img('assets/gallery/nexo-04-routine-v3.webp','Rotina · agenda, compromissos e checklist',1170,2532),
+        img('assets/gallery/nexo-05-meals-v3.webp','Refeições · plano alimentar e registros',1170,2532),
+        img('assets/gallery/nexo-06-finances-v3.webp','Finanças · saldo, receitas, despesas e dívidas',1170,2532),
+        img('assets/gallery/nexo-07-investments-v3.webp','Investimentos · carteira e desempenho',1170,2532),
+        img('assets/gallery/nexo-08-notifications-v3.webp','Central NEXO · notificações e prioridades',1170,2532),
+        img('assets/gallery/nexo-09-avatar-v3.webp','Avatares · personalização do perfil',1170,2532),
+        img('assets/gallery/nexo-10-exercise-v3.webp','Execução · guia visual de exercício',1170,2532),
+        img('assets/gallery/nexo-11-insights-v3.webp','Insights · evolução do score',1170,2532),
+        img('assets/gallery/nexo-12-analytics-v3.webp','Análises · volume, músculos e nutrição',1170,2532),
+        img('assets/gallery/nexo-13-agent-v3.webp','NEXO Agent · contexto entre dados pessoais',1170,2532)
       ]}
     },
     cbc:{
       title:'Cabeça de Gelo',
       desktop:{images:[
-        img('assets/gallery/cbc-desktop-01-home-v3.png','Home desktop · entrada e criação de sala',1613,928),
-        img('assets/gallery/cbc-desktop-02-create-room-v3.png','Criar sala · modal desktop',1547,785),
-        img('assets/gallery/cbc-desktop-03-room-created-v3.png','Sala criada · código, convite e senha owner',1438,840),
-        img('assets/gallery/cbc-desktop-04-stage-v3.png','Palco desktop · canais, mídia e membros',1568,938),
-        img('assets/gallery/cbc-desktop-05-share-v3.png','Compartilhamento de tela · fluxo em execução',1556,942)
+        img('assets/gallery/cbc-desktop-01-home-v3.webp','Home desktop · entrada e criação de sala',1613,928),
+        img('assets/gallery/cbc-desktop-02-create-room-v3.webp','Criar sala · modal desktop',1547,785),
+        img('assets/gallery/cbc-desktop-03-room-created-v3.webp','Sala criada · código, convite e senha owner',1438,840),
+        img('assets/gallery/cbc-desktop-04-stage-v3.webp','Palco desktop · canais, mídia e membros',1568,938),
+        img('assets/gallery/cbc-desktop-05-share-v3.webp','Compartilhamento de tela · fluxo em execução',1556,942)
       ]},
       mobile:{images:[
-        img('assets/gallery/cbc-mobile-01-home-dark-v3.png','Home mobile · tema escuro',1170,2532),
-        img('assets/gallery/cbc-mobile-02-home-light-v3.png','Home mobile · tema claro',1170,2532),
-        img('assets/gallery/cbc-mobile-03-create-room-v3.png','Criar sala · formulário mobile',1170,2532),
-        img('assets/gallery/cbc-mobile-04-room-created-v3.png','Sala criada · credenciais e convite',1170,2532),
-        img('assets/gallery/cbc-mobile-05-stage-light-v3.png','Palco · tema claro',1170,2532),
-        img('assets/gallery/cbc-mobile-06-stage-dark-v3.png','Palco · tema escuro',1170,2532),
-        img('assets/gallery/cbc-mobile-07-chat-v3.png','Chat da sala',1170,2532),
-        img('assets/gallery/cbc-mobile-08-members-v3.png','Membros da sala',1170,2532),
-        img('assets/gallery/cbc-mobile-09-channels-v3.png','Canais de voz',1170,2532)
+        img('assets/gallery/cbc-mobile-01-home-dark-v3.webp','Home mobile · tema escuro',1170,2532),
+        img('assets/gallery/cbc-mobile-02-home-light-v3.webp','Home mobile · tema claro',1170,2532),
+        img('assets/gallery/cbc-mobile-03-create-room-v3.webp','Criar sala · formulário mobile',1170,2532),
+        img('assets/gallery/cbc-mobile-04-room-created-v3.webp','Sala criada · credenciais e convite',1170,2532),
+        img('assets/gallery/cbc-mobile-05-stage-light-v3.webp','Palco · tema claro',1170,2532),
+        img('assets/gallery/cbc-mobile-06-stage-dark-v3.webp','Palco · tema escuro',1170,2532),
+        img('assets/gallery/cbc-mobile-07-chat-v3.webp','Chat da sala',1170,2532),
+        img('assets/gallery/cbc-mobile-08-members-v3.webp','Membros da sala',1170,2532),
+        img('assets/gallery/cbc-mobile-09-channels-v3.webp','Canais de voz',1170,2532)
       ]}
     }
   };
