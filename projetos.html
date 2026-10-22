@@ -6,34 +6,50 @@
   <title>Projetos — Samuel Alves</title>
   <meta name="description" content="Estudos de caso de Samuel Alves: NEXO, Cabeça de Gelo, SaberX, BMI9 e Receipt Generator.">
   <link rel="canonical" href="https://www.s4muelxl.com/projetos.html">
-  <meta name="theme-color" content="#07111f">
+  <meta name="theme-color" content="#03060b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portfolio-v3.css?v=20261021b">
+  <link rel="stylesheet" href="portfolio-v4.css?v=20261021">
 </head>
 <body class="projects-page">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
-  <div class="ambient ambient-a" aria-hidden="true"></div><div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="background-grid" aria-hidden="true"></div>
+  <div class="background-glow glow-one" aria-hidden="true"></div>
+
   <header class="site-header">
     <div class="shell nav-shell">
-      <a class="brand" href="index.html"><span class="brand-mark">SA</span><span class="brand-name">Samuel Alves</span></a>
+      <a class="brand" href="index.html" aria-label="Voltar para o início"><span class="brand-mark">SA</span><span class="brand-name">Samuel Alves</span></a>
       <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu">☰</button>
-      <nav class="main-nav" aria-label="Navegação principal"><div class="nav-menu" id="navMenu"><a href="index.html#sobre" class="nav-link">Sobre</a><a href="#projetos" class="nav-link active">Projetos</a><a href="index.html#engenharia" class="nav-link">Engenharia</a><a href="index.html#formacao" class="nav-link">Formação</a><a href="index.html#contato" class="nav-link">Contato</a></div></nav>
-      <div class="nav-actions"><button class="icon-button" id="themeToggle" type="button" aria-label="Alternar tema">☾</button><a class="button button-sm button-primary" href="assets/curriculo_samuel_alves_dev_v2.pdf" download>Ver currículo ↓</a></div>
+      <nav class="main-nav" aria-label="Navegação principal">
+        <div class="nav-menu" id="navMenu">
+          <a href="index.html#projetos" class="nav-link active">Projetos</a>
+          <a href="index.html#engenharia" class="nav-link">Engenharia</a>
+          <a href="index.html#sobre" class="nav-link">Sobre</a>
+          <a href="index.html#formacao" class="nav-link">Formação</a>
+          <a href="index.html#contato" class="nav-link">Contato</a>
+        </div>
+      </nav>
+      <div class="nav-actions"><a class="button button-small button-outline" href="assets/curriculo_samuel_alves_dev_v2.pdf" download>Currículo ↓</a></div>
     </div>
   </header>
 
   <main id="conteudo">
     <section class="projects-hero">
-      <div class="shell projects-hero-grid">
-        <div class="reveal"><p class="eyebrow">Projetos / Estudos de caso</p><h1>Projetos que transformam <span class="accent-text">ideia em produto.</span></h1></div>
-        <div class="projects-intro reveal"><p>Selecionei os projetos que melhor mostram como eu penso: contexto, problema, arquitetura, execução e resultado visual. Menos lista de tecnologias, mais evidência de trabalho.</p><div class="project-counts"><span>Produto</span><span>Realtime</span><span>Sistemas</span><span>Automação</span></div></div>
+      <div class="shell projects-hero-layout">
+        <div class="reveal">
+          <p class="eyebrow">Estudos de caso</p>
+          <h1>Projetos reais, <span>mostrados como produto.</span></h1>
+        </div>
+        <div class="projects-hero-copy reveal">
+          <p>Em vez de uma lista automática de repositórios, esta página mostra o que cada projeto resolve, como foi estruturado e como a interface realmente ficou.</p>
+          <div class="project-counts"><span>Produto</span><span>Realtime</span><span>Sistemas</span><span>Automação</span></div>
+        </div>
       </div>
     </section>
 
-    <section class="section projects-section" id="projetos">
+    <section class="section case-section" id="projetos">
       <div class="shell">
         <div class="filter-bar reveal" role="group" aria-label="Filtrar projetos">
           <button class="filter-button active" data-project-filter="all" aria-pressed="true">Todos</button>
@@ -43,42 +59,105 @@
           <button class="filter-button" data-project-filter="automacao" aria-pressed="false">Automação</button>
         </div>
 
-        <article class="case-study case-study-hero reveal" id="nexo" data-project-card data-project-category="produto sistemas">
-          <div class="case-head"><div><span class="case-number">01 / Produto pessoal</span><h2>NEXO</h2><p>Um hub pessoal mobile-first para integrar treino, rotina, refeições, finanças, investimentos e inteligência contextual.</p></div><div class="case-actions"><a class="button button-primary" href="https://nexo-ten-mu.vercel.app" target="_blank" rel="noopener noreferrer">Abrir aplicação ↗</a><span>Código privado</span></div></div>
-          <div class="case-visual browser-frame browser-light"><div class="browser-bar"><i></i><i></i><i></i><span>NEXO · visão de produto</span></div><img src="assets/nexo-modules-showcase.webp" alt="Módulos do NEXO: início, treino, rotina, refeições e finanças" loading="lazy"></div>
-          <div class="case-info-grid">
-            <div><span>Problema</span><p>Informações pessoais importantes ficam espalhadas entre apps, planilhas, notas e lembretes.</p></div>
-            <div><span>Solução</span><p>Uma experiência única com autenticação, planos configuráveis, histórico, notificações, finanças e Agent híbrido.</p></div>
-            <div><span>Arquitetura</span><p>Expo Router + React Native Web, Supabase Auth/PostgreSQL/RLS, Edge Functions, TanStack Query e Zustand.</p></div>
-            <div><span>Qualidade</span><p>TypeScript strict, testes, lint, build web, fila offline, retry inteligente e cuidado com PWA/mobile.</p></div>
+        <article class="case-study reveal" id="nexo" data-project-card data-project-category="produto sistemas">
+          <header class="case-header">
+            <div>
+              <div class="case-kicker">01 · Produto pessoal</div>
+              <h2>NEXO</h2>
+              <p>Hub pessoal mobile-first para treino, rotina, refeições, finanças, investimentos e inteligência contextual.</p>
+            </div>
+            <div class="case-header-actions">
+              <a class="button button-primary" href="https://nexo-ten-mu.vercel.app" target="_blank" rel="noopener noreferrer">Abrir aplicação ↗</a>
+              <span>Código privado</span>
+            </div>
+          </header>
+
+          <div class="case-media-grid">
+            <button class="case-media case-media-wide" type="button" data-lightbox-src="assets/nexo-modules-showcase.webp" data-lightbox-alt="Módulos reais do NEXO">
+              <img src="assets/nexo-modules-showcase.webp" alt="Screenshots reais dos módulos do NEXO" loading="lazy">
+              <span>Screenshots reais · módulos principais · ampliar ↗</span>
+            </button>
+            <button class="case-media" type="button" data-lightbox-src="assets/nexo-dark-showcase.webp" data-lightbox-alt="Fluxo visual do NEXO">
+              <img src="assets/nexo-dark-showcase.webp" alt="Screenshots reais da identidade e navegação do NEXO" loading="lazy">
+              <span>Identidade, login e navegação · ampliar ↗</span>
+            </button>
           </div>
-          <div class="case-gallery"><figure><img src="assets/nexo-dark-showcase.webp" alt="NEXO em dark mode com splash, login, início e menu lateral" loading="lazy"><figcaption>Identidade, autenticação e navegação do produto.</figcaption></figure></div>
+
+          <div class="case-facts">
+            <article><span>Problema</span><p>Dados pessoais espalhados em vários apps e planilhas dificultam acompanhamento e continuidade.</p></article>
+            <article><span>Solução</span><p>Uma experiência única com autenticação, planos, histórico, rotina, finanças, notificações e Agent.</p></article>
+            <article><span>Arquitetura</span><p>Expo Router + React Native Web, Supabase Auth/PostgreSQL/RLS, Edge Functions, TanStack Query e Zustand.</p></article>
+            <article><span>Qualidade</span><p>TypeScript strict, testes, lint, PWA, estados offline e evolução contínua baseada em uso real.</p></article>
+          </div>
         </article>
 
-        <article class="case-study case-study-hero reveal" id="cbcdegelo" data-project-card data-project-category="produto realtime">
-          <div class="case-head"><div><span class="case-number">02 / Realtime</span><h2>Cabeça de Gelo</h2><p>Plataforma web privada para voz e compartilhamento de tela, projetada para continuar simples enquanto a infraestrutura de mídia lida com complexidade real.</p></div><div class="case-actions"><span>WebRTC / SFU</span><span>Código privado</span></div></div>
-          <div class="case-visual browser-frame"><div class="browser-bar"><i></i><i></i><i></i><span>Cabeça de Gelo · sala</span></div><img src="assets/cbc-room-showcase.webp" alt="Cabeça de Gelo: palco, canais, membros e chat" loading="lazy"></div>
-          <div class="case-info-grid">
-            <div><span>Problema</span><p>Áudio e tela no navegador variam muito com rede, dispositivo, codec, reconexão e múltiplos participantes.</p></div>
-            <div><span>Solução</span><p>Salas temporárias, permissões, áudio, screen share, SFU, simulcast, presets e reconexão com backoff.</p></div>
-            <div><span>Arquitetura</span><p>Next.js + React + TypeScript no cliente, WebRTC/LiveKit na mídia e validações server-side para tokens e regras.</p></div>
-            <div><span>Qualidade</span><p>Testes com Vitest, typecheck, auditorias de RTC/segredos e iteração orientada a conectividade e FPS.</p></div>
+        <article class="case-study reveal" id="cbcdegelo" data-project-card data-project-category="produto realtime">
+          <header class="case-header">
+            <div>
+              <div class="case-kicker">02 · Realtime / WebRTC</div>
+              <h2>Cabeça de Gelo</h2>
+              <p>Plataforma privada de salas com voz e compartilhamento de tela, focada em baixa latência, estabilidade e experiência simples.</p>
+            </div>
+            <div class="case-header-actions"><span>Next.js · LiveKit · WebRTC</span><span>Código privado</span></div>
+          </header>
+
+          <div class="case-media-grid">
+            <button class="case-media case-media-wide" type="button" data-lightbox-src="assets/cbc-room-showcase.webp" data-lightbox-alt="Palco, canais, membros e chat do Cabeça de Gelo">
+              <img src="assets/cbc-room-showcase.webp" alt="Screenshots reais do Cabeça de Gelo com palco, canais, membros e chat" loading="lazy">
+              <span>Palco, canais, membros e chat · ampliar ↗</span>
+            </button>
+            <button class="case-media" type="button" data-lightbox-src="assets/cbc-flow-showcase.webp" data-lightbox-alt="Fluxo de criação de sala do Cabeça de Gelo">
+              <img src="assets/cbc-flow-showcase.webp" alt="Screenshots reais do fluxo de criação de sala e tema do Cabeça de Gelo" loading="lazy">
+              <span>Home, criação de sala e estados · ampliar ↗</span>
+            </button>
           </div>
-          <div class="case-gallery two"><figure><img src="assets/cbc-flow-showcase.webp" alt="Fluxo de criação de sala e temas do Cabeça de Gelo" loading="lazy"><figcaption>Entrada, criação da sala, confirmação e tema claro/escuro.</figcaption></figure><figure><img src="assets/cbc-room-showcase.webp" alt="Experiência interna da sala Cabeça de Gelo" loading="lazy"><figcaption>Palco, canais, membros e chat no mesmo sistema.</figcaption></figure></div>
+
+          <div class="case-facts">
+            <article><span>Problema</span><p>Mídia em navegador varia com rede, navegador, dispositivo, codec, reconexão e número de participantes.</p></article>
+            <article><span>Solução</span><p>Salas temporárias, voz, screen share, permissões, SFU, simulcast, presets e reconexão adaptativa.</p></article>
+            <article><span>Arquitetura</span><p>Next.js + React + TypeScript no cliente, WebRTC/LiveKit para mídia e validações server-side para tokens e regras.</p></article>
+            <article><span>Qualidade</span><p>Vitest, typecheck, auditorias RTC, diagnóstico de conexão e iteração por testes reais de FPS, jitter e latência.</p></article>
+          </div>
         </article>
 
-        <div class="case-grid-secondary">
-          <article class="case-study compact reveal" id="saberx" data-project-card data-project-category="produto sistemas"><span class="case-number">03 / Sistema empresarial</span><h2>SaberX</h2><p>Substitui planilhas de cotação por um fluxo com produtos, fornecedores, validação, pedidos, auditoria e relatórios.</p><div class="project-stack"><span>React</span><span>TypeScript</span><span>Vite</span><span>Supabase</span><span>PostgreSQL</span></div><a href="https://github.com/s4muelxl/saberx" target="_blank" rel="noopener noreferrer">Ver repositório ↗</a></article>
-          <article class="case-study compact reveal" id="bmi9" data-project-card data-project-category="produto sistemas automacao"><span class="case-number">04 / Produto real</span><h2>BMI9</h2><p>Site institucional e fluxo comercial com orçamento, geração de PDF, leads, e-mail resiliente e backend serverless.</p><div class="project-stack"><span>JavaScript</span><span>Python</span><span>Flask</span><span>Redis</span><span>Vercel</span></div><a href="https://github.com/s4muelxl/bmi9.lol" target="_blank" rel="noopener noreferrer">Ver repositório ↗</a></article>
-          <article class="case-study compact reveal" id="receipt-generator" data-project-card data-project-category="automacao"><span class="case-number">05 / Automação</span><h2>Receipt Generator</h2><p>CLI em Python que valida entradas, calcula pedidos e gera recibos padronizados com persistência local simples.</p><div class="project-stack"><span>Python 3</span><span>CLI</span><span>Automação</span></div><a href="https://github.com/s4muelxl/receipt-generator-py" target="_blank" rel="noopener noreferrer">Ver repositório ↗</a></article>
+        <div class="compact-case-grid">
+          <article class="compact-case reveal" id="saberx" data-project-card data-project-category="produto sistemas">
+            <div class="case-kicker">03 · Sistema empresarial</div><h2>SaberX</h2>
+            <p>Transforma planilhas de cotação em um fluxo multiusuário com produtos, fornecedores, pedidos, regras, auditoria e relatórios.</p>
+            <div class="project-stack"><span>React</span><span>TypeScript</span><span>Vite</span><span>Supabase</span><span>PostgreSQL</span></div>
+            <a href="https://github.com/s4muelxl/saberx" target="_blank" rel="noopener noreferrer">Ver repositório ↗</a>
+          </article>
+          <article class="compact-case reveal" id="bmi9" data-project-card data-project-category="produto sistemas automacao">
+            <div class="case-kicker">04 · Produto real</div><h2>BMI9</h2>
+            <p>Site institucional com captação de leads, orçamento, geração de proposta em PDF, envio transacional e backend serverless.</p>
+            <div class="project-stack"><span>JavaScript</span><span>Python</span><span>Flask</span><span>Redis</span><span>Vercel</span></div>
+            <a href="https://github.com/s4muelxl/bmi9.lol" target="_blank" rel="noopener noreferrer">Ver repositório ↗</a>
+          </article>
+          <article class="compact-case reveal" id="receipt-generator" data-project-card data-project-category="automacao">
+            <div class="case-kicker">05 · Automação</div><h2>Receipt Generator</h2>
+            <p>CLI em Python para validar entradas, calcular pedidos, gerar identificadores e criar recibos padronizados.</p>
+            <div class="project-stack"><span>Python 3</span><span>CLI</span><span>Automação</span></div>
+            <a href="https://github.com/s4muelxl/receipt-generator-py" target="_blank" rel="noopener noreferrer">Ver repositório ↗</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section contact-section"><div class="shell contact-card reveal"><div><p class="eyebrow">Próximo passo</p><h2>Quer ir além dos screenshots?</h2><p>O GitHub mostra o histórico público; o LinkedIn e o currículo resumem formação e objetivo profissional.</p></div><div class="contact-actions"><a class="button button-ghost" href="https://github.com/s4muelxl" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="button button-primary" href="mailto:corporativosamuel8877alves@gmail.com">Entrar em contato →</a></div></div></section>
+    <section class="section contact-section">
+      <div class="shell contact-panel reveal">
+        <div><p class="eyebrow">Contato</p><h2>Quer conversar sobre uma oportunidade?</h2><p>GitHub para código público, LinkedIn para contexto profissional e e-mail para contato direto.</p></div>
+        <div class="contact-actions"><a class="button button-ghost" href="https://github.com/s4muelxl" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="button button-primary" href="mailto:corporativosamuel8877alves@gmail.com">Entrar em contato →</a></div>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer"><div class="shell footer-grid"><div class="brand footer-brand"><span class="brand-mark">SA</span><span><strong>Samuel Alves</strong><small>Engenharia de Software · São Paulo, SP</small></span></div><p>Projetos reais, documentação clara e evolução contínua.</p><div class="footer-links"><a href="index.html">Início</a><a href="https://linkedin.com/in/samuel-alves-277015332" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div></footer>
-  <script src="script.js?v=20261021b" defer></script>
+  <footer class="site-footer"><div class="shell footer-layout"><div class="brand footer-brand"><span class="brand-mark">SA</span><span><strong>Samuel Alves</strong><small>Engenharia de Software · São Paulo, SP</small></span></div><p>Projetos reais, engenharia aplicada e evolução contínua.</p><div><a href="index.html">Início</a><a href="https://linkedin.com/in/samuel-alves-277015332" target="_blank" rel="noopener noreferrer">LinkedIn</a></div></div></footer>
+
+  <div class="lightbox" id="lightbox" hidden aria-modal="true" role="dialog" aria-label="Visualização ampliada">
+    <button id="lightboxClose" type="button" aria-label="Fechar imagem">×</button>
+    <img id="lightboxImage" src="" alt="">
+  </div>
+
+  <script src="script.js?v=20261021c" defer></script>
 </body>
 </html>
