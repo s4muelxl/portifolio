@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  const CURRENT_BUILD='20261022e';
+  const CURRENT_BUILD='20261022f';
   const pageBuild=document.documentElement.dataset.build||'';
   if(pageBuild!==CURRENT_BUILD){
     try{
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   const navToggle=document.getElementById('navToggle');
   const navMenu=document.getElementById('navMenu');
-  const navClose=document.getElementById('navClose');
   const navBackdrop=document.getElementById('navBackdrop');
   const progress=document.getElementById('scrollProgress');
   let menuTimer=null;
@@ -30,7 +29,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     navToggle.classList.add('active');
     navToggle.setAttribute('aria-expanded','true');
     document.body.classList.add('menu-open');
-    navClose?.focus();
+    const firstLink=navMenu.querySelector('.nav-link');
+    if(firstLink instanceof HTMLElement) firstLink.focus();
   };
 
   const closeNav=(restoreFocus=false)=>{
@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   };
 
   navToggle?.addEventListener('click',()=>navMenu?.classList.contains('open')?closeNav(true):openNav());
-  navClose?.addEventListener('click',()=>closeNav(true));
   navBackdrop?.addEventListener('click',()=>closeNav(true));
   navMenu?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>closeNav(false)));
   window.addEventListener('resize',()=>{if(window.innerWidth>760) closeNav(false)},{passive:true});
@@ -249,8 +248,9 @@ document.addEventListener('DOMContentLoaded',()=>{
       if(frame instanceof HTMLImageElement){
         frame.src=config.files[index];
         frame.alt=config.captions[index]||'Screenshot real';
-        frame.removeAttribute('width');
-        frame.removeAttribute('height');
+        const dims=type==='nexo'||mode==='mobile'?{w:1170,h:2532}:{w:1613,h:928};
+        frame.width=dims.w;
+        frame.height=dims.h;
       }
 
       if(viewport){
