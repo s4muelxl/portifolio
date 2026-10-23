@@ -1,47 +1,43 @@
 # Samuel Alves — Portfólio de Engenharia de Software
 
-Portfólio profissional publicado em **https://www.s4muelxl.com**.
+Portfólio publicado em **https://www.s4muelxl.com**, com página inicial e estudos de caso dos projetos NEXO, Cabeça de Gelo, BMI9, SaberX e Gerador de Recibos.
 
-A versão atual foi estruturada para recrutadores e equipes técnicas: posicionamento rápido, evidência visual de projetos, estudos de caso e navegação responsiva sem depender da API do GitHub no cliente.
+## Estrutura ativa
 
-## Projetos em destaque
-- **NEXO** — PWA/mobile-first para treino, rotina, refeições, finanças, investimentos e inteligência contextual.
-- **Cabeça de Gelo** — comunicação privada em tempo real com WebRTC/LiveKit, voz e compartilhamento de tela.
-- **SaberX** — cotações, compras e vendas com regras de negócio, Supabase e PostgreSQL.
-- **BMI9** — plataforma institucional com orçamento, PDFs, leads e backend serverless.
-- **Receipt Generator** — automação CLI em Python.
+- `index.html`: apresentação, projetos, competências, 15 cursos/certificações, formação e contato.
+- `projetos.html`: contexto, decisões técnicas, implementação e validação dos cinco projetos.
+- `portfolio.css`: sistema visual compartilhado em preto, branco e cinza, com layouts responsivos e versão para impressão.
+- `portfolio.js`: navegação, foco, leitura de seção, animações e galerias.
+- `assets/gallery/`: 27 screenshots reais já utilizados pelo portfólio.
+- `assets/bmi9/`: imagens de obras do cliente, provenientes do repositório BMI9, otimizadas e servidas localmente. São contexto do cliente, não capturas da interface.
+- `assets/Curriculo_Samuel_Alves.pdf`: currículo disponível para download.
+- `vercel.json`: redirecionamentos, cache e cabeçalhos de segurança.
 
-## Experiência do portfólio
-- layout desktop, tablet e mobile;
-- tema claro/escuro persistente;
-- estudos de caso com screenshots reais;
-- filtros de projeto;
-- barra de progresso de leitura;
-- command palette por `Ctrl/⌘ + K` na home;
-- navegação por teclado, skip link e `prefers-reduced-motion`;
-- SEO/canonical em `www.s4muelxl.com`;
-- CSP e headers de segurança via Vercel.
+Arquivos com sufixos `v2` a `v8` são versões anteriores e não são carregados pelas páginas ativas.
 
-## Estrutura principal
-```text
-index.html
-projetos.html
-portfolio-v3.css
-script.js
-assets/
-  samuel-profile.webp
-  nexo-dark-showcase.webp
-  nexo-modules-showcase.webp
-  cbc-room-showcase.webp
-  cbc-flow-showcase.webp
-```
+## Experiência e acessibilidade
 
-## Execução local
+- Identidade monocromática e conteúdo profissional original preservado.
+- Cabeçalho desktop e menu para larguras até 1080px, com um único controle abrir/fechar, Escape, foco contido e restauração de foco.
+- Índices para chegar diretamente a cada projeto e estudo de caso.
+- Galerias por botões, setas do teclado e gesto horizontal; imagens ampliadas permitem continuar navegando.
+- Sobreposição de imagem isola o conteúdo de fundo e devolve o foco ao controle de origem.
+- Leitura de seção e progresso atualizados no máximo uma vez por frame.
+- Screenshots carregados sob demanda; vizinhos pré-carregados quando a galeria se aproxima da tela, respeitando economia de dados.
+- Skip link, estados de foco e preferência por movimento reduzido. O conteúdo continua disponível sem JavaScript.
+- Layouts com dimensões reservadas para imagens e fallback para fontes do sistema.
+- Links canônicos e Open Graph mantidos em `www.s4muelxl.com`.
+
+## Desenvolvimento
+
+Projeto estático, sem instalação de dependências ou etapa de build. Para servir localmente:
+
 ```bash
-python -m http.server 8000
+python3 -m http.server 8000
 ```
 
-## Links
-- Site: https://www.s4muelxl.com
-- GitHub: https://github.com/s4muelxl
-- LinkedIn: https://linkedin.com/in/samuel-alves-277015332
+As alterações são publicadas pela integração Git do projeto **samuelalves** na Vercel. O repositório e os domínios existentes são preservados.
+
+## Validação
+
+Antes de publicar, verificar as duas páginas em desktop e nas larguras 320, 390, 480, 768 e 1024px, incluindo navegação por teclado, menu, galerias, troca desktop/mobile, ampliação, fechamento e links internos. Conferir a preservação dos textos, cinco projetos, 15 certificações, 27 screenshots e do PDF do currículo. Verificar a sintaxe de `portfolio.js` com `node --check portfolio.js`.
