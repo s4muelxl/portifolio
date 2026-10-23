@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const navToggle = $('#navToggle');
   const navMenu = $('#navMenu');
+  const navContext = $('#navContext');
   const navBackdrop = $('#navBackdrop');
   const header = $('.site-header');
   const main = $('main');
@@ -126,6 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (active) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
+    if (navContext) {
+      const labels = {projetos:'Projetos',competencias:'Skills',certificacoes:'Cursos',formacao:'Formação',contato:'Contato'};
+      const nextLabel = labels[activeId] || (location.pathname.includes('projetos') ? 'Projetos' : 'Início');
+      if (navContext.textContent !== nextLabel) {
+        navContext.textContent = nextLabel;
+        if (!reducedMotion.matches && typeof navContext.animate === 'function') navContext.animate([{opacity:.25,transform:'translateY(-3px)'},{opacity:1,transform:'none'}],{duration:180,easing:'ease-out'});
+      }
+    }
   };
   const scheduleReadingPosition = () => {
     if (!scrollFrame) scrollFrame = requestAnimationFrame(updateReadingPosition);
