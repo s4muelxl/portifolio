@@ -830,3 +830,43 @@ body::before {
   .cert-summary > div + div { border-top: 1px solid rgba(255,255,255,.09); }
   .contact-actions { min-width: 0; }
 }
+
+
+.case-proof-strip {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(0,1fr));
+  margin-top: clamp(52px,7vw,86px);
+  border-top: 1px solid rgba(255,255,255,.14);
+}
+.case-proof-strip > div {
+  padding: 24px 22px 0 0;
+}
+.case-proof-strip > div + div {
+  padding-left: 22px;
+  border-left: 1px solid rgba(255,255,255,.08);
+}
+.case-proof-strip strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #ededed;
+  font: 600 clamp(22px,2.5vw,34px)/1 var(--display);
+  letter-spacing: -.05em;
+}
+.case-proof-strip span {
+  color: #858585;
+  font: 400 10px/1.55 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .055em;
+}
+
+@media (max-width: 760px) {
+  .case-proof-strip { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .case-proof-strip > div { padding: 20px 16px 20px 0; }
+  .case-proof-strip > div + div { padding-left: 16px; }
+  .case-proof-strip > div:nth-child(3) {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+  .case-proof-strip > div:nth-child(4) { border-top: 1px solid rgba(255,255,255,.08); }
+}
