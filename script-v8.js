@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  const CURRENT_BUILD='20261022k';
+  const CURRENT_BUILD='20261023a';
   const pageBuild=document.documentElement.dataset.build||'';
   if(pageBuild!==CURRENT_BUILD){
     try{
