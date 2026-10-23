@@ -1,4 +1,4 @@
-import {MAX_ITEMS, calculateReceipt, formatMoney, formatQuantity, receiptText} from './receipt-core.mjs?v=20261023b';
+import {MAX_ITEMS, calculateReceipt, formatMoney, formatQuantity, receiptText} from './receipt-core.mjs?v=20261023c';
 
 export function initReceiptDemos() {
   document.querySelectorAll('[data-receipt-demo]').forEach(root => {

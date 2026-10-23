@@ -1,5 +1,5 @@
-import {galleryConfigs} from './data/gallery-data.mjs?v=20261023b';
-import {initReceiptDemos} from './receipt-demo.mjs?v=20261023b';
+import {galleryConfigs} from './data/gallery-data.mjs?v=20261023c';
+import {initReceiptDemos} from './receipt-demo.mjs?v=20261023c';
 
 'use strict';
 
@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const brand = $('.brand');
   const progress = $('#scrollProgress');
   const backToTop = $('.back-to-top');
-  const navLabel = $('.nav-toggle-label');
   const mediaLightbox = $('#mediaLightbox');
   const lightboxStage = $('#lightboxStage');
   const lightboxClose = $('#lightboxClose');
@@ -63,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle?.classList.remove('active');
     navToggle?.setAttribute('aria-expanded', 'false');
     navToggle?.setAttribute('aria-label', 'Abrir menu');
-    if (navLabel) navLabel.textContent = 'Menu';
     if (navBackdrop) navBackdrop.hidden = true;
     document.body.classList.remove('menu-open');
     setInert([main, footer, brand, $('.nav-cv')], false);
@@ -80,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
     navToggle.classList.add('active');
     navToggle.setAttribute('aria-expanded', 'true');
     navToggle.setAttribute('aria-label', 'Fechar menu');
-    if (navLabel) navLabel.textContent = 'Fechar';
     if (navBackdrop) navBackdrop.hidden = false;
     document.body.classList.add('menu-open');
     setInert([main, footer, brand, $('.nav-cv')], true);
