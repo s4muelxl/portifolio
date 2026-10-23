@@ -640,3 +640,193 @@ body::before {
   .project-feature-cbc .project-gallery,
   .bmi9-showcase { transform: none !important; transition: none !important; }
 }
+
+
+/* Proof-driven polish: stronger recruiter scan without adding decorative noise. */
+.evidence-grid span {
+  margin-bottom: 10px;
+  color: #f0f0f0;
+  font: 600 clamp(24px,2.8vw,38px)/1 var(--display);
+  letter-spacing: -.055em;
+}
+.evidence-grid strong {
+  font-size: 13px;
+  letter-spacing: -.015em;
+}
+.evidence-grid small {
+  max-width: 210px;
+  color: #8f8f8f;
+}
+
+.project-question {
+  display: grid;
+  gap: 6px;
+  margin: 22px 0 2px !important;
+  padding: 16px 0 0;
+  border-top: 1px solid rgba(255,255,255,.09);
+  color: #d8d8d8 !important;
+  font-size: 13px !important;
+  line-height: 1.65 !important;
+}
+.project-question span {
+  color: #858585;
+  font: 500 9px/1.5 var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.project-question::after {
+  content: "↳ decisão e trade-offs no estudo de caso";
+  margin-top: 1px;
+  color: #737373;
+  font: 400 9px/1.5 var(--mono);
+}
+
+.saberx-blueprint {
+  grid-column: 2 / -1;
+  margin-top: 34px;
+  padding: 30px 0 4px;
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+.blueprint-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 24px;
+}
+.blueprint-head .mono-label { margin: 0; }
+.blueprint-head strong {
+  max-width: 420px;
+  color: #d8d8d8;
+  font: 500 17px/1.45 var(--display);
+  letter-spacing: -.025em;
+  text-align: right;
+}
+.blueprint-flow {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.2fr) auto minmax(0,1fr);
+  align-items: stretch;
+  gap: 10px;
+}
+.blueprint-flow > div {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid rgba(255,255,255,.11);
+  background: linear-gradient(155deg,rgba(255,255,255,.035),rgba(255,255,255,.012));
+}
+.blueprint-flow small {
+  display: block;
+  margin-bottom: 16px;
+  color: #777;
+  font: 400 9px/1 var(--mono);
+}
+.blueprint-flow strong {
+  display: block;
+  margin-bottom: 5px;
+  color: #e7e7e7;
+  font-size: 13px;
+  font-weight: 550;
+}
+.blueprint-flow span {
+  display: block;
+  color: #929292;
+  font: 400 10px/1.55 var(--mono);
+}
+.blueprint-flow > i {
+  display: grid;
+  place-items: center;
+  color: #5f5f5f;
+  font-style: normal;
+  font-size: 15px;
+}
+.saberx-blueprint > p {
+  max-width: 800px;
+  margin: 20px 0 0;
+  color: #8e8e8e;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.cert-summary {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  margin: -6px 0 34px;
+  border-block: 1px solid rgba(255,255,255,.12);
+}
+.cert-summary > div {
+  padding: 24px 24px 24px 0;
+}
+.cert-summary > div + div {
+  padding-left: 24px;
+  border-left: 1px solid rgba(255,255,255,.09);
+}
+.cert-summary strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #ededed;
+  font: 600 clamp(20px,2.3vw,30px)/1 var(--display);
+  letter-spacing: -.045em;
+}
+.cert-summary span {
+  color: #8d8d8d;
+  font: 400 10px/1.5 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+#competencias .skill-block {
+  position: relative;
+  overflow: hidden;
+}
+#competencias .skill-block::after {
+  content: "0" counter(skill);
+  position: absolute;
+  right: 0;
+  top: 38px;
+  color: rgba(255,255,255,.055);
+  font: 600 44px/1 var(--display);
+  letter-spacing: -.06em;
+}
+#competencias .skills-grid { counter-reset: skill; }
+#competencias .skill-block { counter-increment: skill; }
+
+.contact-actions { min-width: 194px; }
+.contact-actions .button {
+  justify-content: space-between;
+  min-height: 48px;
+}
+.contact-panel .button-dark::after {
+  content: "↗";
+  font-size: 14px;
+}
+.contact-panel .button-light::after { content: "↗"; }
+
+@media (max-width: 760px) {
+  .evidence-grid span { font-size: 26px; }
+  .saberx-blueprint { grid-column: 1; margin-top: 18px; }
+  .blueprint-head { align-items: start; flex-direction: column; gap: 8px; }
+  .blueprint-head strong { text-align: left; }
+  .blueprint-flow { grid-template-columns: 1fr; gap: 0; }
+  .blueprint-flow > div { padding: 16px; }
+  .blueprint-flow > i {
+    height: 26px;
+    transform: rotate(90deg);
+  }
+  .cert-summary { margin-bottom: 28px; }
+  .cert-summary > div { padding: 20px 14px 20px 0; }
+  .cert-summary > div + div { padding-left: 14px; }
+}
+
+@media (max-width: 480px) {
+  .evidence-grid span { font-size: 23px; }
+  .evidence-grid strong { font-size: 11px; }
+  .evidence-grid small { font-size: 9px; }
+  .cert-summary { grid-template-columns: 1fr; }
+  .cert-summary > div,
+  .cert-summary > div + div {
+    padding: 18px 0;
+    border-left: 0;
+  }
+  .cert-summary > div + div { border-top: 1px solid rgba(255,255,255,.09); }
+  .contact-actions { min-width: 0; }
+}
