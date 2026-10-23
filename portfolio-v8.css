@@ -1022,3 +1022,14 @@ button,.button,.nav-link,.nav-toggle,.gallery-controls button,.gallery-mode-swit
   .scroll-progress span,.gallery-progress span,.hero-status i{background:CanvasText}
   .button,.nav-toggle,.gallery-controls button,.gallery-mode-switch button{forced-color-adjust:auto}
 }
+
+.bmi9-proof-note{
+  grid-column:1/-1;
+  margin-top:22px;
+  padding:22px;
+  border:1px solid #2a2a2a;
+  border-radius:16px;
+  background:linear-gradient(180deg,#0d0d0d,#090909);
+}
+.bmi9-proof-note strong{display:block;margin-top:7px;font:620 18px var(--display)}
+.bmi9-proof-note p{max-width:720px;margin:7px 0 0;color:var(--muted);font-size:11px}
