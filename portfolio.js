@@ -39,6 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxCount = $('#lightboxCount');
   const lightboxDialog = $('.lightbox-dialog');
   const overlayExtras = [...document.querySelectorAll('.portfolio-build-note, .back-to-top, .skip-link')];
+  const copyEmail = document.querySelector('[data-copy-email]');
+  const copyStatus = $('#copyStatus');
   let menuOpen = false;
   let previousMenuFocus = null;
   let previousViewerFocus = null;
@@ -107,6 +109,41 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   window.addEventListener('pagehide', () => closeNav(false));
   syncMenuVisibility();
+
+  if (copyEmail) {
+    const originalLabel = copyEmail.textContent;
+    copyEmail.addEventListener('click', async () => {
+      const value = copyEmail.dataset.copyEmail || '';
+      try {
+        if (navigator.clipboard?.writeText && window.isSecureContext) await navigator.clipboard.writeText(value);
+        else {
+          const area = document.createElement('textarea');
+          area.value = value; area.setAttribute('readonly',''); area.style.position='fixed'; area.style.opacity='0';
+          document.body.append(area); area.select(); document.execCommand('copy'); area.remove();
+        }
+        copyEmail.textContent = 'E-mail copiado ✓';
+        copyEmail.classList.add('is-copied');
+        if (copyStatus) copyStatus.textContent = 'E-mail copiado para a área de transferência.';
+        setTimeout(() => { copyEmail.textContent = originalLabel; copyEmail.classList.remove('is-copied'); }, 1800);
+      } catch {
+        if (copyStatus) copyStatus.textContent = 'Não foi possível copiar o e-mail.';
+      }
+    });
+  }
+
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const canPrefetch = !connection?.saveData && !/^(slow-2g|2g)$/.test(connection?.effectiveType || '');
+  if (canPrefetch) {
+    const target = location.pathname.includes('projetos') ? 'index.html' : 'projetos.html';
+    const prefetch = () => {
+      if (document.querySelector('link[data-portfolio-prefetch]')) return;
+      const link = document.createElement('link');
+      link.rel = 'prefetch'; link.href = target; link.as = 'document'; link.dataset.portfolioPrefetch = '';
+      document.head.append(link);
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(prefetch,{timeout:1800});
+    else setTimeout(prefetch,1200);
+  }
 
   // Reading position is measured once per animation frame, including tall sections.
   const sectionLinks = [...document.querySelectorAll('.nav-link[href^="#"]')];
