@@ -22,6 +22,7 @@ jobs:
       - name: JavaScript syntax
         run: |
           node --check portfolio.js
+          node --check portfolio-premium.js
           node --check receipt-core.mjs
           node --check receipt-demo.mjs
       - name: Receipt and project regression tests
