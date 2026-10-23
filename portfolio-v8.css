@@ -7,7 +7,7 @@
   --line-soft:#1d1d1d;
   --text:#f3f3ef;
   --muted:#a9a9a4;
-  --dim:#72726e;
+  --dim:#858580;
   --white:#f6f6f2;
   --black:#070707;
   --radius:18px;
@@ -990,4 +990,35 @@ body{overflow-x:hidden}
 @media(max-width:520px){
   .degree-meta{display:grid;grid-template-columns:1fr}
   .degree-meta span{width:max-content;max-width:100%}
+}
+
+/* ===== Performance + accessibility hardening — 2026-10-22 ===== */
+body.modal-open,body.menu-open{overflow:hidden}
+h1,h2,h3{text-wrap:balance}
+p,li{text-wrap:pretty}
+button,a{-webkit-tap-highlight-color:transparent}
+button,.button,.nav-link,.nav-toggle,.gallery-controls button,.gallery-mode-switch button{touch-action:manipulation}
+@supports(content-visibility:auto){
+  .project-row,.repo-note,.skill-block,.cert-card,.case-detail{
+    content-visibility:auto;
+    contain-intrinsic-size:auto 320px;
+  }
+  .case-detail{contain-intrinsic-size:auto 680px}
+  .project-receipt{contain-intrinsic-size:auto 700px}
+}
+@media(prefers-contrast:more){
+  :root{
+    --line:#424242;
+    --line-soft:#303030;
+    --muted:#c2c2bd;
+    --dim:#aaa9a3;
+  }
+  .button,.nav-toggle,.project-feature,.skill-block,.cert-card,.side-block,.contact-panel,.project-gallery{
+    border-color:#555;
+  }
+  .nav-link{color:#d0d0ca}
+}
+@media(forced-colors:active){
+  .scroll-progress span,.gallery-progress span,.hero-status i{background:CanvasText}
+  .button,.nav-toggle,.gallery-controls button,.gallery-mode-switch button{forced-color-adjust:auto}
 }
