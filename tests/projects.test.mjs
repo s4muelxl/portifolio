@@ -42,10 +42,9 @@ test('diagramas usam somente nós existentes e têm texto alternativo',()=>{
 });
 
 
-test('o índice da página de cases acompanha a leitura dos projetos',async()=>{
+test('a navegação redundante de projetos não é renderizada',async()=>{
+  const home=await readFile(new URL('index.html',root),'utf8');
   const cases=await readFile(new URL('projetos.html',root),'utf8');
-  const section=cases.indexOf('<section class="section project-detail-section" id="projetos">');
-  const index=cases.indexOf('<nav class="shell project-index"',section);
-  const firstCase=cases.indexOf('<article class="case-detail',section);
-  assert.ok(section>=0&&index>section&&firstCase>index);
+  assert.equal(home.includes('project-index'),false);
+  assert.equal(cases.includes('project-index'),false);
 });
