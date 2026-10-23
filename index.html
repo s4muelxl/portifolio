@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-build="20261022h">
+<html lang="pt-BR" data-build="20261022i">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,11 +18,11 @@
   <meta property="og:image:alt" content="Samuel Alves — estudante de Engenharia de Software">
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#050505">
-  <meta name="portfolio-build" content="20261022h">
+  <meta name="portfolio-build" content="20261022i">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portfolio-v8.css?v=20261022h">
+  <link rel="stylesheet" href="portfolio-v8.css?v=20261022i">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -67,6 +67,10 @@
     <section class="hero" id="inicio">
       <div class="shell hero-grid">
         <div class="hero-main reveal">
+          <div class="hero-status" aria-label="Objetivo profissional">
+            <span><i aria-hidden="true"></i>Disponível para estágio e posições júnior</span>
+            <a href="#contato">Vamos conversar <b aria-hidden="true">↘</b></a>
+          </div>
           <div class="profile-line">
             <img class="avatar" src="assets/samuel-profile.webp?v=20261022-instagramfix" alt="Samuel Alves" width="96" height="96" fetchpriority="high" decoding="sync">
             <div>
@@ -80,8 +84,13 @@
           <p class="hero-text">Sou estudante de Engenharia de Software na Universidade São Judas Tadeu e busco estágio ou posição júnior em tecnologia. Aqui você encontra produtos próprios, um projeto para cliente real e estudos que mostram como transformo requisitos em software funcionando.</p>
 
           <div class="hero-actions">
-            <a class="button button-light" href="#projetos">Ver projetos</a>
-            <a class="button button-dark" href="assets/Curriculo_Samuel_Alves.pdf" download>Baixar currículo</a>
+            <a class="button button-light" href="#projetos">Ver projetos <span aria-hidden="true">↘</span></a>
+            <a class="button button-dark" href="assets/Curriculo_Samuel_Alves.pdf" download>Baixar currículo <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-proof" aria-label="Destaques do portfólio">
+            <span><strong>01</strong>Produtos próprios</span>
+            <span><strong>02</strong>Cliente real</span>
+            <span><strong>03</strong>Código público</span>
           </div>
         </div>
 
@@ -139,7 +148,7 @@
             <div class="project-gallery nexo-gallery" data-carousel="nexo" data-mode="mobile" data-count="13" tabindex="0" aria-label="Galeria de telas reais do NEXO">
               <div class="gallery-toolbar">
                 <div><span class="gallery-live-dot"></span><strong>NEXO</strong><small>Mobile · screenshots reais</small></div>
-                <span class="gallery-counter" data-carousel-count>01 / 13</span>
+                <span class="gallery-counter" data-carousel-count aria-live="polite">01 / 13</span>
               </div>
               <button class="gallery-viewport gallery-phone" type="button" data-carousel-open aria-label="Ampliar screenshot do NEXO">
                 <img class="gallery-image" data-carousel-frame src="assets/gallery/nexo-01-home-v3.webp" alt="Início · visão do dia e NEXO Score" width="1170" height="2532" loading="lazy" decoding="async">
@@ -148,7 +157,7 @@
               <div class="gallery-footer">
                 <div class="gallery-caption">
                   <span class="mono-label">TELA</span>
-                  <strong data-carousel-caption>Início · visão do dia e NEXO Score</strong>
+                  <strong data-carousel-caption aria-live="polite">Início · visão do dia e NEXO Score</strong>
                 </div>
                 <div class="gallery-controls">
                   <button type="button" data-carousel-prev aria-label="Screenshot anterior">←</button>
@@ -194,8 +203,8 @@
               </div>
               <div class="gallery-footer">
                 <div class="gallery-caption">
-                  <span class="gallery-counter" data-carousel-count>01 / 05</span>
-                  <strong data-carousel-caption>Home · entrada e criação de sala</strong>
+                  <span class="gallery-counter" data-carousel-count aria-live="polite">01 / 05</span>
+                  <strong data-carousel-caption aria-live="polite">Home · entrada e criação de sala</strong>
                 </div>
                 <div class="gallery-controls">
                   <button type="button" data-carousel-prev aria-label="Screenshot anterior">←</button>
@@ -439,6 +448,6 @@
     </div>
   </div>
 
-  <script src="script-v8.js?v=20261022h" defer></script>
+  <script src="script-v8.js?v=20261022i" defer></script>
 </body>
 </html>
