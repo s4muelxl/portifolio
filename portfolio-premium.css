@@ -425,6 +425,8 @@ body::before {
   padding-left: 30px;
   border-left-color: rgba(255,255,255,.16);
 }
+.project-detail-section { padding-top: 0; padding-bottom: 64px; }
+.project-detail-section > .project-index { margin-bottom: 0; }
 .project-detail-section > .shell { max-width: var(--max); }
 .case-detail {
   position: relative;
