@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-build="20261022i">
+<html lang="pt-BR" data-build="20261022j">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,11 +17,11 @@
   <meta property="og:image" content="https://www.s4muelxl.com/assets/samuel-profile.webp?v=20261022-instagramfix">
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#050505">
-  <meta name="portfolio-build" content="20261022i">
+  <meta name="portfolio-build" content="20261022j">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portfolio-v8.css?v=20261022i">
+  <link rel="stylesheet" href="portfolio-v8.css?v=20261022j">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -172,11 +172,13 @@
             <div><span class="case-index">04</span><p class="project-meta">SISTEMA EMPRESARIAL</p><h2>SaberX</h2></div>
             <div class="case-links"><a href="https://github.com/s4muelxl/saberx" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
           </header>
-          <div class="case-columns">
-            <div><h3>Objetivo</h3><p>Transformar uma operação baseada em planilhas de mapa de cotação em um sistema multiusuário com histórico e regras de negócio.</p></div>
-            <div><h3>Recursos</h3><ul><li>Produtos e fornecedores</li><li>Motor de cálculo e validação de cotações</li><li>Pedidos de compra e orçamentos de venda</li><li>Relatórios XLSX/PDF</li></ul></div>
-            <div><h3>Arquitetura</h3><ul><li>React 18 + TypeScript + Vite</li><li>Supabase Auth e PostgreSQL</li><li>RLS multi-tenant por organização</li><li>Recharts, SheetJS e jsPDF</li></ul></div>
+          <div class="case-columns case-columns-deep">
+            <div><h3>Problema</h3><p>Substituir uma operação baseada em planilhas de mapa de cotação por um sistema com usuários, histórico, auditoria e regras de cálculo reproduzíveis.</p></div>
+            <div><h3>Regras de negócio</h3><ul><li>Cálculo por kg, peça, barra, metro, tonelada e unidade</li><li>Status de validação para quantidade, divergência, preço ausente e exclusões</li><li>Menor preço calculado apenas entre cotações válidas</li><li>Alerta quando o menor valor nominal foi desclassificado</li></ul></div>
+            <div><h3>Arquitetura</h3><ul><li>React 18 + TypeScript + Vite</li><li>Supabase Auth e PostgreSQL 15</li><li>RLS multi-tenant por organização</li><li>Recharts, SheetJS, jsPDF e jsPDF-AutoTable</li></ul></div>
+            <div><h3>Validação</h3><ul><li>Suíte de testes unitários</li><li>Build de produção versionado</li><li>Schema, migrations e seed documentados</li><li>Exportações XLSX/PDF integradas ao fluxo</li></ul></div>
           </div>
+          <p class="case-limit"><strong>Escopo do case.</strong> O projeto demonstra regras de cotação, arquitetura multi-tenant e implementação; ganhos operacionais não são apresentados como métrica sem medição externa.</p>
           <div class="case-tech">React · TypeScript · Vite · Supabase · PostgreSQL · RLS · Recharts</div>
         </article>
 
@@ -250,6 +252,6 @@
     </div>
   </div>
 
-  <script src="script-v8.js?v=20261022i" defer></script>
+  <script src="script-v8.js?v=20261022j" defer></script>
 </body>
 </html>
