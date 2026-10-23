@@ -41,6 +41,11 @@
       "source": "/contato",
       "destination": "/#contato",
       "permanent": true
+    },
+    {
+      "source": "/projetos",
+      "destination": "/projetos.html",
+      "permanent": true
     }
   ],
   "headers": [
