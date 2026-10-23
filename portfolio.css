@@ -1,4 +1,4 @@
-/* Shared portfolio design system. Black, white and neutral grays only. */
+
 :root {
   color-scheme: dark;
   --bg: #080808;
@@ -38,7 +38,7 @@ article[id], main[id] { scroll-margin-top: 108px; }
 .scroll-progress { position: fixed; inset: 0 0 auto; height: 2px; z-index: 600; pointer-events: none; }
 .scroll-progress span { display: block; width: 100%; height: 100%; transform: scaleX(0); transform-origin: left; background: #fff; }
 
-/* Header and a single, accessible mobile menu control. */
+
 .site-header { position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--line-soft); background: rgba(8,8,8,.96); }
 .nav-shell { height: 84px; display: flex; align-items: center; gap: 28px; }
 .brand { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; }
@@ -56,7 +56,7 @@ article[id], main[id] { scroll-margin-top: 108px; }
 .nav-toggle, .mobile-menu-head, .mobile-menu-actions, .mobile-menu-note, .nav-link-arrow { display: none; }
 .nav-backdrop { position: fixed; inset: 0; z-index: 90; border: 0; background: rgba(0,0,0,.68); backdrop-filter: blur(6px); }
 
-/* Introduction: retain the original content and two-column composition. */
+
 .hero { position: relative; padding-top: clamp(56px, 7vw, 100px); }
 .hero-grid { display: grid; grid-template-columns: minmax(0,1.65fr) minmax(310px,.8fr); gap: clamp(40px,6vw,88px); align-items: center; }
 .hero-main { min-width: 0; }
@@ -91,7 +91,7 @@ article[id], main[id] { scroll-margin-top: 108px; }
 .signal-grid strong { display: block; font-size: 14px; font-weight: 550; }
 .signal-grid small { display: block; margin-top: 4px; color: var(--dim); font-size: 11px; line-height: 1.6; }
 
-/* Sections and project navigation. */
+
 .section { padding-block: 108px; }
 .section-muted { border-block: 1px solid var(--line-soft); background: #0c0c0c; }
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-bottom: 38px; }
@@ -99,10 +99,6 @@ article[id], main[id] { scroll-margin-top: 108px; }
 .section-heading h2, .education-main h2, .contact-panel h2 { max-width: 840px; margin: 0; font: 600 clamp(30px,3.6vw,46px)/1.16 var(--display); letter-spacing: -.045em; text-wrap: balance; }
 .text-link { display: inline-flex; align-items: center; min-height: 44px; color: #d7d7d7; font-size: 12px; white-space: nowrap; }
 .text-link:hover { text-decoration: underline; }
-.project-index { display: flex; flex-wrap: wrap; gap: 6px 10px; margin-bottom: 30px; }
-.project-index a { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 7px; color: #c0c0c0; font-size: 12px; transition: border-color .2s, background .2s; }
-.project-index a span { color: var(--dim); font: 400 10px var(--mono); }
-.project-index a:hover, .project-index a[aria-current] { color: #fff; background: #1b1b1b; border-color: #626262; }
 .featured-projects { display: grid; gap: 28px; }
 .project-feature { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 40px; padding: 40px; border: 1px solid #303030; border-radius: var(--radius); background: #0e0e0e; }
 .project-feature-copy { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; padding-block: 4px; }
@@ -131,7 +127,7 @@ article[id], main[id] { scroll-margin-top: 108px; }
 .repo-note a { display: inline-flex; align-items: center; min-height: 44px; font-size: 12px; }
 .repo-note a:hover { text-decoration: underline; }
 
-/* Media is reserved at its final aspect ratio to prevent layout shifts. */
+
 .project-gallery { min-width: 0; padding: 16px; border: 1px solid #303030; border-radius: 15px; background: #080808; }
 .gallery-toolbar, .gallery-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .gallery-toolbar { min-height: 42px; padding-bottom: 14px; }
@@ -175,7 +171,7 @@ article[id], main[id] { scroll-margin-top: 108px; }
 .bmi9-shot-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 10px; }
 .bmi9-shot-grid img { aspect-ratio: 4/3; }
 
-/* Skills, credentials, education and contact. */
+
 .skills-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 40px; counter-reset: skill; }
 .skill-block { position: relative; min-width: 0; padding: 32px 0; border-top: 1px solid #3c3c3c; counter-increment: skill; }
 .skill-block::after { content: '0' counter(skill); position: absolute; top: 30px; right: 0; color: #999; font: 400 11px var(--mono); }
@@ -224,7 +220,7 @@ article[id], main[id] { scroll-margin-top: 108px; }
 .footer-links a:hover { text-decoration: underline; }
 .back-to-top { position: fixed; right: 20px; bottom: 20px; z-index: 20; display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #555; border-radius: 50%; background: #171717; color: #eee; box-shadow: 0 4px 24px #0005; font-size: 18px; }
 
-/* Case studies use the same visual system and a direct project index. */
+
 .projects-hero { padding: 76px 0 44px; }
 .projects-title-grid { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,.7fr); gap: 70px; align-items: end; }
 .projects-title-grid .mono-label { margin-top: 0; margin-bottom: 18px; }
@@ -255,7 +251,7 @@ article[id], main[id] { scroll-margin-top: 108px; }
 .case-limit strong { color: #dedede; }
 .case-tech { margin-top: 24px; color: #aaa; font: 400 11px/1.9 var(--mono); }
 
-/* Existing receipt example, with readable type and a neutral paper surface. */
+
 .receipt-preview { grid-column: 2 / -1; display: grid; grid-template-columns: minmax(0,1fr) minmax(260px,.8fr); align-items: center; gap: 22px; margin-top: 8px; padding: 28px; border: 1px solid #333; border-radius: 16px; background: #0e0e0e; }
 .receipt-terminal { overflow: hidden; border: 1px solid #383838; border-radius: 10px; background: #080808; font: 400 11px/2 var(--mono); }
 .receipt-window-bar { display: flex; align-items: center; gap: 5px; min-height: 36px; padding: 0 14px; border-bottom: 1px solid #333; background: #141414; }
@@ -285,7 +281,7 @@ article[id], main[id] { scroll-margin-top: 108px; }
 .receipt-visual-label { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .receipt-visual-label p { margin: 0; color: #aaa; font-size: 12px; }
 
-/* Image viewer: navigation stays available without closing the image. */
+
 .media-lightbox { position: fixed; inset: 0; z-index: 500; display: grid; place-items: center; padding: 20px; }
 .lightbox-backdrop { position: absolute; inset: 0; border: 0; background: rgba(0,0,0,.93); touch-action: none; }
 .lightbox-dialog { position: relative; display: flex; flex-direction: column; width: min(1200px,100%); max-height: calc(100dvh - 40px); padding: 16px; border: 1px solid #484848; border-radius: 16px; background: #101010; animation: viewer-in .2s var(--ease); }
@@ -309,7 +305,7 @@ article[id], main[id] { scroll-margin-top: 108px; }
 .is-visible { opacity: 1; transform: none; transition: opacity .5s var(--ease), transform .5s var(--ease); transition-delay: var(--reveal-delay,0ms); }
 @keyframes viewer-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
-/* Tablet and mobile: one breakpoint shared with portfolio.js. */
+
 @media (max-width: 1080px) {
   .shell { width: min(var(--max),calc(100% - 48px)); }
   .nav-shell { height: 72px; gap: 14px; }
@@ -396,8 +392,6 @@ article[id], main[id] { scroll-margin-top: 108px; }
   .section { padding-block: 72px; }
   .section-heading { flex-direction: column; align-items: flex-start; gap: 14px; margin-bottom: 26px; }
   .section-heading h2 { font-size: clamp(30px,6vw,40px); }
-  .project-index { gap: 8px; margin-bottom: 24px; }
-  .project-index a { padding: 0 11px; font-size: 11px; }
   .project-feature { grid-template-columns: 1fr; gap: 28px; padding: 26px; }
   .project-feature-copy h3, .project-copy h3 { font-size: 34px; }
   .project-number { margin-bottom: 16px; }
