@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-build="20261022j">
+<html lang="pt-BR" data-build="20261022h">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,11 +18,11 @@
   <meta property="og:image:alt" content="Samuel Alves — estudante de Engenharia de Software">
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#050505">
-  <meta name="portfolio-build" content="20261022j">
+  <meta name="portfolio-build" content="20261022h">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portfolio-v8.css?v=20261022j">
+  <link rel="stylesheet" href="portfolio-v8.css?v=20261022h">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -67,10 +67,6 @@
     <section class="hero" id="inicio">
       <div class="shell hero-grid">
         <div class="hero-main reveal">
-          <div class="hero-status" aria-label="Objetivo profissional">
-            <span><i aria-hidden="true"></i>Disponível para estágio e posições júnior</span>
-            <a href="#contato">Vamos conversar <b aria-hidden="true">↘</b></a>
-          </div>
           <div class="profile-line">
             <img class="avatar" src="assets/samuel-profile.webp?v=20261022-instagramfix" alt="Samuel Alves" width="96" height="96" fetchpriority="high" decoding="sync">
             <div>
@@ -84,13 +80,8 @@
           <p class="hero-text">Sou estudante de Engenharia de Software na Universidade São Judas Tadeu e busco estágio ou posição júnior em tecnologia. Aqui você encontra produtos próprios, um projeto para cliente real e estudos que mostram como transformo requisitos em software funcionando.</p>
 
           <div class="hero-actions">
-            <a class="button button-light" href="#projetos">Ver projetos <span aria-hidden="true">↘</span></a>
-            <a class="button button-dark" href="assets/Curriculo_Samuel_Alves.pdf" download>Baixar currículo <span aria-hidden="true">↓</span></a>
-          </div>
-          <div class="hero-proof" aria-label="Destaques do portfólio">
-            <span><strong>01</strong>Produtos próprios</span>
-            <span><strong>02</strong>Cliente real</span>
-            <span><strong>03</strong>Código público</span>
+            <a class="button button-light" href="#projetos">Ver projetos</a>
+            <a class="button button-dark" href="assets/Curriculo_Samuel_Alves.pdf" download>Baixar currículo</a>
           </div>
         </div>
 
@@ -148,7 +139,7 @@
             <div class="project-gallery nexo-gallery" data-carousel="nexo" data-mode="mobile" data-count="13" tabindex="0" aria-label="Galeria de telas reais do NEXO">
               <div class="gallery-toolbar">
                 <div><span class="gallery-live-dot"></span><strong>NEXO</strong><small>Mobile · screenshots reais</small></div>
-                <span class="gallery-counter" data-carousel-count aria-live="polite">01 / 13</span>
+                <span class="gallery-counter" data-carousel-count>01 / 13</span>
               </div>
               <button class="gallery-viewport gallery-phone" type="button" data-carousel-open aria-label="Ampliar screenshot do NEXO">
                 <img class="gallery-image" data-carousel-frame src="assets/gallery/nexo-01-home-v3.webp" alt="Início · visão do dia e NEXO Score" width="1170" height="2532" loading="lazy" decoding="async">
@@ -157,7 +148,7 @@
               <div class="gallery-footer">
                 <div class="gallery-caption">
                   <span class="mono-label">TELA</span>
-                  <strong data-carousel-caption aria-live="polite">Início · visão do dia e NEXO Score</strong>
+                  <strong data-carousel-caption>Início · visão do dia e NEXO Score</strong>
                 </div>
                 <div class="gallery-controls">
                   <button type="button" data-carousel-prev aria-label="Screenshot anterior">←</button>
@@ -203,8 +194,8 @@
               </div>
               <div class="gallery-footer">
                 <div class="gallery-caption">
-                  <span class="gallery-counter" data-carousel-count aria-live="polite">01 / 05</span>
-                  <strong data-carousel-caption aria-live="polite">Home · entrada e criação de sala</strong>
+                  <span class="gallery-counter" data-carousel-count>01 / 05</span>
+                  <strong data-carousel-caption>Home · entrada e criação de sala</strong>
                 </div>
                 <div class="gallery-controls">
                   <button type="button" data-carousel-prev aria-label="Screenshot anterior">←</button>
@@ -252,17 +243,11 @@
             <div class="project-copy">
               <div class="project-meta">SISTEMA EMPRESARIAL</div>
               <h3>SaberX</h3>
-              <p>Sistema de cotação, compras e vendas criado para transformar um fluxo baseado em planilhas em uma aplicação multiusuário com regras de negócio e histórico.</p>
-              <ul class="compact-points">
-                <li>Motor de validação de cotações e menor preço válido</li>
-                <li>Supabase Auth, PostgreSQL e RLS multi-tenant</li>
-                <li>Relatórios e exportações em XLSX/PDF</li>
-              </ul>
+              <p>Sistema de cotação, compras e vendas para substituir planilhas e centralizar produtos, fornecedores, pedidos, validações e relatórios.</p>
               <div class="tech-line">React · TypeScript · Vite · Supabase · PostgreSQL · RLS</div>
             </div>
             <div class="project-actions">
               <a href="https://github.com/s4muelxl/saberx" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-              <a href="projetos.html#saberx">Estudo de caso →</a>
             </div>
           </article>
 
@@ -333,29 +318,21 @@
             <span>Desenvolvimento</span>
             <h3>Software & Web</h3>
             <p>Python, TypeScript/JavaScript, React, Next.js, HTML5, CSS3, C, estruturas de dados, algoritmos e arquitetura de sistemas.</p>
-            <div class="skill-tags"><span>React</span><span>TypeScript</span><span>Python</span><span>Next.js</span></div>
-            <p class="skill-evidence"><strong>Aplicado:</strong> NEXO, Cabeça de Gelo, BMI9 e automações próprias.</p>
           </article>
           <article class="skill-block reveal">
             <span>Dados</span>
             <h3>SQL & BI</h3>
             <p>SQL, modelagem de dados, PostgreSQL, Power BI, Power Query, DAX, Big Data, Excel Avançado, VBA e macros.</p>
-            <div class="skill-tags"><span>PostgreSQL</span><span>SQL</span><span>Power BI</span><span>Excel</span></div>
-            <p class="skill-evidence"><strong>Aplicado:</strong> persistência e regras de dados em NEXO e SaberX.</p>
           </article>
           <article class="skill-block reveal">
             <span>Estudos</span>
             <h3>Ciência de Dados & IA</h3>
             <p>Pandas, Scikit-Learn, TensorFlow, OpenCV, NLP, LlamaIndex, Machine Learning e fundamentos de cloud AWS.</p>
-            <div class="skill-tags"><span>Pandas</span><span>ML</span><span>NLP</span><span>IA aplicada</span></div>
-            <p class="skill-evidence"><strong>Em evolução:</strong> estudos formais e integração de inteligência contextual no NEXO.</p>
           </article>
           <article class="skill-block reveal">
             <span>Segurança</span>
             <h3>Redes & Cibersegurança</h3>
             <p>Defesa de redes, segurança de endpoint, mitigação de ameaças, gestão de acessos, RLS e boas práticas de proteção de dados.</p>
-            <div class="skill-tags"><span>RLS</span><span>Auth</span><span>Headers</span><span>Redes</span></div>
-            <p class="skill-evidence"><strong>Aplicado:</strong> RLS no Supabase e hardening de aplicações web publicadas.</p>
           </article>
         </div>
 
@@ -376,13 +353,13 @@
           <a class="text-link" href="https://www.linkedin.com/in/samuel-alves-277015332" target="_blank" rel="noopener noreferrer">Ver LinkedIn ↗</a>
         </header>
 
-        <div class="cert-grid" aria-label="Cursos e certificações">
-          <article class="cert-card reveal cert-card-featured"><span>2026 · Alura</span><h3>Ciência de Dados & IA com Python</h3><p>Pandas, Scikit-Learn, TensorFlow, OpenCV, NLP, LlamaIndex e fundamentos de deploy em AWS.</p></article>
-          <article class="cert-card reveal cert-card-featured"><span>2026 · Alura</span><h3>Python para Dados</h3><p>Fundamentos práticos de manipulação e análise de dados com Python.</p></article>
-          <article class="cert-card reveal cert-card-featured"><span>2026 · Alura</span><h3>HTML & CSS</h3><p>HTML semântico, CSS, classes, posicionamento, Flexbox e integração com layouts.</p></article>
-          <article class="cert-card reveal cert-card-featured"><span>2026 · Alura</span><h3>Responsividade Mobile-First</h3><p>Construção de interfaces responsivas com foco em dispositivos móveis.</p></article>
-          <article class="cert-card reveal cert-card-featured"><span>2026 · Alura</span><h3>Excel Avançado</h3><p>Fórmulas, tabelas dinâmicas, Power Query e automação de processos.</p></article>
-          <article class="cert-card reveal cert-card-featured"><span>2025 · Santander</span><h3>Desenvolvimento Inteligente com IA & Python</h3><p>Modelos de Machine Learning e automação inteligente.</p></article>
+        <div class="cert-grid">
+          <article class="cert-card reveal"><span>2026 · Alura</span><h3>Ciência de Dados & IA com Python</h3><p>Pandas, Scikit-Learn, TensorFlow, OpenCV, NLP, LlamaIndex e fundamentos de deploy em AWS.</p></article>
+          <article class="cert-card reveal"><span>2026 · Alura</span><h3>Python para Dados</h3><p>Fundamentos práticos de manipulação e análise de dados com Python.</p></article>
+          <article class="cert-card reveal"><span>2026 · Alura</span><h3>HTML & CSS</h3><p>HTML semântico, CSS, classes, posicionamento, Flexbox e integração com layouts.</p></article>
+          <article class="cert-card reveal"><span>2026 · Alura</span><h3>Responsividade Mobile-First</h3><p>Construção de interfaces responsivas com foco em dispositivos móveis.</p></article>
+          <article class="cert-card reveal"><span>2026 · Alura</span><h3>Excel Avançado</h3><p>Fórmulas, tabelas dinâmicas, Power Query e automação de processos.</p></article>
+          <article class="cert-card reveal"><span>2025 · Santander</span><h3>Desenvolvimento Inteligente com IA & Python</h3><p>Modelos de Machine Learning e automação inteligente.</p></article>
           <article class="cert-card reveal"><span>2025 · Cisco</span><h3>Defesa de Rede</h3><p>Políticas de proteção, mitigação de ameaças e fundamentos de defesa corporativa.</p></article>
           <article class="cert-card reveal"><span>2025 · Cisco</span><h3>Segurança de Endpoint</h3><p>Proteção e gestão de endpoints em ambientes de rede.</p></article>
           <article class="cert-card reveal"><span>2025 · Cisco</span><h3>Introdução à Cibersegurança</h3><p>Princípios de proteção de dados, ameaças e governança de segurança.</p></article>
@@ -405,7 +382,6 @@
             <span>2025 — 2028 · em andamento</span>
             <h3>Bacharelado em Engenharia de Software</h3>
             <p>Universidade São Judas Tadeu (USJT)</p>
-            <div class="degree-meta"><span>3º semestre</span><span>Previsão de conclusão · 2028</span></div>
           </article>
           <article class="degree compact-degree">
             <span>Concluído em 2024</span>
@@ -423,7 +399,6 @@
           <div class="side-block">
             <span class="mono-label">INTERESSES PROFISSIONAIS</span>
             <p>Desenvolvimento de software, dados, inteligência artificial, segurança, bancos, fintechs e empresas de tecnologia.</p>
-            <div class="interest-tags"><span>Software</span><span>Dados</span><span>IA</span><span>Segurança</span></div>
           </div>
         </aside>
       </div>
@@ -464,6 +439,6 @@
     </div>
   </div>
 
-  <script src="script-v8.js?v=20261022j" defer></script>
+  <script src="script-v8.js?v=20261022h" defer></script>
 </body>
 </html>

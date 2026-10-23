@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  const CURRENT_BUILD='20261022j';
+  const CURRENT_BUILD='20261022h';
   const pageBuild=document.documentElement.dataset.build||'';
   if(pageBuild!==CURRENT_BUILD){
     try{
@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   const navMenu=document.getElementById('navMenu');
   const navBackdrop=document.getElementById('navBackdrop');
   const progress=document.getElementById('scrollProgress');
-  const siteHeader=document.querySelector('.site-header');
   const pageMain=document.querySelector('main');
   const pageFooter=document.querySelector('.site-footer');
   const brand=document.querySelector('.brand');
@@ -69,19 +68,13 @@ document.addEventListener('DOMContentLoaded',()=>{
   window.addEventListener('resize',syncNavViewport,{passive:true});
   window.addEventListener('orientationchange',syncNavViewport,{passive:true});
 
-  let scrollFrame=0;
-  const updateScrollUI=()=>{
-    scrollFrame=0;
+  const updateProgress=()=>{
+    if(!progress) return;
     const max=document.documentElement.scrollHeight-window.innerHeight;
-    if(progress) progress.style.width=(max>0?window.scrollY/max*100:0)+'%';
-    siteHeader?.classList.toggle('is-scrolled',window.scrollY>12);
+    progress.style.width=(max>0?window.scrollY/max*100:0)+'%';
   };
-  const requestScrollUI=()=>{
-    if(scrollFrame) return;
-    scrollFrame=requestAnimationFrame(updateScrollUI);
-  };
-  window.addEventListener('scroll',requestScrollUI,{passive:true});
-  updateScrollUI();
+  window.addEventListener('scroll',updateProgress,{passive:true});
+  updateProgress();
 
   const revealEls=[...document.querySelectorAll('.reveal')];
   const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -113,25 +106,6 @@ document.addEventListener('DOMContentLoaded',()=>{
       });
     },{rootMargin:'-28% 0px -62% 0px',threshold:[.01,.2,.4]});
     sections.forEach(section=>spy.observe(section));
-  }
-
-  const caseLinks=[...document.querySelectorAll('.case-jump a[href^="#"]')];
-  const caseSections=caseLinks
-    .map(link=>document.querySelector(link.getAttribute('href')))
-    .filter(Boolean);
-  if('IntersectionObserver' in window&&caseLinks.length&&caseSections.length){
-    const caseSpy=new IntersectionObserver(entries=>{
-      const current=entries.filter(entry=>entry.isIntersecting)
-        .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
-      if(!current) return;
-      caseLinks.forEach(link=>{
-        const active=link.getAttribute('href')==='#'+current.target.id;
-        link.classList.toggle('active',active);
-        if(active) link.setAttribute('aria-current','location');
-        else link.removeAttribute('aria-current');
-      });
-    },{rootMargin:'-22% 0px -66% 0px',threshold:[.01,.15,.3]});
-    caseSections.forEach(section=>caseSpy.observe(section));
   }
 
   const galleryConfigs={
@@ -341,8 +315,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     carousel.addEventListener('keydown',event=>{
       if(event.key==='ArrowLeft'){event.preventDefault();move(-1)}
       if(event.key==='ArrowRight'){event.preventDefault();move(1)}
-      if(event.key==='Home'){event.preventDefault();index=0;render()}
-      if(event.key==='End'){event.preventDefault();index=getConfig().files.length-1;render()}
     });
 
     viewport?.addEventListener('pointerdown',event=>{
