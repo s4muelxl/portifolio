@@ -40,3 +40,12 @@ test('diagramas usam somente nós existentes e têm texto alternativo',()=>{
     for(const [from,to] of graph.edges){assert.ok(ids.has(from));assert.ok(ids.has(to));assert.notEqual(from,to);}
   }
 });
+
+
+test('o índice da página de cases acompanha a leitura dos projetos',async()=>{
+  const cases=await readFile(new URL('projetos.html',root),'utf8');
+  const section=cases.indexOf('<section class="section project-detail-section" id="projetos">');
+  const index=cases.indexOf('<nav class="shell project-index"',section);
+  const firstCase=cases.indexOf('<article class="case-detail',section);
+  assert.ok(section>=0&&index>section&&firstCase>index);
+});
