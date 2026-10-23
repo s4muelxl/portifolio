@@ -19,6 +19,32 @@ document.addEventListener('DOMContentLoaded',()=>{
     revealTargets.forEach(el=>el.dataset.premiumInview='true');
   }
 
+  const certGrid=document.querySelector('#certGrid');
+  const certToggle=document.querySelector('.cert-mobile-toggle');
+  const certMedia=window.matchMedia('(max-width: 560px)');
+  if(certGrid&&certToggle){
+    const certCards=[...certGrid.querySelectorAll('.cert-card')];
+    let certExpanded=false;
+    const syncCertificates=()=>{
+      const compact=certMedia.matches;
+      certToggle.hidden=!compact;
+      certCards.forEach((card,index)=>{
+        card.classList.toggle('mobile-cert-hidden',compact&&!certExpanded&&index>=6);
+      });
+      certToggle.setAttribute('aria-expanded',String(certExpanded));
+      const label=certToggle.querySelector('span');
+      if(label) label.textContent=certExpanded?'Mostrar menos':'Mostrar todas as '+certCards.length+' formações';
+    };
+    certToggle.addEventListener('click',()=>{
+      certExpanded=!certExpanded;
+      syncCertificates();
+      if(!certExpanded) certGrid.scrollIntoView({block:'nearest',behavior:reduceMotion?'auto':'smooth'});
+    });
+    if(typeof certMedia.addEventListener==='function') certMedia.addEventListener('change',syncCertificates);
+    else certMedia.addListener?.(syncCertificates);
+    syncCertificates();
+  }
+
   const projectLinks=[...document.querySelectorAll('.project-index a[href^="#"]')];
   const projectTargets=projectLinks
     .map(link=>document.querySelector(link.getAttribute('href')))
