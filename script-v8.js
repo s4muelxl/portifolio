@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  const CURRENT_BUILD='20261022j';
+  const CURRENT_BUILD='20261022k';
   const pageBuild=document.documentElement.dataset.build||'';
   if(pageBuild!==CURRENT_BUILD){
     try{
@@ -229,6 +229,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     mediaLightbox.hidden=true;
     mediaLightbox.setAttribute('aria-hidden','true');
     document.body.classList.remove('modal-open');
+    if(siteHeader instanceof HTMLElement) siteHeader.inert=false;
     if(pageMain instanceof HTMLElement) pageMain.inert=false;
     if(pageFooter instanceof HTMLElement) pageFooter.inert=false;
     if(lightboxStage) lightboxStage.innerHTML='';
@@ -244,6 +245,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     mediaLightbox.hidden=false;
     mediaLightbox.setAttribute('aria-hidden','false');
     document.body.classList.add('modal-open');
+    if(siteHeader instanceof HTMLElement) siteHeader.inert=true;
     if(pageMain instanceof HTMLElement) pageMain.inert=true;
     if(pageFooter instanceof HTMLElement) pageFooter.inert=true;
     lightboxStage.classList.toggle('is-phone',mode==='mobile');
@@ -281,7 +283,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     const getConfig=()=>galleryConfigs[type][mode]||galleryConfigs[type].mobile||galleryConfigs[type].desktop;
 
     const preloadNeighbors=(config)=>{
-      if(!config?.files?.length||navigator.connection?.saveData) return;
+      const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+      const slowConnection=connection?.saveData||['slow-2g','2g'].includes(connection?.effectiveType);
+      if(!config?.files?.length||slowConnection||document.visibilityState==='hidden') return;
       [index-1,index+1].forEach(raw=>{
         const i=(raw+config.files.length)%config.files.length;
         const img=new Image();
