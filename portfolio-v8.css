@@ -944,8 +944,8 @@ body{overflow-x:hidden}
   margin-top:auto!important;
   padding-top:17px;
   border-top:1px solid #202020;
-  color:#7f7f7a;
-  font-size:10.5px;
+  color:#7f7f7a!important;
+  font-size:10.5px!important;
 }
 .skill-evidence strong{color:#bcbcb6;font-weight:600}
 .cert-card{transition:border-color .22s ease,transform .22s ease,background .22s ease}
@@ -982,9 +982,9 @@ body{overflow-x:hidden}
   .cert-card:hover{transform:translateY(-2px)}
 }
 @media(max-width:760px){
-  .skills-grid{gap:10px}
+  .skill-grid,.skills-grid{gap:10px}
   .skill-block{padding:20px;min-height:0}
-  .skill-block .skill-evidence{margin-top:18px}
+  .skill-evidence{margin-top:18px!important}
   .cert-card:nth-child(n+7){min-height:160px}
 }
 @media(max-width:520px){
