@@ -1,0 +1,23 @@
+# Keep production deploys focused on the public portfolio surface.
+.github/
+.vscode/
+tests/
+scripts/
+skill.md/
+.htaccess
+
+CHECKLIST.md
+COMECE_AQUI.txt
+DEPLOY-AGORA.md
+DEPLOY.md
+GUIDE.md
+INDEX.md
+PREENCHER.md
+PRONTO_PARA_PUBLICAR.txt
+README.md
+RESUMO.md
+START.txt
+VERIFICACAO_FINAL.txt
+
+# Build-time/editorial metadata not imported by the browser.
+data/projects.mjs
