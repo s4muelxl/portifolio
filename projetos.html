@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-build="20261023a">
+<html lang="pt-BR" data-build="20261023b">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -18,11 +18,12 @@
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#080808">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <meta name="portfolio-build" content="20261023a">
+  <meta name="portfolio-build" content="20261023b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portfolio.css?v=20261023a">
+  <link rel="stylesheet" href="portfolio.css?v=20261023b">
+  <link rel="stylesheet" href="portfolio-experience.css?v=20261023b">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -30,7 +31,7 @@
 
   <header class="site-header">
     <div class="shell nav-shell">
-      <a class="brand" href="index.html" aria-label="Samuel Alves — início"><span class="brand-mark">SA</span><span class="brand-name">Samuel Alves</span></a>
+      <a class="brand" href="index.html" aria-label="Samuel Alves — início"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M18 11H12a4 4 0 0 0 0 8h2a4 4 0 0 1 0 8H8M22 27l6-16 6 16M24 22h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="brand-name">Samuel Alves</span></a>
       <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu"><span class="nav-toggle-label">Menu</span><span class="nav-toggle-icon" aria-hidden="true"></span></button>
       <nav class="main-nav" aria-label="Navegação principal">
         <div class="nav-menu" id="navMenu">
@@ -85,7 +86,7 @@
           </header>
 
           <div class="case-gallery-wrap">
-            <div class="project-gallery nexo-gallery" data-carousel="nexo" data-mode="mobile" data-count="13" tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Galeria de telas reais do NEXO">
+            <div class="project-gallery nexo-gallery device-showcase" data-carousel="nexo" data-mode="mobile" data-count="13" tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Galeria de telas reais do NEXO">
               <div class="gallery-toolbar">
                 <div><span class="gallery-live-dot"></span><strong>NEXO</strong><small>Mobile · screenshots reais</small></div>
                 <span class="gallery-counter" data-carousel-count>01 / 13</span>
@@ -100,6 +101,27 @@
               </div>
             </div>
           </div>
+
+          <!-- engineering:nexo:start -->
+<details class="engineering-panel" open>
+    <summary class="engineering-heading"><span><span class="mono-label">DECISÃO DE ENGENHARIA</span><strong>Como manter vários domínios em uma experiência coerente?</strong></span><span class="engineering-toggle" aria-hidden="true">+</span></summary>
+    <div class="engineering-body">
+    <div class="engineering-notes"><div><span>A escolha</span><p>Separar estado local e dados remotos: Zustand organiza a interface; TanStack Query trata consultas e sincronização.</p></div><div><span>O cuidado necessário</span><p>A separação exige fronteiras claras entre os módulos e cuidado com atualização de cache quando uma ação afeta mais de uma área.</p></div></div>
+    <figure class="architecture-panel architecture-nexo">
+    <figcaption><span class="mono-label">ARQUITETURA EM FOCO</span><span>Visão simplificada do fluxo</span></figcaption>
+    <div class="architecture-map" role="group" aria-label="Visão simplificada: interface Expo e React Native Web, estado com TanStack Query e Zustand, e serviços Supabase para identidade, dados e operações no servidor.">
+      <svg class="architecture-lines" viewBox="0 0 1000 540" preserveAspectRatio="none" aria-hidden="true"><path d="M 500 60 L 500 180"/><path d="M 500 180 L 180 320"/><path d="M 500 180 L 820 320"/><path d="M 500 180 L 500 470"/></svg>
+      <div class="architecture-node slot-a"><strong>Interface</strong><span>Expo Router · React Native Web</span></div>
+      <div class="architecture-node slot-b"><strong>Dados e estado</strong><span>TanStack Query · Zustand</span></div>
+      <div class="architecture-node slot-c"><strong>Identidade</strong><span>Supabase Auth</span></div>
+      <div class="architecture-node slot-d"><strong>Dados do usuário</strong><span>PostgreSQL · RLS</span></div>
+      <div class="architecture-node slot-e"><strong>Operações no servidor</strong><span>Edge Functions</span></div>
+    </div>
+  </figure>
+    <a class="engineering-source" href="https://github.com/s4muelxl/nexo/blob/main/package.json" target="_blank" rel="noopener noreferrer">Consultar a base técnica no GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </details>
+<!-- engineering:nexo:end -->
 
           <div class="case-columns case-columns-deep">
             <div><h3>Contexto e escopo</h3><p>O NEXO concentra treino, rotina, refeições, finanças, investimentos e inteligência contextual em um PWA/mobile-first. O desafio é manter domínios diferentes coerentes sem transformar a interface em vários aplicativos desconectados.</p></div>
@@ -126,6 +148,7 @@
                   <button type="button" data-gallery-mode="mobile" aria-pressed="false">Mobile</button>
                 </div>
               </div>
+              <div class="browser-address" aria-hidden="true"><span class="browser-dots"><i></i><i></i><i></i></span><span>Cabeça de Gelo / comunicação em tempo real</span><span>↗</span></div>
               <div class="cbc-stage-wrap">
                 <button class="gallery-viewport gallery-desktop" type="button" data-carousel-open aria-label="Ampliar screenshot do Cabeça de Gelo">
                   <img class="gallery-image" data-carousel-frame src="assets/gallery/cbc-desktop-01-home-v4.webp" alt="Home desktop · entrada e criação de sala" width="1613" height="928" loading="lazy" decoding="async">
@@ -138,6 +161,26 @@
               </div>
             </div>
           </div>
+
+          <!-- engineering:cbcdegelo:start -->
+<details class="engineering-panel">
+    <summary class="engineering-heading"><span><span class="mono-label">DECISÃO DE ENGENHARIA</span><strong>Como separar o controle da sala do transporte de mídia?</strong></span><span class="engineering-toggle" aria-hidden="true">+</span></summary>
+    <div class="engineering-body">
+    <div class="engineering-notes"><div><span>A escolha</span><p>A aplicação organiza salas e credenciais; o LiveKit SFU distribui voz e compartilhamento de tela entre participantes.</p></div><div><span>O cuidado necessário</span><p>A mídia tem um ciclo de vida próprio. Reconexão, encerramento de tracks e leitura de qualidade precisam acompanhar mudanças da rede.</p></div></div>
+    <figure class="architecture-panel architecture-cbcdegelo">
+    <figcaption><span class="mono-label">ARQUITETURA EM FOCO</span><span>Visão simplificada do fluxo</span></figcaption>
+    <div class="architecture-map" role="group" aria-label="Visão simplificada: a API de salas emite credenciais para dois participantes. A mídia WebRTC de cada participante passa pelo LiveKit SFU.">
+      <svg class="architecture-lines" viewBox="0 0 1000 540" preserveAspectRatio="none" aria-hidden="true"><path d="M 500 60 L 180 320"/><path d="M 500 60 L 820 320"/><path d="M 180 320 L 500 470"/><path d="M 820 320 L 500 470"/></svg>
+      <div class="architecture-node slot-a"><strong>Salas e credenciais</strong><span>API da aplicação · Next.js</span></div>
+      <div class="architecture-node slot-c"><strong>Participante A</strong><span>Navegador · WebRTC</span></div>
+      <div class="architecture-node slot-d"><strong>Participante B</strong><span>Navegador · WebRTC</span></div>
+      <div class="architecture-node slot-e"><strong>Distribuição de mídia</strong><span>LiveKit SFU · voz e tela</span></div>
+    </div>
+  </figure>
+    <a class="engineering-source" href="https://github.com/s4muelxl/cbcdegelo/blob/main/README.md" target="_blank" rel="noopener noreferrer">Consultar a base técnica no GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </details>
+<!-- engineering:cbcdegelo:end -->
 
           <div class="case-columns case-columns-deep">
             <div><h3>Contexto e problema</h3><p>Plataforma privada para grupos de amigos com voz e compartilhamento de tela. O problema central é manter uma experiência simples enquanto conexão, mídia e qualidade mudam em tempo real.</p></div>
@@ -154,6 +197,27 @@
             <div><span class="case-index">03</span><p class="project-meta">CLIENTE REAL · WEB / BACKEND</p><h2>BMI9</h2></div>
             <div class="case-links"><a href="https://www.bmi9.com.br/" target="_blank" rel="noopener noreferrer">Site ↗</a><a href="https://github.com/s4muelxl/bmi9.lol" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
           </header>
+          <!-- engineering:bmi9:start -->
+<details class="engineering-panel">
+    <summary class="engineering-heading"><span><span class="mono-label">DECISÃO DE ENGENHARIA</span><strong>Como levar o interesse do visitante até uma proposta?</strong></span><span class="engineering-toggle" aria-hidden="true">+</span></summary>
+    <div class="engineering-body">
+    <div class="engineering-notes"><div><span>A escolha</span><p>Manter a apresentação no frontend e concentrar geração de PDF e entrega de e-mail no backend Python/Flask.</p></div><div><span>O cuidado necessário</span><p>A entrega depende de serviços externos. Uma rota alternativa de e-mail reduz a dependência de um único provedor.</p></div></div>
+    <figure class="architecture-panel architecture-bmi9">
+    <figcaption><span class="mono-label">ARQUITETURA EM FOCO</span><span>Visão simplificada do fluxo</span></figcaption>
+    <div class="architecture-map" role="group" aria-label="Visão simplificada: o formulário envia dados ao backend Flask, que gera a proposta em PDF e realiza o envio de e-mail com rota alternativa SMTP.">
+      <svg class="architecture-lines" viewBox="0 0 1000 540" preserveAspectRatio="none" aria-hidden="true"><path d="M 500 60 L 500 180"/><path d="M 500 180 L 180 320"/><path d="M 500 180 L 820 320"/><path d="M 820 320 L 500 470"/></svg>
+      <div class="architecture-node slot-a"><strong>Site e formulário</strong><span>HTML · CSS · JavaScript</span></div>
+      <div class="architecture-node slot-b"><strong>Fluxo comercial</strong><span>Python · Flask serverless</span></div>
+      <div class="architecture-node slot-c"><strong>Proposta</strong><span>Geração de PDF</span></div>
+      <div class="architecture-node slot-d"><strong>Entrega de e-mail</strong><span>Resend</span></div>
+      <div class="architecture-node slot-e"><strong>Rota alternativa</strong><span>SMTP</span></div>
+    </div>
+  </figure>
+    <a class="engineering-source" href="https://github.com/s4muelxl/bmi9.lol" target="_blank" rel="noopener noreferrer">Consultar a base técnica no GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </details>
+<!-- engineering:bmi9:end -->
+
           <div class="case-columns case-columns-deep">
             <div><h3>Contexto e problema</h3><p>Site institucional e fluxo de captação de leads para uma empresa real de pisos industriais. A solução precisava apresentar serviços e obras e levar o visitante de interesse a orçamento sem uma stack pesada no cliente.</p></div>
             <div><h3>Decisões de engenharia</h3><ul><li>HTML, CSS e JavaScript vanilla no frontend</li><li>Python/Flask em funções serverless no backend</li><li>Propostas em PDF geradas no servidor</li><li>i18n pt-BR / en-US com preferência persistida</li></ul></div>
@@ -169,6 +233,17 @@
             <div><span class="case-index">04</span><p class="project-meta">SISTEMA EMPRESARIAL</p><h2>SaberX</h2></div>
             <div class="case-links"><a href="https://github.com/s4muelxl/saberx" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
           </header>
+          <!-- engineering:saberx:start -->
+<details class="engineering-panel">
+    <summary class="engineering-heading"><span><span class="mono-label">DECISÃO DE ENGENHARIA</span><strong>Como transformar planilhas em uma operação multiusuário?</strong></span><span class="engineering-toggle" aria-hidden="true">+</span></summary>
+    <div class="engineering-body">
+    <div class="engineering-notes"><div><span>A escolha</span><p>Centralizar produtos, fornecedores e cotações em PostgreSQL, com autenticação e isolamento por organização via RLS.</p></div><div><span>O cuidado necessário</span><p>As regras de acesso precisam acompanhar o modelo de dados. Uma interface correta também depende de políticas coerentes no banco.</p></div></div>
+
+    <a class="engineering-source" href="https://github.com/s4muelxl/saberx" target="_blank" rel="noopener noreferrer">Consultar a base técnica no GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </details>
+<!-- engineering:saberx:end -->
+
           <div class="case-columns">
             <div><h3>Objetivo</h3><p>Transformar uma operação baseada em planilhas de mapa de cotação em um sistema multiusuário com histórico e regras de negócio.</p></div>
             <div><h3>Recursos</h3><ul><li>Produtos e fornecedores</li><li>Motor de cálculo e validação de cotações</li><li>Pedidos de compra e orçamentos de venda</li><li>Relatórios XLSX/PDF</li></ul></div>
@@ -185,32 +260,89 @@
 
           <div class="receipt-case-visual">
             <div class="receipt-visual-label"><span class="mono-label">SIMULAÇÃO VISUAL</span><p>Baseada no formato de saída documentado no projeto real.</p></div>
-            <div class="receipt-preview" aria-label="Simulação visual baseada na saída real do Gerador de Recibos">
-                <div class="receipt-terminal" aria-hidden="true">
-                  <div class="receipt-window-bar"><span></span><span></span><span></span><small>python · receipt-generator</small></div>
-                  <div class="terminal-lines">
-                    <span><b>$</b> python main.py</span>
-                    <span><em>Cliente</em> João Silva</span>
-                    <span><em>Pagamento</em> Pix</span>
-                    <span><em>Itens</em> 2 produtos adicionados</span>
-                    <span class="terminal-success">✓ Total calculado: R$ 169,70</span>
-                    <span class="terminal-success">✓ Recibo salvo em /recibos</span>
-                  </div>
-                </div>
-                <div class="receipt-paper" aria-hidden="true">
-                  <div class="receipt-paper-head">
-                    <span class="receipt-icon">▧</span>
-                    <div><strong>COMPROVANTE / RECIBO</strong><small>#20260925-171520</small></div>
-                  </div>
-                  <div class="receipt-meta-line"><span>25/09/2026 · 17:15</span><span>Pix</span></div>
-                  <div class="receipt-client"><small>CLIENTE</small><strong>João Silva</strong></div>
-                  <div class="receipt-item"><span><b>2×</b> Camiseta Algodão</span><strong>R$ 119,80</strong></div>
-                  <div class="receipt-item"><span><b>1×</b> Boné Aba Reta</span><strong>R$ 49,90</strong></div>
-                  <div class="receipt-total"><span>VALOR TOTAL</span><strong>R$ 169,70</strong></div>
-                  <div class="receipt-note">Entrega via Sedex · arquivo .txt UTF-8</div>
-                </div>
-              </div>
+            <!-- receipt-demo:start -->
+<div class="receipt-demo" data-receipt-demo>
+  <div class="demo-heading">
+    <div><span class="mono-label">DEMONSTRAÇÃO INTERATIVA</span><strong>Do item ao recibo, na prática.</strong></div>
+    <span class="demo-version">No navegador · original em Python</span>
+  </div>
+  <div class="receipt-preview" aria-label="Demonstração do Gerador de Recibos">
+    <div class="receipt-editor">
+      <div class="receipt-terminal" data-demo-fallback aria-hidden="true">
+        <div class="receipt-window-bar"><span></span><span></span><span></span><small>python · receipt-generator</small></div>
+        <div class="terminal-lines">
+          <span><b>$</b> python main.py</span>
+          <span><em>Cliente</em> João Silva</span>
+          <span><em>Pagamento</em> Pix</span>
+          <span><em>Itens</em> 2 produtos adicionados</span>
+          <span class="terminal-success">✓ Total calculado: R$ 169,70</span>
+          <span class="terminal-success">✓ Recibo salvo em /recibos</span>
+        </div>
+      </div>
+      <form class="receipt-demo-form" aria-label="Personalizar recibo de demonstração" novalidate hidden>
+        <div class="demo-customer">
+          <label>Cliente<input name="client" type="text" value="João Silva" maxlength="70" autocomplete="off"></label>
+          <label>Pagamento<select name="payment"><option>Pix</option><option>Dinheiro</option><option>Crédito</option><option>Débito</option></select></label>
+        </div>
+        <p class="demo-hint" id="receiptDemoHint">Edite os valores. Use vírgula ou ponto nos decimais; quantidades fracionadas são aceitas.</p>
+        <div class="demo-items" data-demo-items>
+          <div class="demo-item" data-demo-item>
+            <div class="demo-item-head"><span data-item-number>01</span><button type="button" data-demo-remove aria-label="Remover item 1">×</button></div>
+            <label class="demo-description">Produto ou serviço<input name="description" type="text" value="Camiseta Algodão" maxlength="70" required></label>
+            <label>Quantidade<input name="quantity" type="text" inputmode="decimal" value="2" aria-describedby="receiptDemoHint" required></label>
+            <label>Preço unitário (R$)<input name="price" type="text" inputmode="decimal" value="59,90" aria-describedby="receiptDemoHint" required></label>
           </div>
+          <div class="demo-item" data-demo-item>
+            <div class="demo-item-head"><span data-item-number>02</span><button type="button" data-demo-remove aria-label="Remover item 2">×</button></div>
+            <label class="demo-description">Produto ou serviço<input name="description" type="text" value="Boné Aba Reta" maxlength="70" required></label>
+            <label>Quantidade<input name="quantity" type="text" inputmode="decimal" value="1" aria-describedby="receiptDemoHint" required></label>
+            <label>Preço unitário (R$)<input name="price" type="text" inputmode="decimal" value="49,90" aria-describedby="receiptDemoHint" required></label>
+          </div>
+        </div>
+        <div class="demo-actions">
+          <button class="demo-add" type="button" data-demo-add>+ Adicionar item</button>
+          <button class="demo-download" type="button" data-demo-download disabled>Baixar .txt <span aria-hidden="true">↓</span></button>
+        </div>
+        <p class="demo-error" data-demo-error role="alert" tabindex="-1" hidden></p>
+        <p class="demo-status" data-demo-status role="status"></p>
+      </form>
+      <noscript><p class="demo-hint">Ative o JavaScript para experimentar o gerador. Esta é uma amostra da saída.</p></noscript>
+    </div>
+    <div class="receipt-paper" role="group" aria-label="Prévia do recibo">
+      <div class="receipt-paper-head"><span class="receipt-icon" aria-hidden="true">▧</span><div><strong>COMPROVANTE / RECIBO</strong><small>DEMONSTRAÇÃO DO PORTFÓLIO</small></div></div>
+      <div class="receipt-meta-line"><span>Prévia em tempo real</span><span data-demo-payment>Pix</span></div>
+      <div class="receipt-client"><small>CLIENTE</small><strong data-demo-client>João Silva</strong></div>
+      <div data-demo-preview-items>
+        <div class="receipt-item"><span><b>2×</b> Camiseta Algodão</span><strong>R$ 119,80</strong></div>
+        <div class="receipt-item"><span><b>1×</b> Boné Aba Reta</span><strong>R$ 49,90</strong></div>
+      </div>
+      <div class="receipt-total"><span>VALOR TOTAL</span><output data-demo-total aria-live="polite" aria-atomic="true">R$ 169,70</output></div>
+      <div class="receipt-note"><span data-demo-preview-state>Prévia atualizada</span> · arquivo .txt UTF-8</div>
+    </div>
+  </div>
+  <p class="demo-footnote" data-demo-enhanced hidden>Esta demonstração adapta a lógica para JavaScript. O projeto original executa em Python e salva os recibos em arquivo.</p>
+  <template>
+    <div class="demo-item" data-demo-item>
+      <div class="demo-item-head"><span data-item-number></span><button type="button" data-demo-remove aria-label="Remover item">×</button></div>
+      <label class="demo-description">Produto ou serviço<input name="description" type="text" maxlength="70" required></label>
+      <label>Quantidade<input name="quantity" type="text" inputmode="decimal" value="1" aria-describedby="receiptDemoHint" required></label>
+      <label>Preço unitário (R$)<input name="price" type="text" inputmode="decimal" value="0,00" aria-describedby="receiptDemoHint" required></label>
+    </div>
+  </template>
+</div>
+<!-- receipt-demo:end -->
+          </div>
+
+          <!-- engineering:receipt-generator:start -->
+<details class="engineering-panel">
+    <summary class="engineering-heading"><span><span class="mono-label">DECISÃO DE ENGENHARIA</span><strong>Como reduzir cálculos e formatação feitos à mão?</strong></span><span class="engineering-toggle" aria-hidden="true">+</span></summary>
+    <div class="engineering-body">
+    <div class="engineering-notes"><div><span>A escolha</span><p>Validar entradas, calcular subtotais e construir o recibo em UTF-8 usando a biblioteca padrão do Python.</p></div><div><span>O cuidado necessário</span><p>A execução local simplifica a instalação e o armazenamento. A demonstração deste portfólio adapta a interação ao navegador, sem executar Python no cliente.</p></div></div>
+
+    <a class="engineering-source" href="https://github.com/s4muelxl/receipt-generator-py/blob/main/gerador_recibo.py" target="_blank" rel="noopener noreferrer">Consultar a base técnica no GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </details>
+<!-- engineering:receipt-generator:end -->
 
           <div class="case-columns">
             <div><h3>Problema</h3><p>Reduzir erros de cálculo e tempo gasto formatando comprovantes e recibos manualmente em vendas feitas por WhatsApp, redes sociais ou atendimento direto.</p></div>
@@ -229,6 +361,15 @@
       </div>
     </section>
   </main>
+
+  <aside class="shell portfolio-build-note">
+    <details>
+      <summary>Bastidores deste portfólio <span aria-hidden="true">+</span></summary>
+      <p>HTML semântico, CSS compartilhado e JavaScript em módulos. As galerias respeitam economia de dados; o menu e o visualizador de imagens têm controle de foco e navegação por teclado.</p>
+      <p>A demonstração de recibos calcula valores em centavos, com testes automatizados para entradas inválidas, quantidades fracionadas e exportação de texto.</p>
+      <a href="https://github.com/s4muelxl/portifolio" target="_blank" rel="noopener noreferrer">Ver código e validações no GitHub ↗</a>
+    </details>
+  </aside>
 
   <footer class="site-footer">
     <div class="shell footer-grid">
@@ -257,6 +398,6 @@
 
   <a class="back-to-top" href="#conteudo" aria-label="Voltar ao topo" hidden>↑</a>
 
-  <script src="portfolio.js?v=20261023a" defer></script>
+  <script src="portfolio.js?v=20261023b" type="module"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-build="20261023a">
+<html lang="pt-BR" data-build="20261023b">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -19,11 +19,12 @@
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#080808">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <meta name="portfolio-build" content="20261023a">
+  <meta name="portfolio-build" content="20261023b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="portfolio.css?v=20261023a">
+  <link rel="stylesheet" href="portfolio.css?v=20261023b">
+  <link rel="stylesheet" href="portfolio-experience.css?v=20261023b">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -32,7 +33,7 @@
   <header class="site-header">
     <div class="shell nav-shell">
       <a class="brand" href="#inicio" aria-label="Samuel Alves — início">
-        <span class="brand-mark">SA</span>
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M18 11H12a4 4 0 0 0 0 8h2a4 4 0 0 1 0 8H8M22 27l6-16 6 16M24 22h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span class="brand-name">Samuel Alves</span>
       </a>
 
@@ -130,7 +131,7 @@
             <div class="project-feature-copy">
               <div class="project-number">01</div>
               <div class="project-meta">PWA · PRODUTO PESSOAL · INTERFACE REAL</div>
-              <h3>NEXO</h3>
+              <h3 class="project-title-nexo">NEXO</h3>
               <p>Plataforma mobile-first que centraliza treino, rotina, refeições, finanças, investimentos e inteligência contextual em uma única experiência.</p>
               <p class="project-role"><span>Implementação</span> Interface, regras de negócio, Supabase, segurança de dados e integrações do produto.</p>
               <ul>
@@ -146,7 +147,7 @@
               </div>
             </div>
 
-            <div class="project-gallery nexo-gallery" data-carousel="nexo" data-mode="mobile" data-count="13" tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Galeria de telas reais do NEXO">
+            <div class="project-gallery nexo-gallery device-showcase" data-carousel="nexo" data-mode="mobile" data-count="13" tabindex="0" role="region" aria-roledescription="carrossel" aria-label="Galeria de telas reais do NEXO">
               <div class="gallery-toolbar">
                 <div><span class="gallery-live-dot"></span><strong>NEXO</strong><small>Mobile · screenshots reais</small></div>
                 <span class="gallery-counter" data-carousel-count>01 / 13</span>
@@ -173,7 +174,7 @@
             <div class="project-feature-copy">
               <div class="project-number">02</div>
               <div class="project-meta">REALTIME · WEBRTC / SFU · INTERFACE REAL</div>
-              <h3>Cabeça de Gelo</h3>
+              <h3 class="project-title-cbc">Cabeça de Gelo</h3>
               <p>Plataforma privada de salas de voz e compartilhamento de tela com foco em baixa latência, estabilidade e controle de mídia.</p>
               <p class="project-role"><span>Implementação</span> Fluxo de salas, interface responsiva, mídia WebRTC/SFU, reconexão e diagnóstico de conexão.</p>
               <ul>
@@ -196,6 +197,7 @@
                   <button type="button" data-gallery-mode="mobile" aria-pressed="false">Mobile</button>
                 </div>
               </div>
+              <div class="browser-address" aria-hidden="true"><span class="browser-dots"><i></i><i></i><i></i></span><span>Cabeça de Gelo / comunicação em tempo real</span><span>↗</span></div>
               <div class="cbc-stage-wrap">
                 <button class="gallery-viewport gallery-desktop" type="button" data-carousel-open aria-label="Ampliar screenshot do Cabeça de Gelo">
                   <img class="gallery-image" data-carousel-frame src="assets/gallery/cbc-desktop-01-home-v4.webp" alt="Home desktop · entrada e criação de sala" width="1613" height="928" loading="lazy" decoding="async">
@@ -248,7 +250,7 @@
             </div>
           </article>
 
-          <article class="project-row reveal" id="projeto-saberx">
+          <article class="project-row project-saberx reveal" id="projeto-saberx">
             <div class="project-number">04</div>
             <div class="project-copy">
               <div class="project-meta">SISTEMA EMPRESARIAL</div>
@@ -258,6 +260,7 @@
             </div>
             <div class="project-actions">
               <a href="https://github.com/s4muelxl/saberx" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+              <a href="projetos.html#saberx">Estudo de caso →</a>
             </div>
           </article>
 
@@ -278,31 +281,77 @@
               <a href="https://github.com/s4muelxl/receipt-generator-py" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               <a href="projetos.html#receipt-generator">Estudo de caso →</a>
             </div>
-            <div class="receipt-preview" aria-label="Simulação visual baseada na saída real do Gerador de Recibos">
-                <div class="receipt-terminal" aria-hidden="true">
-                  <div class="receipt-window-bar"><span></span><span></span><span></span><small>python · receipt-generator</small></div>
-                  <div class="terminal-lines">
-                    <span><b>$</b> python main.py</span>
-                    <span><em>Cliente</em> João Silva</span>
-                    <span><em>Pagamento</em> Pix</span>
-                    <span><em>Itens</em> 2 produtos adicionados</span>
-                    <span class="terminal-success">✓ Total calculado: R$ 169,70</span>
-                    <span class="terminal-success">✓ Recibo salvo em /recibos</span>
-                  </div>
-                </div>
-                <div class="receipt-paper" aria-hidden="true">
-                  <div class="receipt-paper-head">
-                    <span class="receipt-icon">▧</span>
-                    <div><strong>COMPROVANTE / RECIBO</strong><small>#20260925-171520</small></div>
-                  </div>
-                  <div class="receipt-meta-line"><span>25/09/2026 · 17:15</span><span>Pix</span></div>
-                  <div class="receipt-client"><small>CLIENTE</small><strong>João Silva</strong></div>
-                  <div class="receipt-item"><span><b>2×</b> Camiseta Algodão</span><strong>R$ 119,80</strong></div>
-                  <div class="receipt-item"><span><b>1×</b> Boné Aba Reta</span><strong>R$ 49,90</strong></div>
-                  <div class="receipt-total"><span>VALOR TOTAL</span><strong>R$ 169,70</strong></div>
-                  <div class="receipt-note">Entrega via Sedex · arquivo .txt UTF-8</div>
-                </div>
-              </div>
+            <!-- receipt-demo:start -->
+<div class="receipt-demo" data-receipt-demo>
+  <div class="demo-heading">
+    <div><span class="mono-label">DEMONSTRAÇÃO INTERATIVA</span><strong>Do item ao recibo, na prática.</strong></div>
+    <span class="demo-version">No navegador · original em Python</span>
+  </div>
+  <div class="receipt-preview" aria-label="Demonstração do Gerador de Recibos">
+    <div class="receipt-editor">
+      <div class="receipt-terminal" data-demo-fallback aria-hidden="true">
+        <div class="receipt-window-bar"><span></span><span></span><span></span><small>python · receipt-generator</small></div>
+        <div class="terminal-lines">
+          <span><b>$</b> python main.py</span>
+          <span><em>Cliente</em> João Silva</span>
+          <span><em>Pagamento</em> Pix</span>
+          <span><em>Itens</em> 2 produtos adicionados</span>
+          <span class="terminal-success">✓ Total calculado: R$ 169,70</span>
+          <span class="terminal-success">✓ Recibo salvo em /recibos</span>
+        </div>
+      </div>
+      <form class="receipt-demo-form" aria-label="Personalizar recibo de demonstração" novalidate hidden>
+        <div class="demo-customer">
+          <label>Cliente<input name="client" type="text" value="João Silva" maxlength="70" autocomplete="off"></label>
+          <label>Pagamento<select name="payment"><option>Pix</option><option>Dinheiro</option><option>Crédito</option><option>Débito</option></select></label>
+        </div>
+        <p class="demo-hint" id="receiptDemoHint">Edite os valores. Use vírgula ou ponto nos decimais; quantidades fracionadas são aceitas.</p>
+        <div class="demo-items" data-demo-items>
+          <div class="demo-item" data-demo-item>
+            <div class="demo-item-head"><span data-item-number>01</span><button type="button" data-demo-remove aria-label="Remover item 1">×</button></div>
+            <label class="demo-description">Produto ou serviço<input name="description" type="text" value="Camiseta Algodão" maxlength="70" required></label>
+            <label>Quantidade<input name="quantity" type="text" inputmode="decimal" value="2" aria-describedby="receiptDemoHint" required></label>
+            <label>Preço unitário (R$)<input name="price" type="text" inputmode="decimal" value="59,90" aria-describedby="receiptDemoHint" required></label>
+          </div>
+          <div class="demo-item" data-demo-item>
+            <div class="demo-item-head"><span data-item-number>02</span><button type="button" data-demo-remove aria-label="Remover item 2">×</button></div>
+            <label class="demo-description">Produto ou serviço<input name="description" type="text" value="Boné Aba Reta" maxlength="70" required></label>
+            <label>Quantidade<input name="quantity" type="text" inputmode="decimal" value="1" aria-describedby="receiptDemoHint" required></label>
+            <label>Preço unitário (R$)<input name="price" type="text" inputmode="decimal" value="49,90" aria-describedby="receiptDemoHint" required></label>
+          </div>
+        </div>
+        <div class="demo-actions">
+          <button class="demo-add" type="button" data-demo-add>+ Adicionar item</button>
+          <button class="demo-download" type="button" data-demo-download disabled>Baixar .txt <span aria-hidden="true">↓</span></button>
+        </div>
+        <p class="demo-error" data-demo-error role="alert" tabindex="-1" hidden></p>
+        <p class="demo-status" data-demo-status role="status"></p>
+      </form>
+      <noscript><p class="demo-hint">Ative o JavaScript para experimentar o gerador. Esta é uma amostra da saída.</p></noscript>
+    </div>
+    <div class="receipt-paper" role="group" aria-label="Prévia do recibo">
+      <div class="receipt-paper-head"><span class="receipt-icon" aria-hidden="true">▧</span><div><strong>COMPROVANTE / RECIBO</strong><small>DEMONSTRAÇÃO DO PORTFÓLIO</small></div></div>
+      <div class="receipt-meta-line"><span>Prévia em tempo real</span><span data-demo-payment>Pix</span></div>
+      <div class="receipt-client"><small>CLIENTE</small><strong data-demo-client>João Silva</strong></div>
+      <div data-demo-preview-items>
+        <div class="receipt-item"><span><b>2×</b> Camiseta Algodão</span><strong>R$ 119,80</strong></div>
+        <div class="receipt-item"><span><b>1×</b> Boné Aba Reta</span><strong>R$ 49,90</strong></div>
+      </div>
+      <div class="receipt-total"><span>VALOR TOTAL</span><output data-demo-total aria-live="polite" aria-atomic="true">R$ 169,70</output></div>
+      <div class="receipt-note"><span data-demo-preview-state>Prévia atualizada</span> · arquivo .txt UTF-8</div>
+    </div>
+  </div>
+  <p class="demo-footnote" data-demo-enhanced hidden>Esta demonstração adapta a lógica para JavaScript. O projeto original executa em Python e salva os recibos em arquivo.</p>
+  <template>
+    <div class="demo-item" data-demo-item>
+      <div class="demo-item-head"><span data-item-number></span><button type="button" data-demo-remove aria-label="Remover item">×</button></div>
+      <label class="demo-description">Produto ou serviço<input name="description" type="text" maxlength="70" required></label>
+      <label>Quantidade<input name="quantity" type="text" inputmode="decimal" value="1" aria-describedby="receiptDemoHint" required></label>
+      <label>Preço unitário (R$)<input name="price" type="text" inputmode="decimal" value="0,00" aria-describedby="receiptDemoHint" required></label>
+    </div>
+  </template>
+</div>
+<!-- receipt-demo:end -->
           </article>
         </div>
 
@@ -429,6 +478,15 @@
     </section>
   </main>
 
+  <aside class="shell portfolio-build-note">
+    <details>
+      <summary>Bastidores deste portfólio <span aria-hidden="true">+</span></summary>
+      <p>HTML semântico, CSS compartilhado e JavaScript em módulos. As galerias respeitam economia de dados; o menu e o visualizador de imagens têm controle de foco e navegação por teclado.</p>
+      <p>A demonstração de recibos calcula valores em centavos, com testes automatizados para entradas inválidas, quantidades fracionadas e exportação de texto.</p>
+      <a href="https://github.com/s4muelxl/portifolio" target="_blank" rel="noopener noreferrer">Ver código e validações no GitHub ↗</a>
+    </details>
+  </aside>
+
   <footer class="site-footer">
     <div class="shell footer-grid">
       <div><strong>Samuel Alves</strong><span>Engenharia de Software · São Paulo, SP</span></div>
@@ -459,6 +517,6 @@
 
   <a class="back-to-top" href="#conteudo" aria-label="Voltar ao topo" hidden>↑</a>
 
-  <script src="portfolio.js?v=20261023a" defer></script>
+  <script src="portfolio.js?v=20261023b" type="module"></script>
 </body>
 </html>

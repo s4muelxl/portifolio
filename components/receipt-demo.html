@@ -1,0 +1,69 @@
+<div class="receipt-demo" data-receipt-demo>
+  <div class="demo-heading">
+    <div><span class="mono-label">DEMONSTRAÇÃO INTERATIVA</span><strong>Do item ao recibo, na prática.</strong></div>
+    <span class="demo-version">No navegador · original em Python</span>
+  </div>
+  <div class="receipt-preview" aria-label="Demonstração do Gerador de Recibos">
+    <div class="receipt-editor">
+      <div class="receipt-terminal" data-demo-fallback aria-hidden="true">
+        <div class="receipt-window-bar"><span></span><span></span><span></span><small>python · receipt-generator</small></div>
+        <div class="terminal-lines">
+          <span><b>$</b> python main.py</span>
+          <span><em>Cliente</em> João Silva</span>
+          <span><em>Pagamento</em> Pix</span>
+          <span><em>Itens</em> 2 produtos adicionados</span>
+          <span class="terminal-success">✓ Total calculado: R$ 169,70</span>
+          <span class="terminal-success">✓ Recibo salvo em /recibos</span>
+        </div>
+      </div>
+      <form class="receipt-demo-form" aria-label="Personalizar recibo de demonstração" novalidate hidden>
+        <div class="demo-customer">
+          <label>Cliente<input name="client" type="text" value="João Silva" maxlength="70" autocomplete="off"></label>
+          <label>Pagamento<select name="payment"><option>Pix</option><option>Dinheiro</option><option>Crédito</option><option>Débito</option></select></label>
+        </div>
+        <p class="demo-hint" id="receiptDemoHint">Edite os valores. Use vírgula ou ponto nos decimais; quantidades fracionadas são aceitas.</p>
+        <div class="demo-items" data-demo-items>
+          <div class="demo-item" data-demo-item>
+            <div class="demo-item-head"><span data-item-number>01</span><button type="button" data-demo-remove aria-label="Remover item 1">×</button></div>
+            <label class="demo-description">Produto ou serviço<input name="description" type="text" value="Camiseta Algodão" maxlength="70" required></label>
+            <label>Quantidade<input name="quantity" type="text" inputmode="decimal" value="2" aria-describedby="receiptDemoHint" required></label>
+            <label>Preço unitário (R$)<input name="price" type="text" inputmode="decimal" value="59,90" aria-describedby="receiptDemoHint" required></label>
+          </div>
+          <div class="demo-item" data-demo-item>
+            <div class="demo-item-head"><span data-item-number>02</span><button type="button" data-demo-remove aria-label="Remover item 2">×</button></div>
+            <label class="demo-description">Produto ou serviço<input name="description" type="text" value="Boné Aba Reta" maxlength="70" required></label>
+            <label>Quantidade<input name="quantity" type="text" inputmode="decimal" value="1" aria-describedby="receiptDemoHint" required></label>
+            <label>Preço unitário (R$)<input name="price" type="text" inputmode="decimal" value="49,90" aria-describedby="receiptDemoHint" required></label>
+          </div>
+        </div>
+        <div class="demo-actions">
+          <button class="demo-add" type="button" data-demo-add>+ Adicionar item</button>
+          <button class="demo-download" type="button" data-demo-download disabled>Baixar .txt <span aria-hidden="true">↓</span></button>
+        </div>
+        <p class="demo-error" data-demo-error role="alert" tabindex="-1" hidden></p>
+        <p class="demo-status" data-demo-status role="status"></p>
+      </form>
+      <noscript><p class="demo-hint">Ative o JavaScript para experimentar o gerador. Esta é uma amostra da saída.</p></noscript>
+    </div>
+    <div class="receipt-paper" role="group" aria-label="Prévia do recibo">
+      <div class="receipt-paper-head"><span class="receipt-icon" aria-hidden="true">▧</span><div><strong>COMPROVANTE / RECIBO</strong><small>DEMONSTRAÇÃO DO PORTFÓLIO</small></div></div>
+      <div class="receipt-meta-line"><span>Prévia em tempo real</span><span data-demo-payment>Pix</span></div>
+      <div class="receipt-client"><small>CLIENTE</small><strong data-demo-client>João Silva</strong></div>
+      <div data-demo-preview-items>
+        <div class="receipt-item"><span><b>2×</b> Camiseta Algodão</span><strong>R$ 119,80</strong></div>
+        <div class="receipt-item"><span><b>1×</b> Boné Aba Reta</span><strong>R$ 49,90</strong></div>
+      </div>
+      <div class="receipt-total"><span>VALOR TOTAL</span><output data-demo-total aria-live="polite" aria-atomic="true">R$ 169,70</output></div>
+      <div class="receipt-note"><span data-demo-preview-state>Prévia atualizada</span> · arquivo .txt UTF-8</div>
+    </div>
+  </div>
+  <p class="demo-footnote" data-demo-enhanced hidden>Esta demonstração adapta a lógica para JavaScript. O projeto original executa em Python e salva os recibos em arquivo.</p>
+  <template>
+    <div class="demo-item" data-demo-item>
+      <div class="demo-item-head"><span data-item-number></span><button type="button" data-demo-remove aria-label="Remover item">×</button></div>
+      <label class="demo-description">Produto ou serviço<input name="description" type="text" maxlength="70" required></label>
+      <label>Quantidade<input name="quantity" type="text" inputmode="decimal" value="1" aria-describedby="receiptDemoHint" required></label>
+      <label>Preço unitário (R$)<input name="price" type="text" inputmode="decimal" value="0,00" aria-describedby="receiptDemoHint" required></label>
+    </div>
+  </template>
+</div>
