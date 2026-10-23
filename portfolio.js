@@ -38,13 +38,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const lightboxCaption = $('#lightboxCaption');
   const lightboxCount = $('#lightboxCount');
   const lightboxDialog = $('.lightbox-dialog');
+  const overlayExtras = [...document.querySelectorAll('.portfolio-build-note, .back-to-top, .skip-link')];
   let menuOpen = false;
   let previousMenuFocus = null;
   let previousViewerFocus = null;
   let activeGallery = null;
 
   // One shared overlay state prevents focus or scroll locks from leaking.
-  const setInert = (elements, value) => elements.forEach(element => {
+  const setInert = (elements, value) => new Set([...elements, ...overlayExtras]).forEach(element => {
     if (element instanceof HTMLElement) element.inert = value;
   });
 
