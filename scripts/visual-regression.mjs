@@ -1,4 +1,4 @@
-import {chromium} from 'playwright';
+import {chromium,webkit} from 'playwright';
 import pixelmatch from 'pixelmatch';
 import {PNG} from 'pngjs';
 import {mkdir,readFile,writeFile} from 'node:fs/promises';
@@ -148,8 +148,54 @@ try{
   await browser.close();
 }
 
+async function smokeBrowser(engine,name,contextOptions,expectInApp=false){
+  const browser=await engine.launch({headless:true});
+  try{
+    const context=await browser.newContext({...contextOptions,reducedMotion:'reduce',colorScheme:'dark'});
+    for(const route of routes){
+      const page=await context.newPage();
+      try{
+        await page.goto(CURRENT+route.url,{waitUntil:'networkidle',timeout:30000});
+        await stabilize(page);
+        await auditLayout(page,route,name);
+        if(expectInApp){
+          const detected=await page.evaluate(()=>document.documentElement.classList.contains('in-app-browser'));
+          if(!detected)throw new Error(`${route.name}/${name}: navegador interno não detectado`);
+        }
+        await page.evaluate(()=>scrollTo(0,0));
+        await page.locator('#navToggle').click();
+        const menu=await page.locator('#navMenu').boundingBox();
+        if(!menu||menu.x < -1||menu.x+menu.width > contextOptions.viewport.width+1)throw new Error(`${route.name}/${name}: menu fora do viewport`);
+      }catch(error){
+        failures.push(error instanceof Error?error.message:String(error));
+      }finally{
+        await page.close();
+      }
+    }
+    await context.close();
+  }finally{
+    await browser.close();
+  }
+}
+
+await smokeBrowser(webkit,'iphone-webkit',{
+  viewport:{width:390,height:844},
+  userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1',
+  isMobile:true,
+  hasTouch:true,
+  deviceScaleFactor:3,
+});
+
+await smokeBrowser(chromium,'instagram-in-app',{
+  viewport:{width:390,height:844},
+  userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148 Instagram 402.0.0.0.0',
+  isMobile:true,
+  hasTouch:true,
+  deviceScaleFactor:3,
+},true);
+
 if(failures.length){
   console.error('\nVisual QA falhou:\n- '+failures.join('\n- '));
   process.exit(1);
 }
-console.log('\nVisual QA: 6 viewports, home/cases, estados de topo/foco e menus mobile aprovados.');
+console.log('\nVisual QA: 6 viewports + iPhone/WebKit + Instagram in-app aprovados.');
