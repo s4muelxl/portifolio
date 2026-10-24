@@ -11,16 +11,16 @@ const allowVisualChange=process.env.ALLOW_VISUAL_CHANGE==='1';
 const maxDiffRatio=0.008;
 
 const viewports=[
-  ['mobile-360',360,800],
+  ['mobile-320',320,800],
   ['mobile-390',390,844],
-  ['mobile-430',430,932],
   ['tablet-768',768,1024],
-  ['laptop-1366',1366,768],
+  ['tablet-1024',1024,768],
+  ['desktop-1440',1440,900],
   ['desktop-1920',1920,1080],
 ];
 
 const routes=[
-  {name:'home',url:'/',focus:'#projetos',critical:['.site-header','.hero-grid','.recruiter-signal','.featured-projects','.contact-panel']},
+  {name:'home',url:'/',focus:'#projetos',critical:['.site-header','.hero-grid','.profile-line','.featured-projects','.contact-panel']},
   {name:'cases',url:'/projetos.html',focus:'#nexo',critical:['.site-header','.projects-title-grid','.project-detail-section','.case-proof-summary']},
 ];
 
@@ -119,7 +119,7 @@ try{
           await compareImages(baseFile,currentFile,diffFile,stem);
         }
 
-        if(width<=430){
+        if(width<=1024){
           for(const [page,label] of [[baseline,'baseline'],[current,'current']]){
             await page.evaluate(()=>scrollTo(0,0));
             await page.locator('#navToggle').click();
@@ -128,6 +128,10 @@ try{
             if(!menu||menu.x < -1||menu.x+menu.width > width+1)throw new Error(`${route.name}/${viewportName}: menu mobile fora do viewport`);
             await page.screenshot({path:path.join(OUT,label,`${route.name}-${viewportName}-menu.png`),animations:'disabled'});
           }
+          await current.keyboard.press('Escape');
+          const menuState=await current.locator('#navToggle').getAttribute('aria-expanded');
+          const restoredFocus=await current.evaluate(()=>document.activeElement?.id);
+          if(menuState!=='false'||restoredFocus!=='navToggle')throw new Error(`${route.name}/${viewportName}: Escape não fechou o menu com restauração de foco`);
           await compareImages(
             path.join(OUT,'baseline',`${route.name}-${viewportName}-menu.png`),
             path.join(OUT,'current',`${route.name}-${viewportName}-menu.png`),

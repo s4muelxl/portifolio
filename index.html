@@ -26,13 +26,13 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.json">
   <link rel="preload" as="image" href="assets/samuel-profile.webp?v=20261022-instagramfix" fetchpriority="high">
-  <meta name="portfolio-build" content="20261024a">
+  <meta name="portfolio-build" content="20261024b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="portfolio.css?v=20261023j">
   <link rel="stylesheet" href="portfolio-experience.css?v=20261023c">
-  <link rel="stylesheet" href="portfolio-premium.css?v=20261024a"></head>
+  <link rel="stylesheet" href="portfolio-premium.css?v=20261024b"></head>
 <body itemscope itemtype="https://schema.org/ProfilePage">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
@@ -82,44 +82,20 @@
           <div class="profile-line">
             <img class="avatar" itemprop="image" src="assets/samuel-profile.webp?v=20261022-instagramfix" alt="Samuel Alves" width="96" height="96" fetchpriority="high" decoding="async">
             <div>
-              <span class="mono-label">SÃO PAULO · BRASIL</span>
-              <p>Estudante de Engenharia de Software</p>
+              <span class="mono-label">ENGENHARIA DE SOFTWARE</span>
+              <p>São Paulo, SP</p>
             </div>
           </div>
 
           <h1 itemprop="name">Samuel Alves</h1>
-          <h2>Engenharia de software aplicada a produtos web, dados e IA.</h2>
-          <div class="recruiter-signal" aria-label="Resumo rápido para recrutadores">
-            <span>OBJETIVO · ESTÁGIO / JÚNIOR</span>
-            <span>05 PROJETOS</span>
-            <span>01 CLIENTE REAL</span>
-          </div>
-          <p class="hero-text" itemprop="description">Sou estudante de Engenharia de Software na Universidade São Judas Tadeu e busco estágio ou posição júnior em tecnologia. Aqui você encontra produtos próprios, um projeto para cliente real e estudos que mostram como transformo requisitos em software funcionando.</p>
+          <h2>Construo aplicações que organizam rotinas, automatizam operações e conectam pessoas.</h2>
+          <p class="hero-text" itemprop="description">Estudante de Engenharia de Software na Universidade São Judas Tadeu, em busca de estágio ou posição júnior. Conheça meus projetos, as decisões por trás deles e o código que sustenta cada solução.</p>
 
           <div class="hero-actions">
             <a class="button button-light" href="#projetos">Ver projetos</a>
             <a class="button button-dark" href="assets/Curriculo_Samuel_Alves.pdf" download>Baixar currículo</a>
           </div>
         </div>
-
-        <aside class="profile-summary reveal" aria-label="Resumo profissional">
-          <p class="summary-title">Perfil em resumo</p>
-          <div class="summary-row"><span>Objetivo</span><strong>Estágio / Júnior Tech</strong></div>
-          <div class="summary-row"><span>Graduação</span><strong>Eng. de Software · 2025–2028</strong></div>
-          <div class="summary-row"><span>Foco</span><strong>Software · Dados · IA</strong></div>
-          <div class="summary-row"><span>Idiomas</span><strong>PT nativo · EN B1</strong></div>
-          <div class="summary-links">
-            <a itemprop="sameAs" href="https://github.com/s4muelxl" target="_blank" rel="me noopener noreferrer">GitHub ↗</a>
-            <a itemprop="sameAs" href="https://www.linkedin.com/in/samuel-alves-277015332" target="_blank" rel="me noopener noreferrer">LinkedIn ↗</a>
-          </div>
-        </aside>
-      </div>
-
-      <div class="shell signal-grid evidence-grid reveal" aria-label="Resumo de evidências do portfólio">
-        <div><span>05</span><strong>Projetos selecionados</strong><small>Produtos, sistemas e automação</small></div>
-        <div><span>01</span><strong>Cliente real</strong><small>BMI9 · projeto em produção</small></div>
-        <div><span>15</span><strong>Cursos & certificações</strong><small>Software, dados, IA e segurança</small></div>
-        <div><span>2025—28</span><strong>Engenharia de Software</strong><small>Graduação em andamento</small></div>
       </div>
     </section>
 
@@ -140,14 +116,14 @@
               <div class="project-meta">PWA · PRODUTO PESSOAL · INTERFACE REAL</div>
               <h3 class="project-title-nexo"><a href="projetos.html#nexo">NEXO</a></h3>
               <p class="project-question"><span>Questão de engenharia</span> Como manter vários domínios em uma experiência coerente?</p>
-              <p>Plataforma mobile-first que centraliza treino, rotina, refeições, finanças, investimentos e inteligência contextual em uma única experiência.</p>
-              <p class="project-role"><span>Implementação</span> Interface, regras de negócio, Supabase, segurança de dados e integrações do produto.</p>
+              <p>Treino, refeições, finanças e rotina em uma experiência integrada. O NEXO organiza módulos pessoais em uma interface mobile-first, com estado local, dados remotos e inteligência contextual.</p>
+              <p class="project-role"><span>Implementação</span> Interface e regras de negócio, integração com Supabase e fronteiras entre estado local e dados remotos.</p>
               <ul>
                 <li>Autenticação, RLS e persistência com Supabase</li>
                 <li>Planos de treino, histórico, finanças e investimentos</li>
-                <li>Agent híbrido, notificações, insights e fila offline</li>
+                <li>Zustand para estado local, TanStack Query para dados remotos, notificações e inteligência contextual</li>
               </ul>
-              <div class="tech-line">Expo · React Native Web · TypeScript · Supabase · PostgreSQL</div>
+              <div class="tech-line">Expo · React Native Web · TypeScript · TanStack Query · Zustand · Supabase · PostgreSQL</div>
               <div class="feature-links">
                 <a href="https://nexo-ten-mu.vercel.app" target="_blank" rel="noopener noreferrer">Abrir app ↗</a>
                 <a href="https://github.com/s4muelxl/nexo" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
@@ -184,11 +160,11 @@
               <div class="project-meta">REALTIME · WEBRTC / SFU · INTERFACE REAL</div>
               <h3 class="project-title-cbc"><a href="projetos.html#cbcdegelo">Cabeça de Gelo</a></h3>
               <p class="project-question"><span>Questão de engenharia</span> Como separar o controle da sala do transporte de mídia?</p>
-              <p>Plataforma privada de salas de voz e compartilhamento de tela com foco em baixa latência, estabilidade e controle de mídia.</p>
-              <p class="project-role"><span>Implementação</span> Fluxo de salas, interface responsiva, mídia WebRTC/SFU, reconexão e diagnóstico de conexão.</p>
+              <p>Comunicação em tempo real, direto no navegador. Salas de voz e compartilhamento de tela com controle de salas, permissões, reconexão e diagnóstico.</p>
+              <p class="project-role"><span>Implementação</span> Fluxo de salas e integração WebRTC/LiveKit, incluindo reconexão e diagnóstico; o LiveKit fornece o SFU e a distribuição de mídia.</p>
               <ul>
                 <li>Salas temporárias, canais de voz e permissões</li>
-                <li>WebRTC, LiveKit SFU, simulcast e reconexão</li>
+                <li>WebRTC, integração com LiveKit SFU, simulcast, reconexão e diagnóstico</li>
                 <li>Interfaces responsivas específicas para mobile e desktop</li>
               </ul>
               <div class="tech-line">Next.js · React · TypeScript · WebRTC · LiveKit · Vitest</div>
@@ -233,7 +209,7 @@
               <div class="project-meta">CLIENTE REAL · WEB / BACKEND · EM PRODUÇÃO</div>
               <h3><a href="projetos.html#bmi9">BMI9</a></h3>
               <p class="project-question"><span>Questão de engenharia</span> Como levar o interesse do visitante até uma proposta?</p>
-              <p>Plataforma institucional e comercial construída para uma empresa real do setor de construção civil, com geração de propostas, leads e automação de contato.</p>
+              <p>Da apresentação da empresa à solicitação de orçamento. Site para cliente real com serviços, obras, captação de leads e fluxo comercial integrado.</p>
               <p class="project-role"><span>Implementação</span> Site responsivo, fluxo comercial, API serverless, proposta em PDF e entrega redundante de e-mail.</p>
               <ul>
                 <li>Frontend em HTML, CSS e JavaScript sem framework pesado</li>
@@ -271,7 +247,8 @@
               <div class="project-meta">SISTEMA EMPRESARIAL</div>
               <h3><a href="projetos.html#saberx">SaberX</a></h3>
               <p class="project-question"><span>Questão de engenharia</span> Como transformar planilhas em uma operação multiusuário?</p>
-              <p>Sistema de cotação, compras e vendas para substituir planilhas e centralizar produtos, fornecedores, pedidos, validações e relatórios.</p>
+              <p>Da planilha de cotação a uma operação com regras e histórico. Produtos, fornecedores, cotações, compras e vendas compartilham dados, validações e relatórios.</p>
+              <p class="project-role"><span>Regra verificável</span> Uma proposta com quantidade insuficiente fica fora da disputa de menor preço, mesmo quando o valor nominal é menor.</p>
               <div class="tech-line">React · TypeScript · Vite · Supabase · PostgreSQL · RLS</div>
             </div>
             <div class="project-actions">
@@ -296,7 +273,7 @@
               <div class="project-meta">AUTOMAÇÃO · PYTHON CLI</div>
               <h3><a href="projetos.html#receipt-generator">Gerador de Recibos</a> <span class="project-alias">Receipt Generator</span></h3>
               <p class="project-question"><span>Questão de engenharia</span> Como reduzir cálculos e formatação feitos à mão?</p>
-              <p>Automação em Python para gerar comprovantes e recibos de pedidos com itens dinâmicos, cálculo automático, validação de entradas e histórico em arquivos de texto.</p>
+              <p>De itens e valores a um comprovante pronto para salvar. A automação em Python valida entradas, calcula subtotais e total e persiste o recibo em arquivo UTF-8.</p>
               <ul>
                 <li>Subtotais e valor total calculados automaticamente em reais</li>
                 <li>Identificador único e timestamp para cada recibo</li>
