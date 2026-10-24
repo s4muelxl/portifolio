@@ -48,3 +48,21 @@ test('a navegação redundante de projetos não é renderizada',async()=>{
   assert.equal(home.includes('project-index'),false);
   assert.equal(cases.includes('project-index'),false);
 });
+
+test('hero prioriza proposta, foto e duas ações sem resumo redundante',async()=>{
+  const home=await readFile(new URL('index.html',root),'utf8');
+  assert.ok(home.includes('Construo aplicações que organizam rotinas, automatizam operações e conectam pessoas.'));
+  assert.ok(home.includes('Universidade São Judas Tadeu'));
+  assert.equal(home.includes('class="recruiter-signal"'),false);
+  assert.equal(home.includes('class="profile-summary'),false);
+  assert.equal(home.includes('signal-grid evidence-grid'),false);
+  assert.equal((home.match(/class="hero-actions"/g)||[]).length,1);
+});
+test('cases expõem evidências concretas de reconexão e regra de cotação',async()=>{
+  const cases=await readFile(new URL('projetos.html',root),'utf8');
+  assert.ok(cases.includes('tests/rtc-reconnection-media.test.ts'));
+  assert.ok(cases.includes('src/domain/validations.ts'));
+  assert.ok(cases.includes('src/domain/calculations.test.ts'));
+  assert.ok(cases.includes('R$ 240,00'));
+  assert.ok(cases.includes('R$ 3.338,14'));
+});

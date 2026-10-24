@@ -25,13 +25,13 @@
   <meta name="color-scheme" content="dark">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.json">
-  <meta name="portfolio-build" content="20261024a">
+  <meta name="portfolio-build" content="20261024b">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="portfolio.css?v=20261023j">
   <link rel="stylesheet" href="portfolio-experience.css?v=20261023c">
-  <link rel="stylesheet" href="portfolio-premium.css?v=20261024a">
+  <link rel="stylesheet" href="portfolio-premium.css?v=20261024b">
 </head>
 <body>
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -143,10 +143,11 @@
 <!-- engineering:nexo:end -->
 
           <div class="case-columns case-columns-deep">
-            <div><h3>Contexto e escopo</h3><p>O NEXO concentra treino, rotina, refeições, finanças, investimentos e inteligência contextual em um PWA/mobile-first. O desafio é manter domínios diferentes coerentes sem transformar a interface em vários aplicativos desconectados.</p></div>
-            <div><h3>Decisões de engenharia</h3><ul><li>Expo Router + React Native Web para compartilhar estrutura entre experiência mobile e web</li><li>TanStack Query para dados remotos e Zustand para estado local</li><li>Regras determinísticas locais antes de recorrer a providers de IA</li><li>Retry inteligente e fila offline para operações que podem sobreviver a perda de conexão</li></ul></div>
-            <div><h3>Segurança e dados</h3><ul><li>Supabase Auth, PostgreSQL e RLS nas tabelas de dados do usuário</li><li>Edge Functions para operações server-side</li><li>Credenciais privilegiadas mantidas fora do frontend</li><li>Web Push e Service Worker integrados ao PWA</li></ul></div>
-            <div><h3>Validação</h3><ul><li>Lint e TypeScript strict</li><li>Testes unitários com Jest</li><li>Typecheck e testes das Edge Functions</li><li>Build web reproduzível para o artefato publicado na Vercel</li></ul></div>
+            <div><h3>Contexto e problema</h3><p>Treino, refeições, finanças e rotina convivem no mesmo produto. O desafio é manter módulos diferentes coerentes sem transformar a experiência em vários aplicativos desconectados.</p></div>
+            <div><h3>Minha responsabilidade</h3><p>Estruturei a interface e os fluxos do produto, implementei regras de negócio e integrei autenticação, dados e operações do Supabase com a camada de estado da aplicação.</p></div>
+            <div><h3>Decisão de implementação</h3><ul><li>Expo Router e React Native Web para a experiência mobile/web</li><li>Zustand para estado local e TanStack Query para consultas e sincronização remota</li><li>Supabase Auth, PostgreSQL, RLS e Edge Functions nas fronteiras de dados e servidor</li></ul></div>
+            <div><h3>Alternativas e limitações</h3><p>Separar estado local de dados remotos reduz acoplamento, mas exige invalidação de cache e contratos claros quando uma ação afeta mais de um módulo. A experiência web também permanece sujeita às capacidades do navegador.</p></div>
+            <div><h3>Entrega e validação</h3><ul><li>Scripts de typecheck, lint, testes Jest e testes das Edge Functions no repositório</li><li>Quality contracts e auditoria de segurança antes do build web</li><li>13 telas reais documentam os principais fluxos do produto</li></ul></div>
           </div>
           <p class="case-limit"><strong>Escopo do case.</strong> A apresentação descreve funcionalidades e arquitetura verificáveis no repositório; não atribui métricas de uso ou impacto que não estejam medidas.</p>
           <div class="case-tech">Expo · React 19 · React Native · TypeScript · Supabase · PostgreSQL · Deno · Jest · Vercel</div>
@@ -209,11 +210,13 @@
 <!-- engineering:cbcdegelo:end -->
 
           <div class="case-columns case-columns-deep">
-            <div><h3>Contexto e problema</h3><p>Plataforma privada para grupos de amigos com voz e compartilhamento de tela. O problema central é manter uma experiência simples enquanto conexão, mídia e qualidade mudam em tempo real.</p></div>
-            <div><h3>Desafio técnico</h3><ul><li>WebRTC com ICE/STUN/TURN e codec Opus</li><li>SFU LiveKit para distribuição de mídia</li><li>Simulcast para múltiplas camadas de qualidade</li><li>Reconexão com backoff, jitter e leitura de RTT</li></ul></div>
-            <div><h3>Decisões de produto</h3><ul><li>Salas temporárias e hierarquia OWNER / ADMIN / MEMBER</li><li>Canais de voz dinâmicos</li><li>Controles de mute, deafen e dispositivos</li><li>Interfaces distintas para desktop e mobile quando a ergonomia exige</li></ul></div>
-            <div><h3>Validação</h3><ul><li>Vitest para testes unitários</li><li>Validação de typecheck, lint e build</li><li>Simulações documentadas de 30 usuários e múltiplos compartilhamentos</li><li>Monitoramento de FPS, memória, RTT e estados de reconexão na implementação</li></ul></div>
+            <div><h3>Contexto e problema</h3><p>Salas de voz e compartilhamento de tela precisam continuar simples para quem usa, mesmo quando conexão, tracks e qualidade de mídia mudam em tempo real.</p></div>
+            <div><h3>Minha responsabilidade</h3><p>Implementei o fluxo de salas, permissões e interface e integrei o cliente WebRTC/LiveKit com reconexão e diagnóstico. O LiveKit fornece o SFU e as primitivas de transporte e distribuição de mídia; a aplicação orquestra como esses recursos entram no produto.</p></div>
+            <div><h3>Decisão de implementação</h3><ul><li>Controle de sala e credenciais separado do ciclo de vida da mídia</li><li>LiveKit SFU para distribuir voz e tela entre participantes</li><li>Simulcast, leitura de RTC stats e políticas de recuperação ao redor do transporte</li></ul></div>
+            <div><h3>Alternativas e limitações</h3><p>Uma topologia P2P seria mais simples para poucos participantes, mas aumenta conexões entre pares conforme a sala cresce. A SFU reduz esse acoplamento entre clientes, ao custo de depender do serviço de mídia e tratar reconexão, qualidade e limpeza de tracks com cuidado.</p></div>
+            <div><h3>Entrega e validação</h3><ul><li>Vitest, typecheck, lint e auditorias de RTC no fluxo de release</li><li>Teste dedicado reconcilia mídia remota após reconexão do LiveKit</li><li>Diagnóstico registra ICE, RTC stats e marcos de sessão sem atribuir ao app capacidades nativas do LiveKit</li></ul></div>
           </div>
+          <div class="case-links case-evidence-links" aria-label="Evidências técnicas do Cabeça de Gelo"><a href="https://github.com/s4muelxl/cbcdegelo/blob/main/lib/sfu/LiveKitSFUClient.ts" target="_blank" rel="noopener noreferrer">Integração LiveKit ↗</a><a href="https://github.com/s4muelxl/cbcdegelo/blob/main/tests/rtc-reconnection-media.test.ts" target="_blank" rel="noopener noreferrer">Teste de reconexão ↗</a><a href="https://github.com/s4muelxl/cbcdegelo/blob/main/docs/CONNECTION_ENGINE.md" target="_blank" rel="noopener noreferrer">Connection Engine ↗</a></div>
           <p class="case-limit"><strong>Escopo do case.</strong> Simulações de carga são apresentadas como simulações; metas de latência e qualidade não são tratadas como resultado de produção sem medição correspondente.</p>
           <div class="case-tech">Next.js · React · TypeScript · WebRTC · LiveKit · Opus · Vitest</div>
         </article>
@@ -252,11 +255,13 @@
 <!-- engineering:bmi9:end -->
 
           <div class="case-columns case-columns-deep">
-            <div><h3>Contexto e problema</h3><p>Site institucional e fluxo de captação de leads para uma empresa real de pisos industriais. A solução precisava apresentar serviços e obras e levar o visitante de interesse a orçamento sem uma stack pesada no cliente.</p></div>
-            <div><h3>Decisões de engenharia</h3><ul><li>HTML, CSS e JavaScript vanilla no frontend</li><li>Python/Flask em funções serverless no backend</li><li>Propostas em PDF geradas no servidor</li><li>i18n pt-BR / en-US com preferência persistida</li></ul></div>
-            <div><h3>Resiliência e segurança</h3><ul><li>Resend como rota principal de e-mail com fallback SMTP</li><li>Sanitização de entradas e rate limiting</li><li>CSP, HSTS, X-Frame-Options e outros cabeçalhos de proteção</li><li>Área administrativa protegida por token</li></ul></div>
-            <div><h3>Validação e escopo</h3><ul><li>Fluxo comercial integra formulário, PDF e WhatsApp</li><li>SEO e semântica fazem parte da implementação</li><li>Dados demonstrativos são anonimizados</li><li>O repositório é publicado com autorização para portfólio</li></ul></div>
+            <div><h3>Contexto e problema</h3><p>Uma empresa real de pisos industriais precisava apresentar serviços e obras e transformar interesse em uma solicitação de orçamento sem tornar o frontend pesado.</p></div>
+            <div><h3>Minha responsabilidade</h3><p>Construí a apresentação responsiva, o formulário comercial e a integração com o backend que organiza os dados, gera a proposta e dispara o fluxo de contato.</p></div>
+            <div><h3>Decisão de implementação</h3><ul><li>HTML, CSS e JavaScript no frontend</li><li>Python/Flask em função serverless para o fluxo comercial</li><li>PDF gerado no servidor e envio principal via Resend, com fallback SMTP</li></ul></div>
+            <div><h3>Alternativas e limitações</h3><p>Concentrar PDF e e-mail no servidor evita expor credenciais no cliente, mas mantém dependência de serviços externos de entrega. O fallback reduz a dependência de um único provedor, sem transformar disponibilidade externa em garantia.</p></div>
+            <div><h3>Entrega e validação</h3><ul><li>Site publicado para o cliente e repositório disponível para auditoria técnica</li><li>Validação e sanitização de entradas, rate limiting e cabeçalhos de segurança</li><li>Fluxo de orçamento implementa geração do PDF, retorno do arquivo e tentativa de entrega por e-mail</li></ul></div>
           </div>
+          <div class="case-links case-evidence-links" aria-label="Evidência técnica da BMI9"><a href="https://github.com/s4muelxl/bmi9.lol/blob/main/api/index.py" target="_blank" rel="noopener noreferrer">Backend Flask, PDF e e-mail ↗</a></div>
           <p class="case-limit"><strong>Escopo do case.</strong> O portfólio demonstra a implementação técnica; resultados comerciais e métricas de conversão não são inferidos sem dados medidos.</p>
           <div class="case-tech">HTML5 · CSS3 · JavaScript · Python · Flask · Redis · Vercel</div>
         </article>
@@ -266,6 +271,12 @@
             <div><span class="case-index">04</span><p class="project-meta">SISTEMA EMPRESARIAL</p><h2>SaberX</h2></div>
             <div class="case-links"><a href="https://github.com/s4muelxl/saberx" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
           </header>
+          <div class="case-proof-summary" aria-label="Resumo do case SaberX">
+            <div><span>Problema</span><strong>Substituir a comparação manual de planilhas por uma operação com regras e histórico.</strong></div>
+            <div><span>Decisão</span><strong>Comparar preço somente entre propostas que atendem às regras da cotação.</strong></div>
+            <div><span>Evidência</span><strong>Regra implementada no domínio e coberta por teste automatizado com valores concretos.</strong></div>
+          </div>
+
           <!-- engineering:saberx:start -->
 <details class="engineering-panel">
     <summary class="engineering-heading"><span><span class="mono-label">DECISÃO DE ENGENHARIA</span><strong>Como transformar planilhas em uma operação multiusuário?</strong></span><span class="engineering-toggle" aria-hidden="true">+</span></summary>
@@ -277,11 +288,15 @@
   </details>
 <!-- engineering:saberx:end -->
 
-          <div class="case-columns">
-            <div><h3>Objetivo</h3><p>Transformar uma operação baseada em planilhas de mapa de cotação em um sistema multiusuário com histórico e regras de negócio.</p></div>
-            <div><h3>Recursos</h3><ul><li>Produtos e fornecedores</li><li>Motor de cálculo e validação de cotações</li><li>Pedidos de compra e orçamentos de venda</li><li>Relatórios XLSX/PDF</li></ul></div>
-            <div><h3>Arquitetura</h3><ul><li>React 18 + TypeScript + Vite</li><li>Supabase Auth e PostgreSQL</li><li>RLS multi-tenant por organização</li><li>Recharts, SheetJS e jsPDF</li></ul></div>
+          <div class="case-columns case-columns-deep">
+            <div><h3>Contexto e problema</h3><p>O SaberX substitui um mapa de cotação em planilha por um sistema com produtos, fornecedores, cotações, compras, vendas, histórico e regras de validação.</p></div>
+            <div><h3>Minha responsabilidade</h3><p>Implementei a experiência web, o motor de cálculo e validação e a integração com Supabase para autenticação, persistência e isolamento por organização.</p></div>
+            <div><h3>Decisão de implementação</h3><ul><li>React, TypeScript e Vite no frontend</li><li>Supabase Auth, PostgreSQL e RLS multi-tenant</li><li>Regras de cálculo e elegibilidade isoladas no domínio para serem testáveis fora da interface</li></ul></div>
+            <div><h3>Alternativas e limitações</h3><p>Escolher apenas o menor valor nominal seria simples, mas incorreto quando a proposta não atende à quantidade ou ao produto solicitado. A comparação aceita somente cotações elegíveis; as políticas de acesso também precisam evoluir junto com o modelo de dados.</p></div>
+            <div><h3>Entrega e validação</h3><p>O teste do domínio usa um caso concreto: uma proposta de R$ 240,00 com apenas 2 barras para uma necessidade de 26,94 é classificada como QUANTIDADE_INSUFICIENTE e fica fora da comparação; entre as propostas válidas, o menor total esperado é R$ 3.338,14.</p></div>
           </div>
+          <div class="case-links case-evidence-links" aria-label="Evidências técnicas do SaberX"><a href="https://github.com/s4muelxl/saberx/blob/main/src/domain/validations.ts" target="_blank" rel="noopener noreferrer">Regra de elegibilidade ↗</a><a href="https://github.com/s4muelxl/saberx/blob/main/src/domain/calculations.test.ts" target="_blank" rel="noopener noreferrer">Teste automatizado ↗</a></div>
+          <p class="case-limit"><strong>Escopo do case.</strong> A regra demonstrada é uma validação de software coberta por teste; não representa economia comercial ou resultado financeiro medido.</p>
           <div class="case-tech">React · TypeScript · Vite · Supabase · PostgreSQL · RLS · Recharts</div>
         </article>
 
@@ -377,10 +392,12 @@
   </details>
 <!-- engineering:receipt-generator:end -->
 
-          <div class="case-columns">
-            <div><h3>Problema</h3><p>Reduzir erros de cálculo e tempo gasto formatando comprovantes e recibos manualmente em vendas feitas por WhatsApp, redes sociais ou atendimento direto.</p></div>
-            <div><h3>Recursos</h3><ul><li>Itens, quantidades e valores unitários dinâmicos</li><li>Subtotais e total em formato monetário brasileiro</li><li>Validação de vírgula/ponto e bloqueio de entradas inválidas</li><li>Timestamp e identificador único por recibo</li></ul></div>
-            <div><h3>Implementação</h3><ul><li>Python 3.8+ sem bibliotecas externas</li><li>Arquivos .txt UTF-8 na pasta recibos/</li><li>Execução pelo terminal ou executar.bat no Windows</li><li>Módulos nativos datetime, os e sys</li></ul></div>
+          <div class="case-columns case-columns-deep">
+            <div><h3>Contexto e problema</h3><p>O projeto reduz cálculos e formatação manual ao transformar itens, quantidades e valores em um comprovante consistente.</p></div>
+            <div><h3>Minha responsabilidade</h3><p>Implementei a coleta e validação das entradas, os cálculos de subtotais e total, a formatação monetária e a persistência do recibo em arquivo.</p></div>
+            <div><h3>Decisão de implementação</h3><ul><li>Python 3.8+ usando somente biblioteca padrão</li><li>Timestamp e identificador para cada recibo</li><li>Saída .txt UTF-8 na pasta recibos/ para manter execução e armazenamento simples</li></ul></div>
+            <div><h3>Alternativas e limitações</h3><p>A versão original é uma CLI local e prioriza portabilidade, por isso não depende de backend ou bibliotecas externas. A demonstração deste portfólio reproduz a interação em JavaScript e não executa Python no navegador.</p></div>
+            <div><h3>Entrega e validação</h3><ul><li>Código Python disponível no GitHub</li><li>Demonstração interativa preserva validação de valores e cálculo em centavos</li><li>Testes do portfólio cobrem entradas inválidas, quantidades fracionadas e exportação de texto</li></ul></div>
           </div>
           <div class="case-tech">Python 3 · datetime · os · sys · CLI · UTF-8</div>
         </article>
