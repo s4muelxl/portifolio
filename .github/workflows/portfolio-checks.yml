@@ -53,14 +53,15 @@ jobs:
       - name: Compare responsive rendering with baseline commit
         env:
           BASELINE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || 'HEAD^' }}
+          VISUAL_HEAD_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
-          if git log -1 --pretty=%B | grep -Fq '[visual-update]'; then
+          if git log -1 --pretty=%B "$VISUAL_HEAD_REF" | grep -Fq '[visual-update]'; then
             export ALLOW_VISUAL_CHANGE=1
           else
             export ALLOW_VISUAL_CHANGE=0
           fi
-          echo "Visual baseline: $BASELINE_REF | allow intended update: $ALLOW_VISUAL_CHANGE"
+          echo "Visual baseline: $BASELINE_REF | change commit: $VISUAL_HEAD_REF | allow intended update: $ALLOW_VISUAL_CHANGE"
           git worktree add --detach /tmp/portfolio-baseline "$BASELINE_REF"
           python3 -m http.server 4173 --bind 127.0.0.1 --directory . >/tmp/portfolio-current.log 2>&1 &
           CURRENT_PID=$!
