@@ -5,8 +5,6 @@ import {initReceiptDemos} from './receipt-demo.mjs?v=20261023c';
 
 document.documentElement.classList.add('js');
 
-// Cross-document transitions may be skipped by the browser (for example in an
-// embedded preview). Cancellation must not become an unhandled rejection.
 for (const eventName of ['pageswap', 'pagereveal']) {
   window.addEventListener(eventName, event => {
     const transition = event.viewTransition;
@@ -46,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let previousViewerFocus = null;
   let activeGallery = null;
 
-  // One shared overlay state prevents focus or scroll locks from leaking.
   const setInert = (elements, value) => new Set([...elements, ...overlayExtras]).forEach(element => {
     if (element instanceof HTMLElement) element.inert = value;
   });
@@ -92,7 +89,6 @@ document.addEventListener('DOMContentLoaded', () => {
   navMenu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
     const wasOpen = menuOpen;
     closeNav(false);
-    // After following a menu anchor, keyboard navigation resumes at the section.
     if (wasOpen && link.hash && (link.pathname === window.location.pathname || link.getAttribute('href').startsWith('#'))) {
       const target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
       if (target instanceof HTMLElement) {
@@ -145,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
     else setTimeout(prefetch,1200);
   }
 
-  // Reading position is measured once per animation frame, including tall sections.
   const sectionLinks = [...document.querySelectorAll('.nav-link[href^="#"]')];
   const sections = sectionLinks.map(link => document.getElementById(link.hash.slice(1))).filter(Boolean);
   let scrollFrame = 0;
@@ -189,7 +184,6 @@ document.addEventListener('DOMContentLoaded', () => {
       entry.target.classList.add('is-visible');
       revealObserver.unobserve(entry.target);
     }), {threshold: .03, rootMargin: '0px 0px 32px'});
-    // The introduction is immediately readable, including on a slow connection.
     revealElements.filter(element => !element.closest('.hero-grid, .projects-title-grid')).forEach((element, index) => {
       element.style.setProperty('--reveal-delay', `${(index % 3) * 55}ms`);
       element.classList.add('reveal-pending');
@@ -201,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
       revealElements.forEach(element => element.classList.remove('reveal-pending'));
     });
   }
-
 
   const closeViewer = () => {
     if (!activeGallery || !mediaLightbox) return;
