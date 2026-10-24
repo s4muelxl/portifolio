@@ -31,3 +31,41 @@ jobs:
         run: node scripts/sync-projects.mjs --check
       - name: Content, links and resource budget
         run: python3 scripts/check-site.py
+
+  visual:
+    name: Responsive visual regression
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          fetch-depth: 2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+      - name: Install visual QA dependencies
+        run: |
+          npm install --no-save --no-package-lock playwright@1.56.1 pixelmatch@7.1.0 pngjs@7.0.0
+          npx playwright install --with-deps chromium
+      - name: Compare responsive rendering with parent commit
+        env:
+          ALLOW_VISUAL_CHANGE: ${{ contains(github.event.head_commit.message, '[visual-update]') && '1' || '0' }}
+        run: |
+          set -euo pipefail
+          git worktree add --detach /tmp/portfolio-baseline HEAD^
+          python3 -m http.server 4173 --bind 127.0.0.1 --directory . >/tmp/portfolio-current.log 2>&1 &
+          CURRENT_PID=$!
+          python3 -m http.server 4174 --bind 127.0.0.1 --directory /tmp/portfolio-baseline >/tmp/portfolio-baseline.log 2>&1 &
+          BASELINE_PID=$!
+          trap 'kill "$CURRENT_PID" "$BASELINE_PID" 2>/dev/null || true' EXIT
+          node scripts/visual-regression.mjs
+      - name: Upload visual QA artifacts
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: portfolio-visual-qa
+          path: artifacts/visual
+          if-no-files-found: ignore
+          retention-days: 14
