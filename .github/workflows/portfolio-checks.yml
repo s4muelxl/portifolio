@@ -25,6 +25,7 @@ jobs:
           node --check portfolio-premium.js
           node --check receipt-core.mjs
           node --check receipt-demo.mjs
+          node --check scripts/visual-regression.mjs
       - name: Receipt and project regression tests
         run: node --test tests/*.test.mjs
       - name: Generated components
