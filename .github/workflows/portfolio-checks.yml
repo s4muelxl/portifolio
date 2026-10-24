@@ -42,7 +42,7 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
-          fetch-depth: 2
+          fetch-depth: 0
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '24'
@@ -50,12 +50,18 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright@1.56.1 pixelmatch@7.1.0 pngjs@7.0.0
           npx playwright install --with-deps chromium webkit
-      - name: Compare responsive rendering with parent commit
+      - name: Compare responsive rendering with baseline commit
         env:
-          ALLOW_VISUAL_CHANGE: ${{ contains(github.event.head_commit.message, '[visual-update]') && '1' || '0' }}
+          BASELINE_REF: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || 'HEAD^' }}
         run: |
           set -euo pipefail
-          git worktree add --detach /tmp/portfolio-baseline HEAD^
+          if git log -1 --pretty=%B | grep -Fq '[visual-update]'; then
+            export ALLOW_VISUAL_CHANGE=1
+          else
+            export ALLOW_VISUAL_CHANGE=0
+          fi
+          echo "Visual baseline: $BASELINE_REF | allow intended update: $ALLOW_VISUAL_CHANGE"
+          git worktree add --detach /tmp/portfolio-baseline "$BASELINE_REF"
           python3 -m http.server 4173 --bind 127.0.0.1 --directory . >/tmp/portfolio-current.log 2>&1 &
           CURRENT_PID=$!
           python3 -m http.server 4174 --bind 127.0.0.1 --directory /tmp/portfolio-baseline >/tmp/portfolio-baseline.log 2>&1 &
