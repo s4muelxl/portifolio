@@ -29,28 +29,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="portfolio.css?v=20261023h">
   <link rel="stylesheet" href="portfolio-experience.css?v=20261023c">
-  <link rel="stylesheet" href="portfolio-premium.css?v=20261023o">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "url": "https://www.s4muelxl.com/",
-    "mainEntity": {
-      "@type": "Person",
-      "name": "Samuel Alves",
-      "alternateName": "s4muelxl",
-      "url": "https://www.s4muelxl.com/",
-      "image": "https://www.s4muelxl.com/assets/samuel-profile.webp?v=20261022-instagramfix",
-      "description": "Estudante de Engenharia de Software com projetos em software, dados, inteligência artificial, segurança e automação.",
-      "sameAs": [
-        "https://github.com/s4muelxl",
-        "https://www.linkedin.com/in/samuel-alves-277015332"
-      ]
-    }
-  }
-  </script>
-</head>
-<body>
+  <link rel="stylesheet" href="portfolio-premium.css?v=20261023o"></head>
+<body itemscope itemtype="https://schema.org/ProfilePage">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <div class="scroll-progress" aria-hidden="true"><span id="scrollProgress"></span></div>
 
@@ -91,20 +71,22 @@
   <button class="nav-backdrop" id="navBackdrop" type="button" aria-label="Fechar menu" hidden></button>
 
   <main id="conteudo" tabindex="-1">
-    <section class="hero" id="inicio">
+    <section class="hero" id="inicio" itemprop="mainEntity" itemscope itemtype="https://schema.org/Person">
+      <meta itemprop="url" content="https://www.s4muelxl.com/">
+      <meta itemprop="alternateName" content="s4muelxl">
       <div class="shell hero-grid">
         <div class="hero-main reveal">
           <div class="profile-line">
-            <img class="avatar" src="assets/samuel-profile.webp?v=20261022-instagramfix" alt="Samuel Alves" width="96" height="96" fetchpriority="high" decoding="async">
+            <img class="avatar" itemprop="image" src="assets/samuel-profile.webp?v=20261022-instagramfix" alt="Samuel Alves" width="96" height="96" fetchpriority="high" decoding="async">
             <div>
               <span class="mono-label">SÃO PAULO · BRASIL</span>
               <p>Estudante de Engenharia de Software</p>
             </div>
           </div>
 
-          <h1>Samuel Alves</h1>
+          <h1 itemprop="name">Samuel Alves</h1>
           <h2>Engenharia de software aplicada a produtos web, dados e IA.</h2>
-          <p class="hero-text">Sou estudante de Engenharia de Software na Universidade São Judas Tadeu e busco estágio ou posição júnior em tecnologia. Aqui você encontra produtos próprios, um projeto para cliente real e estudos que mostram como transformo requisitos em software funcionando.</p>
+          <p class="hero-text" itemprop="description">Sou estudante de Engenharia de Software na Universidade São Judas Tadeu e busco estágio ou posição júnior em tecnologia. Aqui você encontra produtos próprios, um projeto para cliente real e estudos que mostram como transformo requisitos em software funcionando.</p>
 
           <div class="hero-actions">
             <a class="button button-light" href="#projetos">Ver projetos</a>
@@ -119,8 +101,8 @@
           <div class="summary-row"><span>Foco</span><strong>Software · Dados · IA</strong></div>
           <div class="summary-row"><span>Idiomas</span><strong>PT nativo · EN B1</strong></div>
           <div class="summary-links">
-            <a href="https://github.com/s4muelxl" target="_blank" rel="me noopener noreferrer">GitHub ↗</a>
-            <a href="https://www.linkedin.com/in/samuel-alves-277015332" target="_blank" rel="me noopener noreferrer">LinkedIn ↗</a>
+            <a itemprop="sameAs" href="https://github.com/s4muelxl" target="_blank" rel="me noopener noreferrer">GitHub ↗</a>
+            <a itemprop="sameAs" href="https://www.linkedin.com/in/samuel-alves-277015332" target="_blank" rel="me noopener noreferrer">LinkedIn ↗</a>
           </div>
         </aside>
       </div>
