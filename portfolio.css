@@ -20,3 +20,4 @@
 .recruiter-signal{display:grid;grid-template-columns:1fr 1fr}
 .recruiter-signal span:first-child{grid-column:1/-1}
 }
+.projects-intro-actions{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px}.projects-intro-actions a{display:inline-flex;align-items:center;min-height:44px;color:#b8b8b8;font-size:11px;text-decoration:underline;text-decoration-color:#3f3f3f;text-underline-offset:5px}.projects-intro-actions a:hover{color:#fff;text-decoration-color:#777}@media (max-width:760px){.projects-intro-actions{display:grid;grid-template-columns:1fr;margin-top:14px}.projects-intro-actions a{min-height:46px}}
