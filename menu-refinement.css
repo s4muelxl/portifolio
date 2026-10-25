@@ -1,0 +1,145 @@
+/* Navigation polish layered over the generated portfolio bundle. */
+@media (max-width: 1080px) {
+  @media (scripting: enabled) {
+    :root .nav-menu {
+      background:
+        radial-gradient(circle at 88% 6%, #ffffff0a 0, transparent 28%),
+        radial-gradient(circle at 7% 88%, #ffffff05 0, transparent 24%),
+        #080808;
+      box-shadow:
+        inset 0 1px #ffffff08,
+        inset 0 -1px #ffffff05;
+    }
+
+    :root .mobile-menu-head .mono-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    :root .mobile-menu-head .mono-label::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      flex: 0 0 5px;
+      border: 1px solid #777;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px #ffffff08;
+    }
+
+    :root .nav-menu .nav-link {
+      grid-template-columns: 42px minmax(0, 1fr);
+    }
+
+    :root .nav-menu .nav-link::before {
+      display: grid;
+      place-items: center;
+      width: 24px;
+      height: 24px;
+      border: 1px solid #2d2d2d;
+      border-radius: 50%;
+      background: #0b0b0b;
+      color: #666;
+      font: 500 8px/1 var(--mono);
+      transition:
+        color 0.2s,
+        background 0.2s,
+        border-color 0.2s,
+        transform 0.2s var(--ease);
+    }
+
+    :root .nav-menu .nav-link-title {
+      display: block;
+      width: fit-content;
+      max-width: 100%;
+      transition: transform 0.22s var(--ease);
+    }
+
+    :root .nav-menu .nav-link.active::before,
+    :root .nav-menu .nav-link:focus-visible::before {
+      border-color: #ededed;
+      background: #ededed;
+      color: #0b0b0b;
+      transform: scale(1.04);
+    }
+
+    :root .nav-menu .nav-link.active .nav-link-title,
+    :root .nav-menu .nav-link:focus-visible .nav-link-title {
+      transform: translateX(3px);
+    }
+
+    :root .mobile-menu-actions a:not([download]) {
+      border-bottom: 1px solid #202020;
+    }
+
+    :root .mobile-menu-actions a[download] {
+      padding: 0 12px 0 15px;
+      border-color: #383838;
+      background: linear-gradient(180deg, #151515, #0d0d0d);
+      color: #eaeaea;
+      box-shadow: inset 0 1px #ffffff08;
+    }
+
+    :root .mobile-menu-actions a span {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      flex: 0 0 28px;
+      border: 1px solid #2e2e2e;
+      border-radius: 50%;
+      color: #bcbcbc;
+      font-size: 13px;
+    }
+
+    :root .mobile-menu-actions a[download] span {
+      border-color: #e8e8e8;
+      background: #e8e8e8;
+      color: #0b0b0b;
+    }
+
+    :root .mobile-menu-note::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      margin-right: 9px;
+      border-radius: 50%;
+      background: #8a8a8a;
+      box-shadow: 0 0 0 3px #ffffff08;
+      vertical-align: 1px;
+    }
+  }
+}
+
+@media (max-width: 760px) {
+  @media (scripting: enabled) {
+    :root .nav-menu .nav-link {
+      grid-template-columns: 38px minmax(0, 1fr);
+      padding-right: 24px;
+      font-size: clamp(23px, 7vw, 28px);
+      line-height: 1.04;
+    }
+  }
+}
+
+@media (hover: hover) and (max-width: 1080px) {
+  .mobile-menu-actions a {
+    transition:
+      color 0.2s,
+      border-color 0.2s;
+  }
+
+  .mobile-menu-actions a span {
+    transition:
+      transform 0.2s var(--ease),
+      border-color 0.2s,
+      background 0.2s,
+      color 0.2s;
+  }
+
+  .mobile-menu-actions a:hover span {
+    transform: translateX(2px);
+    border-color: #666;
+  }
+}

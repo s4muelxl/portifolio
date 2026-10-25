@@ -1581,11 +1581,8 @@ main[id] {
       overscroll-behavior: contain;
       border: 0;
       background:
-        radial-gradient(circle at 88% 6%, #ffffff0a 0, transparent 28%),
-        radial-gradient(circle at 7% 88%, #ffffff05 0, transparent 24%), #080808;
-      box-shadow:
-        inset 0 1px #ffffff08,
-        inset 0 -1px #ffffff05;
+        radial-gradient(circle at 88% 6%, #ffffff0a 0, transparent 28%), #080808;
+      box-shadow: inset 0 1px #ffffff08;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -1624,20 +1621,6 @@ main[id] {
     letter-spacing: 0.14em;
     text-transform: uppercase;
   }
-  .mobile-menu-head .mono-label {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-  }
-  .mobile-menu-head .mono-label::before {
-    content: "";
-    width: 5px;
-    height: 5px;
-    flex: 0 0 5px;
-    border: 1px solid #777;
-    border-radius: 50%;
-    box-shadow: 0 0 0 3px #ffffff08;
-  }
   @media (scripting: enabled) {
     :root .mobile-menu-links {
       display: flex;
@@ -1652,7 +1635,7 @@ main[id] {
     :root .nav-menu .nav-link {
       position: relative;
       display: grid;
-      grid-template-columns: 42px minmax(0, 1fr);
+      grid-template-columns: 36px minmax(0, 1fr);
       align-items: center;
       min-height: 70px;
       padding: 0 34px 0 0;
@@ -1690,29 +1673,9 @@ main[id] {
   @media (scripting: enabled) {
     :root .nav-menu .nav-link::before {
       content: attr(data-nav-index);
-      display: grid;
-      place-items: center;
-      width: 24px;
-      height: 24px;
-      border: 1px solid #2d2d2d;
-      border-radius: 50%;
-      background: #0b0b0b;
-      color: #666;
-      font: 500 8px/1 var(--mono);
+      color: #555;
+      font: 400 9px/1 var(--mono);
       letter-spacing: 0;
-      transition:
-        color 0.2s,
-        background 0.2s,
-        border-color 0.2s,
-        transform 0.2s var(--ease);
-    }
-  }
-  @media (scripting: enabled) {
-    :root .nav-menu .nav-link-title {
-      display: block;
-      width: fit-content;
-      max-width: 100%;
-      transition: transform 0.22s var(--ease);
     }
   }
   @media (scripting: enabled) {
@@ -1742,16 +1705,7 @@ main[id] {
   @media (scripting: enabled) {
     :root .nav-menu .nav-link.active::before,
     :root .nav-menu .nav-link:focus-visible::before {
-      border-color: #ededed;
-      background: #ededed;
-      color: #0b0b0b;
-      transform: scale(1.04);
-    }
-  }
-  @media (scripting: enabled) {
-    :root .nav-menu .nav-link.active .nav-link-title,
-    :root .nav-menu .nav-link:focus-visible .nav-link-title {
-      transform: translateX(3px);
+      color: #aaa;
     }
   }
   @media (scripting: enabled) {
@@ -1780,37 +1734,21 @@ main[id] {
     color: #a4a4a4;
     font-size: 11px;
   }
-  .mobile-menu-actions a:not([download]) {
-    border-bottom: 1px solid #202020;
-  }
   .mobile-menu-actions a[download] {
     grid-column: 1 / -1;
     order: -1;
     min-height: 50px;
-    padding: 0 12px 0 15px;
-    border: 1px solid #383838;
+    padding: 0 14px;
+    border: 1px solid #343434;
     border-radius: 8px;
-    background: linear-gradient(180deg, #151515, #0d0d0d);
-    color: #eaeaea;
+    background: #101010;
+    color: #e6e6e6;
     font-size: 11px;
     font-weight: 600;
-    box-shadow: inset 0 1px #ffffff08;
+    box-shadow: none;
   }
   .mobile-menu-actions a span {
-    display: grid;
-    place-items: center;
-    width: 28px;
-    height: 28px;
-    flex: 0 0 28px;
-    border: 1px solid #2e2e2e;
-    border-radius: 50%;
-    color: #bcbcbc;
-    font-size: 13px;
-  }
-  .mobile-menu-actions a[download] span {
-    border-color: #e8e8e8;
-    background: #e8e8e8;
-    color: #0b0b0b;
+    font-size: 15px;
   }
   @media (scripting: enabled) {
     :root .mobile-menu-note {
@@ -1823,17 +1761,6 @@ main[id] {
       letter-spacing: 0.03em;
       white-space: normal;
       overflow-wrap: anywhere;
-    }
-    :root .mobile-menu-note::before {
-      content: "";
-      display: inline-block;
-      width: 5px;
-      height: 5px;
-      margin-right: 9px;
-      border-radius: 50%;
-      background: #8a8a8a;
-      box-shadow: 0 0 0 3px #ffffff08;
-      vertical-align: 1px;
     }
   }
   .nav-backdrop {
@@ -1926,10 +1853,9 @@ main[id] {
   @media (scripting: enabled) {
     :root .nav-menu .nav-link {
       min-height: 58px;
-      grid-template-columns: 38px minmax(0, 1fr);
-      padding-right: 24px;
-      font-size: clamp(23px, 7vw, 28px);
-      line-height: 1.04;
+      grid-template-columns: 32px minmax(0, 1fr);
+      padding-right: 26px;
+      font-size: clamp(24px, 7.6vw, 30px);
     }
   }
   @media (scripting: enabled) {
