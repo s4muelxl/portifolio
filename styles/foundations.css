@@ -424,7 +424,7 @@ main[id] {
 }
 .project-feature-copy li::marker,
 .project-copy li::marker {
-  color: #777;
+  color: var(--dim);
 }
 .tech-line {
   color: #a3a3a3;
@@ -1594,7 +1594,7 @@ main[id] {
   }
   .mobile-menu-head .mono-label,
   .mobile-menu-count {
-    color: #6f6f6f;
+    color: var(--dim);
     font: 400 9px/1.4 var(--mono);
     letter-spacing: 0.14em;
     text-transform: uppercase;

@@ -55,6 +55,15 @@ for (const [engineName, engine] of [['chromium', chromium], ['webkit', webkit]])
       for (const violation of desktop.violations) {
         failures.push(`${engineName}/${path}/desktop: ${violation.id} - ${violation.nodes.map(node => node.target.join(' ')).join('; ')}`);
       }
+      const sections = path === '/'
+        ? ['#projeto-saberx', '#projeto-recibos', '#competencias', '#certificacoes', '#formacao', '#contato']
+        : ['#cbcdegelo', '#bmi9', '#saberx', '#receipt-generator'];
+      for (const selector of sections) {
+        await page.locator(selector).scrollIntoViewIfNeeded();
+        const section = await new AxeBuilder({page}).include(selector).withRules(['color-contrast']).analyze();
+        reports.push({label: `${engineName}/${path}/${selector}`, violations: section.violations, incomplete: section.incomplete});
+        for (const violation of section.violations) failures.push(`${engineName}/${path}/${selector}: ${violation.id} - ${violation.nodes.map(node => node.target.join(' ')).join('; ')}`);
+      }
       await page.setViewportSize({width: 390, height: 844});
       await page.close();
     }
