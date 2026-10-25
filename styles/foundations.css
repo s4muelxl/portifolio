@@ -1608,10 +1608,10 @@ main[id] {
       align-items: center;
       justify-content: space-between;
       flex-shrink: 0;
-      min-height: 42px;
-      margin-bottom: 18px;
-      padding-bottom: 16px;
-      border-bottom: 1px solid #2a2a2a;
+      min-height: 40px;
+      margin-bottom: 8px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #252525;
     }
   }
   .mobile-menu-head .mono-label,
@@ -1635,10 +1635,10 @@ main[id] {
     :root .nav-menu .nav-link {
       position: relative;
       display: grid;
-      grid-template-columns: 38px minmax(0, 1fr);
+      grid-template-columns: 36px minmax(0, 1fr);
       align-items: center;
-      min-height: 78px;
-      padding: 0 42px 0 0;
+      min-height: 70px;
+      padding: 0 34px 0 0;
       border-bottom: 1px solid #1f1f1f;
       color: #7f7f7f;
       font: 500 clamp(30px, 4.8vw, 46px) / 0.98 var(--display);
@@ -1699,15 +1699,18 @@ main[id] {
     :root .nav-menu .nav-link.active,
     :root .nav-menu .nav-link:focus-visible {
       color: #f5f5f5;
+      outline: 0;
     }
   }
   @media (scripting: enabled) {
-    :root .nav-menu .nav-link.active::before {
+    :root .nav-menu .nav-link.active::before,
+    :root .nav-menu .nav-link:focus-visible::before {
       color: #aaa;
     }
   }
   @media (scripting: enabled) {
-    :root .nav-menu .nav-link.active::after {
+    :root .nav-menu .nav-link.active::after,
+    :root .nav-menu .nav-link:focus-visible::after {
       opacity: 1;
       transform: scaleX(1);
     }
@@ -1717,30 +1720,32 @@ main[id] {
       display: grid;
       grid-template-columns: 1fr 1fr;
       flex-shrink: 0;
-      gap: 8px 22px;
-      margin-top: auto;
-      padding-top: 30px;
+      gap: 6px 18px;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid #1f1f1f;
     }
   }
   .mobile-menu-actions a {
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 46px;
-    color: #969696;
+    min-height: 44px;
+    color: #a4a4a4;
     font-size: 11px;
   }
   .mobile-menu-actions a[download] {
     grid-column: 1 / -1;
     order: -1;
-    min-height: 54px;
-    padding: 0 18px;
-    border-radius: 12px;
-    background: #f2f2f2;
-    color: #0d0d0d;
-    font-size: 12px;
-    font-weight: 650;
-    box-shadow: 0 10px 28px #0007;
+    min-height: 50px;
+    padding: 0 14px;
+    border: 1px solid #343434;
+    border-radius: 8px;
+    background: #101010;
+    color: #e6e6e6;
+    font-size: 11px;
+    font-weight: 600;
+    box-shadow: none;
   }
   .mobile-menu-actions a span {
     font-size: 15px;
@@ -1748,10 +1753,14 @@ main[id] {
   @media (scripting: enabled) {
     :root .mobile-menu-note {
       display: block;
-      margin: 14px 0 0;
-      color: #565656;
+      margin: auto 0 0;
+      padding-top: 18px;
+      border-top: 1px solid #1f1f1f;
+      color: #626262;
       font: 400 9px/1.6 var(--mono);
       letter-spacing: 0.03em;
+      white-space: normal;
+      overflow-wrap: anywhere;
     }
   }
   .nav-backdrop {
@@ -1843,10 +1852,10 @@ main[id] {
   }
   @media (scripting: enabled) {
     :root .nav-menu .nav-link {
-      min-height: 64px;
-      grid-template-columns: 30px minmax(0, 1fr);
-      padding-right: 30px;
-      font-size: clamp(26px, 8.4vw, 34px);
+      min-height: 58px;
+      grid-template-columns: 32px minmax(0, 1fr);
+      padding-right: 26px;
+      font-size: clamp(24px, 7.6vw, 30px);
     }
   }
   @media (scripting: enabled) {
