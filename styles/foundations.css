@@ -15,6 +15,10 @@ body {
 }
 body.menu-open,
 body.modal-open {
+  overflow: clip;
+}
+html:has(body.menu-open),
+html:has(body.modal-open) {
   overflow: hidden;
 }
 ::selection {

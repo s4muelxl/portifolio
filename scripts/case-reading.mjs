@@ -32,6 +32,8 @@ for (const [name, engine] of [['chromium', chromium], ['webkit', webkit]]) {
         await synopsis.locator('a').click();
         assert.equal(new URL(page.url()).hash, '#' + project.evidenceTarget);
         assert.equal(await page.evaluate(() => document.activeElement.id), project.evidenceTarget);
+        const headerBox = await page.locator('.site-header').boundingBox();
+        assert.ok(headerBox && Math.abs(headerBox.y) <= 1, `${name}/${width}/${project.id}: header must stay at the top while reading`);
         if (name === 'chromium') {
           await page.evaluate(id => document.getElementById(id).scrollIntoView({block: 'start'}), project.id);
           await page.evaluate(() => scrollBy(0, -90));

@@ -1200,11 +1200,11 @@ body::before {
   html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   body {
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
   }
   main,
   section,
