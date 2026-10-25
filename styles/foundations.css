@@ -2552,12 +2552,13 @@ main[id] {
 }
 .case-proof-summary > div {
   min-width: 0;
-  padding: 20px 22px 22px;
+  padding: 20px 22px 22px 0;
 }
 .case-proof-summary > div + div {
+  padding-left: 22px;
   border-left: 1px solid #242424;
 }
-.case-proof-summary span {
+.case-proof-summary dt {
   display: block;
   margin-bottom: 9px;
   color: #999;
@@ -2565,8 +2566,9 @@ main[id] {
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
-.case-proof-summary strong {
+.case-proof-summary dd {
   display: block;
+  margin: 0;
   color: #d8d8d8;
   font-size: 13px;
   font-weight: 500;
@@ -2581,11 +2583,12 @@ main[id] {
     padding: 16px 0;
   }
   .case-proof-summary > div + div {
+    padding-left: 0;
     border-left: 0;
     border-top: 1px solid #222;
   }
-  .case-proof-summary strong {
-    font-size: 12px;
+  .case-proof-summary dd {
+    font-size: 14px;
     line-height: 1.6;
   }
 }

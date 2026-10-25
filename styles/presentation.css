@@ -495,6 +495,42 @@ body::before {
   gap: 0;
   border-top: 1px solid rgb(255 255 255/0.13);
 }
+.case-proof-summary a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  min-height: 44px;
+  margin-top: 8px;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: #666;
+  font-size: 12px;
+}
+[id^="evidencia-"] {
+  scroll-margin-top: 110px;
+}
+.case-client-proof {
+  margin: 32px 0;
+}
+.case-client-proof .bmi9-showcase {
+  max-width: 860px;
+  margin: 0;
+}
+.case-client-proof figcaption {
+  max-width: 75ch;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.engineering-body .case-columns {
+  margin-top: 0;
+  border-top: 0;
+}
+.case-detail .engineering-panel {
+  margin-block: 28px;
+}
 .case-columns > div,
 .case-columns-deep > div {
   padding: 30px 28px 30px 0;
@@ -715,12 +751,6 @@ body::before {
   font: 500 9px/1.5 var(--mono);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-.project-question::after {
-  content: "↳ decisão e trade-offs no estudo de caso";
-  margin-top: 1px;
-  color: #999;
-  font: 400 10px/1.5 var(--mono);
 }
 .saberx-blueprint {
   grid-column: 2 / -1;
@@ -1366,11 +1396,6 @@ body::before {
   .project-actions a:hover,
   .case-links a:hover {
     transform: translateY(-1px);
-  }
-}
-@media (max-width: 760px) {
-  .project-question::after {
-    display: none;
   }
 }
 @media (max-width: 760px) {

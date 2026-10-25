@@ -65,6 +65,8 @@ Para alterar a demonstração ou os painéis técnicos, edite os componentes/dad
 node scripts/sync-projects.mjs
 ```
 
+Os resumos dos cinco cases vêm de `data/projects.mjs`: problema, contribuição pessoal e evidência. O conteúdo completo fica em `components/cases/*.html` e é gerado dentro de painéis nativos `<details>`, disponíveis sem JavaScript. Links para galerias, demonstração e código permanecem visíveis fora dos painéis.
+
 O workflow `Portfolio checks` executa essas verificações em pushes e pull requests. Ele não utiliza segredos nem interfere na publicação pela Vercel.
 O runner é Ubuntu 24.04, fixado para evitar mudanças implícitas de sistema operacional nas comparações. Revisões antigas do mesmo PR são canceladas quando usam o grupo de concorrência do workflow.
 
@@ -73,6 +75,7 @@ O runner é Ubuntu 24.04, fixado para evitar mudanças implícitas de sistema op
 - 13 testes automatizados, conteúdo essencial, cinco projetos, 15 cursos/certificações e 27 capturas.
 - A matriz do CI inclui 320, 390, 768, 1024, 1080, 1081, 1440, 1920 e 2560px, mais smoke tests WebKit e Instagram simulado. Consulte o resultado do workflow para confirmar a execução de cada revisão.
 - `scripts/browser-behavior.mjs` cobre teclado e foco no menu/lightbox, mudança de movimento reduzido em execução, recibo fracionado e falha de rede/markup da demonstração, em Chromium e WebKit.
+- `scripts/case-reading.mjs` verifica os cinco cases em quatro larguras, abertura por teclado, links de evidência, reflow e leitura sem JavaScript, com capturas dos resumos e detalhes para revisão.
 - `scripts/navigation-stability.mjs` testa a altura do cabeçalho antes/depois da chegada do módulo, links sem JavaScript, foco ao cruzar o breakpoint e retorno do foco após download, em Chromium/WebKit.
 - Os testes de navegador também cobrem erro de imagem no lightbox, modo inicial inválido, economia de dados e ausência de requisições ao Google Fonts.
 - CSS/JavaScript locais: aproximadamente 108 kB de fonte publicada. A folha consolidada substitui três requisições CSS por uma, preservando a ordem da cascata. Execute `scripts/check-site.py` para o inventário exato e gzip estimado.

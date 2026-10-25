@@ -145,24 +145,6 @@
 .engineering-body {
   padding: 0 24px 24px;
 }
-.engineering-notes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 28px;
-  padding-top: 20px;
-  border-top: 1px solid #333;
-}
-.engineering-notes > div > span {
-  color: #e0e0e0;
-  font-size: 12px;
-  font-weight: 550;
-}
-.engineering-notes p {
-  margin: 9px 0 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.9;
-}
 .engineering-source {
   display: inline-flex;
   align-items: center;
@@ -560,10 +542,6 @@
     position: static;
     width: min(380px, 100%);
     margin-inline: auto;
-  }
-  .engineering-notes {
-    grid-template-columns: 1fr;
-    gap: 22px;
   }
   .architecture-node {
     width: 30%;

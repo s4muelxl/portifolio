@@ -17,11 +17,15 @@ for (const [engineName, engine] of [['chromium', chromium], ['webkit', webkit]])
       // Ensure below-the-fold content is included in the automated audit.
       await page.addStyleTag({content: '.case-detail,.cert-grid{content-visibility:visible!important}'});
       await page.evaluate(() => document.fonts.ready);
-      for (const state of ['page', 'menu', 'lightbox']) {
+      for (const state of ['page', 'menu', 'lightbox', ...(path === '/projetos.html' ? ['expanded-cases'] : [])]) {
         if (state === 'menu') await page.locator('#navToggle').click();
         if (state === 'lightbox') {
           await page.keyboard.press('Escape');
           await page.locator('[data-carousel-open]').first().click();
+        }
+        if (state === 'expanded-cases') {
+          await page.keyboard.press('Escape');
+          await page.locator('.engineering-panel').evaluateAll(panels => panels.forEach(panel => { panel.open = true; }));
         }
         const result = await new AxeBuilder({page})
           .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
@@ -50,6 +54,7 @@ for (const [engineName, engine] of [['chromium', chromium], ['webkit', webkit]])
       await page.goto('http://127.0.0.1:4173' + path, {waitUntil: 'networkidle'});
       await page.addStyleTag({content: '.case-detail,.cert-grid{content-visibility:visible!important}'});
       await page.evaluate(() => document.fonts.ready);
+      if (path === '/projetos.html') await page.locator('.engineering-panel').evaluateAll(panels => panels.forEach(panel => { panel.open = true; }));
       const desktop = await new AxeBuilder({page}).withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa']).analyze();
       reports.push({label: `${engineName}/${path}/desktop`, violations: desktop.violations, incomplete: desktop.incomplete});
       for (const violation of desktop.violations) {
@@ -57,7 +62,7 @@ for (const [engineName, engine] of [['chromium', chromium], ['webkit', webkit]])
       }
       const sections = path === '/'
         ? ['#projeto-saberx', '#projeto-recibos', '#competencias', '#certificacoes', '#formacao', '#contato']
-        : ['#cbcdegelo', '#bmi9', '#saberx', '#receipt-generator'];
+        : ['#nexo', '#cbcdegelo', '#bmi9', '#saberx', '#receipt-generator'];
       for (const selector of sections) {
         await page.locator(selector).scrollIntoViewIfNeeded();
         const section = await new AxeBuilder({page}).include(selector).withRules(['color-contrast']).analyze();

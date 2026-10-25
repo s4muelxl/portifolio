@@ -59,7 +59,7 @@ test('hero prioriza proposta, foto e duas ações sem resumo redundante',async()
   assert.equal((home.match(/class="hero-actions"/g)||[]).length,1);
 });
 test('cases expõem evidências concretas de reconexão e regra de cotação',async()=>{
-  const cases=await readFile(new URL('projetos.html',root),'utf8');
+  const cases=(await readFile(new URL('projetos.html',root),'utf8')).replace(/\s+/g,' ');
   for (const html of [cases, await readFile(new URL('index.html',root),'utf8')]) {
     assert.doesNotMatch(html, /href="https:\/\/github\.com\/s4muelxl\/(?:nexo|cbcdegelo)(?:["/])/);
     assert.ok(html.includes('Código privado'));

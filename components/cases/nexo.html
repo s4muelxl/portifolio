@@ -1,0 +1,57 @@
+<div class="case-columns case-columns-deep">
+  <div>
+    <h3>Contexto e problema</h3>
+    <p>
+      Treino, refeições, finanças e rotina convivem no mesmo produto. O desafio
+      é manter módulos diferentes coerentes sem transformar a experiência em
+      vários aplicativos desconectados.
+    </p>
+  </div>
+  <div>
+    <h3>Minha responsabilidade</h3>
+    <p>
+      Estruturei a interface e os fluxos do produto, implementei regras de
+      negócio e integrei autenticação, dados e operações do Supabase com a
+      camada de estado da aplicação.
+    </p>
+  </div>
+  <div>
+    <h3>Decisão de implementação</h3>
+    <ul>
+      <li>Expo Router e React Native Web para a experiência mobile/web</li>
+      <li>
+        Zustand para estado local e TanStack Query para consultas e
+        sincronização remota
+      </li>
+      <li>
+        Supabase Auth, PostgreSQL, RLS e Edge Functions nas fronteiras de dados
+        e servidor
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>Alternativas e limitações</h3>
+    <p>
+      Separar estado local de dados remotos reduz acoplamento, mas exige
+      invalidação de cache e contratos claros quando uma ação afeta mais de um
+      módulo. A experiência web também permanece sujeita às capacidades do
+      navegador.
+    </p>
+  </div>
+  <div>
+    <h3>Entrega e validação</h3>
+    <ul>
+      <li>
+        Scripts de typecheck, lint, testes Jest e testes das Edge Functions no
+        repositório
+      </li>
+      <li>Quality contracts e auditoria de segurança antes do build web</li>
+      <li>13 telas reais documentam os principais fluxos do produto</li>
+    </ul>
+  </div>
+</div>
+<p class="case-limit">
+  <strong>Escopo do case.</strong> O código é privado; este case apresenta
+  funcionalidades, decisões e capturas do produto; não atribui métricas de uso
+  ou impacto que não estejam medidas.
+</p>

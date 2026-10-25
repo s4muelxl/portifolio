@@ -85,6 +85,7 @@ jobs:
           node scripts/visual-regression.mjs
           node scripts/browser-behavior.mjs
           node scripts/navigation-stability.mjs
+          node scripts/case-reading.mjs
           AUDIT_STATUS=0
           node scripts/a11y-audit.mjs || AUDIT_STATUS=$?
           node scripts/performance-audit.mjs || AUDIT_STATUS=$?
