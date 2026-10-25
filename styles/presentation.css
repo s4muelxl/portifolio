@@ -1368,7 +1368,6 @@ body::before {
   view-transition-name: receipt-title;
 }
 @supports (content-visibility: auto) {
-  .case-detail,
   .cert-grid {
     content-visibility: auto;
     contain-intrinsic-size: auto 900px;

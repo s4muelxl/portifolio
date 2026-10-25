@@ -64,9 +64,12 @@ for (const [name, engine] of [['chromium', chromium], ['webkit', webkit]]) {
     await page.goto(base + '/projetos.html', {waitUntil: 'networkidle'});
     for (const project of projects) {
       const panel = page.locator('#' + project.id + ' .engineering-panel');
-      await panel.locator('summary').click();
+      await panel.locator('summary').focus();
+      await page.keyboard.press('Enter');
       assert.equal(await panel.evaluate(el => el.open), true);
       assert.equal(await panel.locator('.case-columns').isVisible(), true);
+      await panel.locator('summary').click();
+      assert.equal(await panel.evaluate(el => el.open), false);
     }
     await staticContext.close();
     console.log(`${name}: five cases in four widths, evidence anchors, keyboard disclosure and full narratives without JavaScript passed.`);
