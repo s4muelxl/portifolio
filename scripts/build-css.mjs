@@ -3,7 +3,7 @@ import postcss from 'postcss';
 import cssnano from 'cssnano';
 
 // Preserve the existing cascade order; source files remain readable and editable.
-const files = ['styles/foundations.css', 'styles/components.css', 'styles/presentation.css'];
+const files = ['styles/tokens.css', 'styles/foundations.css', 'styles/components.css', 'styles/presentation.css'];
 const sources = await Promise.all(files.map(file => readFile(new URL('../' + file, import.meta.url), 'utf8')));
 const result = await postcss([cssnano({preset: 'default'})]).process(sources.join('\n'), {
   from: undefined, to: 'portfolio.bundle.css', map: false

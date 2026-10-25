@@ -17,7 +17,7 @@ try {
     await writeFile(new URL(name + '.json', output), result.report[0]);
     await writeFile(new URL(name + '.html', output), result.report[1]);
     const summary = {
-      page: name, environment: 'GitHub Actions + servidor local, simulação mobile',
+      page: name, environment: 'GitHub Actions + servidor local com gzip, simulação mobile',
       lighthouseVersion: result.lhr.lighthouseVersion,
       scores: Object.fromEntries(Object.entries(result.lhr.categories).map(([key, value]) => [key, value.score])),
       lcpMs: result.lhr.audits['largest-contentful-paint'].numericValue,

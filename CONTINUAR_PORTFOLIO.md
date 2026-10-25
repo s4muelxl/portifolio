@@ -34,12 +34,15 @@ Branch: improve/design-system-a11y-20261025. Consultar sua PR, CI e deploy para 
 - CSS organizado em fontes legíveis em styles/ e consolidado em portfolio.bundle.css. Manter a ordem da cascata e regenerar com npm run build:css.
 - Ferramentas de desenvolvimento com versões fixadas em package-lock.json; o site permanece estático na Vercel.
 - Auditoria axe em Chromium/WebKit, navegação por skip link e reflow; Lighthouse mobile simulado nas duas páginas.
+- A primeira execução identificou contraste insuficiente em navContext; o texto foi ajustado para o token secundário, com tamanho de 10px.
+- Fontes latinas somam 74.848 bytes em vez de 160.320 bytes dos arquivos completos. Fira Code opcional evita troca tardia; ambos os arquivos são priorizados.
+- A medição local passou a servir texto com gzip. Não comparar diretamente as pontuações dessa configuração com as execuções anteriores sem compressão.
 - Relatórios são artefatos do workflow, não dados reais de usuários. Corrigir as violações encontradas antes de integrar.
 
 ## Pendências da auditoria
 
-- Medir performance em laboratório e, se houver volume suficiente, dados reais de LCP/INP/CLS. Não há números de Core Web Vitals comprovados até aqui.
-- Consolidar os tokens e as regras CSS sobrepostas sem alterar a identidade visual.
+- Consultar os relatórios Lighthouse do CI para performance em laboratório. Dados reais de LCP/INP/CLS ainda precisam de volume e instrumentação próprios; não inventar resultados de produção.
+- Continuar a simplificação de regras CSS sobrepostas; tokens e fontes legíveis já estão organizados.
 - Revisar acessibilidade manualmente com leitor de tela e zoom de 200%.
 - Revisar materiais antigos e a pasta skill.md; ela está fora do deploy. Não apagar conteúdo sem analisar sua finalidade.
 - Verificar provas de cursos/certificações e acesso anônimo aos links públicos.

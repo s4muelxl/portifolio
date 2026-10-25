@@ -73,9 +73,9 @@ jobs:
           fi
           echo "Visual baseline: $BASELINE_REF | change commit: $VISUAL_HEAD_REF | allow intended update: $ALLOW_VISUAL_CHANGE"
           git worktree add --detach /tmp/portfolio-baseline "$BASELINE_REF"
-          python3 -m http.server 4173 --bind 127.0.0.1 --directory . >/tmp/portfolio-current.log 2>&1 &
+          python3 scripts/serve-audit.py --port 4173 --directory . >/tmp/portfolio-current.log 2>&1 &
           CURRENT_PID=$!
-          python3 -m http.server 4174 --bind 127.0.0.1 --directory /tmp/portfolio-baseline >/tmp/portfolio-baseline.log 2>&1 &
+          python3 scripts/serve-audit.py --port 4174 --directory /tmp/portfolio-baseline >/tmp/portfolio-baseline.log 2>&1 &
           BASELINE_PID=$!
           trap 'kill "$CURRENT_PID" "$BASELINE_PID" 2>/dev/null || true' EXIT
           node scripts/visual-regression.mjs

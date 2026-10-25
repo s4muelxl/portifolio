@@ -6,7 +6,7 @@ Portfólio publicado em **https://www.s4muelxl.com**, com página inicial e estu
 
 - `index.html`: apresentação, projetos, competências, 15 cursos/certificações, formação e contato.
 - `projetos.html`: contexto, decisões técnicas, implementação e validação dos cinco projetos.
-- `styles/`: fontes legíveis do sistema visual, componentes e apresentação; a ordem da cascata é explícita em `scripts/build-css.mjs`.
+- `styles/`: tokens, fundamentos, componentes e apresentação em arquivos legíveis; a ordem da cascata é explícita em `scripts/build-css.mjs`.
 - `portfolio.bundle.css`: folha gerada e publicada nas duas páginas. Não editar diretamente; execute `npm run build:css` após alterar `styles/`.
 - `portfolio.js`: entrada das interações; inicializa cada responsabilidade separadamente.
 - `portfolio-premium.js`: entrada independente dos aprimoramentos visuais.
@@ -38,7 +38,7 @@ As folhas antigas `portfolio.css`, `portfolio-experience.css`, `portfolio-premiu
 - Skip link, estados de foco e preferência por movimento reduzido. O conteúdo continua disponível sem JavaScript.
 - Um único efeito de entrada de 240 ms; mudança para movimento reduzido revela todo o conteúdo pendente. O fundo não acompanha o cursor e as galerias não usam parallax de rolagem.
 - Layouts com dimensões reservadas para imagens e fallback para fontes do sistema.
-- Fontes hospedadas no próprio site; o preload prioriza Manrope. Não há requisições de fontes a serviços externos.
+- Fontes hospedadas no próprio site, com subconjuntos latinos e preload. Fira Code usa carregamento opcional para evitar troca tardia em conexões lentas. Não há requisições de fontes a serviços externos.
 - Links canônicos e Open Graph mantidos em `www.s4muelxl.com`.
 - Monograma vetorial SA e apresentações distintas: celular para NEXO, janela desktop para Cabeça de Gelo e contexto de cliente para BMI9.
 - Áreas expansíveis com decisões técnicas e três diagramas de arquitetura, disponíveis mesmo sem JavaScript.
@@ -96,7 +96,7 @@ As alterações são publicadas pela integração Git do projeto **samuelalves**
 
 Para editar estilos, use as dependências de desenvolvimento com versões fixadas em `package-lock.json` e execute `npm run build:css`. O CI verifica o arquivo gerado; a Vercel apenas serve os arquivos estáticos.
 
-O CI também gera relatórios em `artifacts/audit/`: axe nas duas páginas, menus e lightboxes em Chromium/WebKit, reflow e skip link; Lighthouse mobile simulado em servidor local. Os resultados ficam no artefato do workflow. Ausência de violações automatizadas não certifica conformidade WCAG completa. Lighthouse de navegação não mede INP de usuários reais.
+O CI também gera relatórios em `artifacts/audit/`: axe nas duas páginas, menus e lightboxes em Chromium/WebKit, análise desktop, reflow e skip link; Lighthouse mobile simulado em servidor local com gzip para texto. Os resultados ficam no artefato do workflow. Ausência de violações automatizadas não certifica conformidade WCAG completa. Lighthouse de navegação não mede INP de usuários reais. Resultados do servidor anterior sem compressão não são diretamente comparáveis com os atuais.
 
 O registro `CONTINUAR_PORTFOLIO.md` contém o estado do trabalho, pendências e uma mensagem para continuar no chat normal caso os créditos acabem. Ele não é incluído no deploy público.
 
