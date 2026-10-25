@@ -60,7 +60,7 @@ for (const [name, engine] of [['chromium', chromium], ['webkit', webkit]]) {
       }
       await context.close();
     }
-    const staticContext = await browser.newContext({viewport: {width: 390, height: 844}, javaScriptEnabled: false});
+    const staticContext = await browser.newContext({viewport: {width: 390, height: 844}, javaScriptEnabled: false, reducedMotion: 'reduce'});
     const page = await staticContext.newPage();
     page.setDefaultTimeout(15000);
     await page.goto(base + '/projetos.html', {waitUntil: 'networkidle'});
