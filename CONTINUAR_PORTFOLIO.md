@@ -27,9 +27,9 @@ PR #14 integrado; produção confirmada no commit 87cddf8ac6f6d76885b4a01a0820b4
 - Testes locais: 13 testes e contratos estritos aprovados. A matriz de navegador cobre falhas de imagem/módulos, fontes locais e economia de dados.
 - CI Chromium/WebKit e nove larguras aprovados antes da integração.
 
-## Rodada 3: implementação e homologação
+## Rodada 3 concluída
 
-Branch: improve/design-system-a11y-20261025. Consultar sua PR, CI e deploy para o estado exato.
+PR #15 integrado; produção confirmada no commit 7fd785d1fe0b2a8d25e41735eb54d81efa822afd.
 
 - CSS organizado em fontes legíveis em styles/ e consolidado em portfolio.bundle.css. Manter a ordem da cascata e regenerar com npm run build:css.
 - Ferramentas de desenvolvimento com versões fixadas em package-lock.json; o site permanece estático na Vercel.
@@ -37,7 +37,16 @@ Branch: improve/design-system-a11y-20261025. Consultar sua PR, CI e deploy para 
 - A primeira execução identificou contraste insuficiente em navContext; o texto foi ajustado para o token secundário, com tamanho de 10px.
 - Fontes latinas somam 74.848 bytes em vez de 160.320 bytes dos arquivos completos. Fira Code opcional evita troca tardia; ambos os arquivos são priorizados.
 - A medição local passou a servir texto com gzip. Não comparar diretamente as pontuações dessa configuração com as execuções anteriores sem compressão.
-- Relatórios são artefatos do workflow, não dados reais de usuários. Corrigir as violações encontradas antes de integrar.
+- CI aprovado: 13 testes, nove larguras, comportamento Chromium/WebKit e 36 estados axe sem violações. Lighthouse mobile local com gzip: inicial 97, cases 99 em performance; não são métricas reais de usuários.
+
+## Rodada 4: estabilidade e foco
+
+Branch: improve/navigation-stability-20261025. Consultar sua PR, CI e deploy antes de assumir publicação.
+
+- Geometria do menu mobile definida pela capacidade CSS scripting desde a primeira renderização, sem aguardar a classe aplicada por módulo. Sem scripting, os links permanecem na navegação estática.
+- Foco transferido para um controle visível ao cruzar o breakpoint, baixar o currículo e fechar o menu no pagehide.
+- Regressões no CI para módulo atrasado, navegação sem JavaScript, troca de largura e download com foco.
+- Comparar CLS em laboratório no mesmo servidor com gzip e consultar o relatório do commit auditado; não atribuir essas medições à produção.
 
 ## Pendências da auditoria
 

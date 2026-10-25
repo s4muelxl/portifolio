@@ -3,8 +3,6 @@ import {initReadingPosition} from './interactions/reading-position.mjs';
 import {initContact} from './interactions/contact.mjs';
 import {initPrefetch} from './interactions/prefetch.mjs';
 
-document.documentElement.classList.add('js');
-
 for (const eventName of ['pageswap', 'pagereveal']) {
   window.addEventListener(eventName, event => {
     const transition = event.viewTransition;

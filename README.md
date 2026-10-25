@@ -34,6 +34,7 @@ As folhas antigas `portfolio.css`, `portfolio-experience.css`, `portfolio-premiu
 - Galerias por botões, setas do teclado e gesto horizontal; imagens ampliadas permitem continuar navegando.
 - Sobreposição de imagem isola o conteúdo de fundo e devolve o foco ao controle de origem.
 - Leitura de seção e progresso atualizados no máximo uma vez por frame.
+- A geometria inicial do menu usa a capacidade CSS `scripting`, evitando depender da chegada de um módulo para definir a altura do cabeçalho. Com JavaScript desativado, os links continuam visíveis na navegação estática; navegadores antigos recebem essa apresentação estática.
 - Screenshots carregados sob demanda; vizinhos pré-carregados quando a galeria se aproxima da tela, respeitando economia de dados.
 - Skip link, estados de foco e preferência por movimento reduzido. O conteúdo continua disponível sem JavaScript.
 - Um único efeito de entrada de 240 ms; mudança para movimento reduzido revela todo o conteúdo pendente. O fundo não acompanha o cursor e as galerias não usam parallax de rolagem.
@@ -65,12 +66,14 @@ node scripts/sync-projects.mjs
 ```
 
 O workflow `Portfolio checks` executa essas verificações em pushes e pull requests. Ele não utiliza segredos nem interfere na publicação pela Vercel.
+O runner é Ubuntu 24.04, fixado para evitar mudanças implícitas de sistema operacional nas comparações. Revisões antigas do mesmo PR são canceladas quando usam o grupo de concorrência do workflow.
 
 ## Verificação de 25/10/2026
 
 - 13 testes automatizados, conteúdo essencial, cinco projetos, 15 cursos/certificações e 27 capturas.
 - A matriz do CI inclui 320, 390, 768, 1024, 1080, 1081, 1440, 1920 e 2560px, mais smoke tests WebKit e Instagram simulado. Consulte o resultado do workflow para confirmar a execução de cada revisão.
 - `scripts/browser-behavior.mjs` cobre teclado e foco no menu/lightbox, mudança de movimento reduzido em execução, recibo fracionado e falha de rede/markup da demonstração, em Chromium e WebKit.
+- `scripts/navigation-stability.mjs` testa a altura do cabeçalho antes/depois da chegada do módulo, links sem JavaScript, foco ao cruzar o breakpoint e retorno do foco após download, em Chromium/WebKit.
 - Os testes de navegador também cobrem erro de imagem no lightbox, modo inicial inválido, economia de dados e ausência de requisições ao Google Fonts.
 - CSS/JavaScript locais: aproximadamente 108 kB de fonte publicada. A folha consolidada substitui três requisições CSS por uma, preservando a ordem da cascata. Execute `scripts/check-site.py` para o inventário exato e gzip estimado.
 - O núcleo de recibos possui contratos JSDoc verificados com TypeScript estrito: `npx --yes --package typescript@5.9.3 tsc --project tsconfig.check.json`. Essa verificação cobre o núcleo, não todos os módulos DOM.
