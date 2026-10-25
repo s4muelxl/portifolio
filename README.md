@@ -66,6 +66,7 @@ node scripts/sync-projects.mjs
 ```
 
 O workflow `Portfolio checks` executa essas verificações em pushes e pull requests. Ele não utiliza segredos nem interfere na publicação pela Vercel.
+O runner é Ubuntu 24.04, fixado para evitar mudanças implícitas de sistema operacional nas comparações. Revisões antigas do mesmo PR são canceladas quando usam o grupo de concorrência do workflow.
 
 ## Verificação de 25/10/2026
 
