@@ -6,12 +6,12 @@ Portfólio publicado em **https://www.s4muelxl.com**, com página inicial e estu
 
 - `index.html`: apresentação, projetos, competências, 15 cursos/certificações, formação e contato.
 - `projetos.html`: contexto, decisões técnicas, implementação e validação dos cinco projetos.
-- `portfolio.css`: sistema visual compartilhado em preto, branco e cinza, com layouts responsivos e versão para impressão.
+- `styles/`: fontes legíveis do sistema visual, componentes e apresentação; a ordem da cascata é explícita em `scripts/build-css.mjs`.
+- `portfolio.bundle.css`: folha gerada e publicada nas duas páginas. Não editar diretamente; execute `npm run build:css` após alterar `styles/`.
 - `portfolio.js`: entrada das interações; inicializa cada responsabilidade separadamente.
 - `portfolio-premium.js`: entrada independente dos aprimoramentos visuais.
 - `interactions/`: módulos de navegação, foco, galerias/lightbox, contato, posição de leitura, prefetch, revelação e formações no mobile.
 - `assets/fonts/`: fontes variáveis locais Manrope e Fira Code em WOFF2, com licenças e nomes identificados por hash.
-- `portfolio-experience.css`: apresentação específica de projetos, demonstração, arquitetura e transições entre páginas.
 - `data/gallery-data.mjs`: arquivos e legendas das galerias, compartilhados pelas duas páginas.
 - `data/projects.mjs`: metadados, decisões de engenharia, fontes e diagramas simplificados dos cinco projetos.
 - `components/receipt-demo.html`: componente estático compartilhado da demonstração.
@@ -23,7 +23,7 @@ Portfólio publicado em **https://www.s4muelxl.com**, com página inicial e estu
 - `assets/Curriculo_Samuel_Alves_20261025.pdf`: currículo de uma página utilizado nos links atuais; URLs anteriores permanecem compatíveis.
 - `vercel.json`: redirecionamentos, cache e cabeçalhos de segurança.
 
-Arquivos com sufixos `v2` a `v8` são versões anteriores e não são carregados pelas páginas ativas.
+As folhas antigas `portfolio.css`, `portfolio-experience.css`, `portfolio-premium.css` e arquivos com sufixos `v2` a `v8` não são carregados pelas páginas atuais. São mantidas para compatibilidade e referência histórica.
 
 ## Experiência e acessibilidade
 
@@ -51,6 +51,9 @@ Arquivos com sufixos `v2` a `v8` são versões anteriores e não são carregados
 node --test tests/*.test.mjs
 node scripts/sync-projects.mjs --check
 python3 scripts/check-site.py
+npm ci --ignore-scripts
+npm run check:css
+npm run typecheck
 ```
 
 Os testes cobrem formatos monetários, limites, quantidades fracionadas, arredondamento, exportação UTF-8, galeria, integridade dos diagramas e ausência de links públicos para os dois repositórios privados. A verificação estática valida conteúdo essencial, recursos e âncoras e mantém um orçamento de 110 kB para CSS e JavaScript locais, incluindo os módulos de interação.
@@ -69,7 +72,7 @@ O workflow `Portfolio checks` executa essas verificações em pushes e pull requ
 - A matriz do CI inclui 320, 390, 768, 1024, 1080, 1081, 1440, 1920 e 2560px, mais smoke tests WebKit e Instagram simulado. Consulte o resultado do workflow para confirmar a execução de cada revisão.
 - `scripts/browser-behavior.mjs` cobre teclado e foco no menu/lightbox, mudança de movimento reduzido em execução, recibo fracionado e falha de rede/markup da demonstração, em Chromium e WebKit.
 - Os testes de navegador também cobrem erro de imagem no lightbox, modo inicial inválido, economia de dados e ausência de requisições ao Google Fonts.
-- CSS/JavaScript locais: aproximadamente 109 kB de fonte. Execute `scripts/check-site.py` para o inventário exato e gzip estimado. Isto não mede latência ou Core Web Vitals.
+- CSS/JavaScript locais: aproximadamente 108 kB de fonte publicada. A folha consolidada substitui três requisições CSS por uma, preservando a ordem da cascata. Execute `scripts/check-site.py` para o inventário exato e gzip estimado.
 - O núcleo de recibos possui contratos JSDoc verificados com TypeScript estrito: `npx --yes --package typescript@5.9.3 tsc --project tsconfig.check.json`. Essa verificação cobre o núcleo, não todos os módulos DOM.
 - Assets exigem revalidação. O currículo também usa uma nova URL para não depender da expiração de caches imutáveis anteriores.
 
@@ -83,13 +86,17 @@ O script atualiza a versão datada e os dois nomes anteriores. Revise renderiza�
 
 ## Desenvolvimento
 
-Projeto estático, sem instalação de dependências ou etapa de build. Para servir localmente:
+O site publicado é estático e já contém o CSS gerado. Não precisa instalar dependências para servir localmente:
 
 ```bash
 python3 -m http.server 8000
 ```
 
 As alterações são publicadas pela integração Git do projeto **samuelalves** na Vercel. O repositório e os domínios existentes são preservados.
+
+Para editar estilos, use as dependências de desenvolvimento com versões fixadas em `package-lock.json` e execute `npm run build:css`. O CI verifica o arquivo gerado; a Vercel apenas serve os arquivos estáticos.
+
+O CI também gera relatórios em `artifacts/audit/`: axe nas duas páginas, menus e lightboxes em Chromium/WebKit, reflow e skip link; Lighthouse mobile simulado em servidor local. Os resultados ficam no artefato do workflow. Ausência de violações automatizadas não certifica conformidade WCAG completa. Lighthouse de navegação não mede INP de usuários reais.
 
 O registro `CONTINUAR_PORTFOLIO.md` contém o estado do trabalho, pendências e uma mensagem para continuar no chat normal caso os créditos acabem. Ele não é incluído no deploy público.
 

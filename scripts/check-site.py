@@ -58,7 +58,7 @@ def run():
             assert (ROOT/target).is_file(),(name,'link local ausente',link)
             if parsed.fragment and target in pages:assert unquote(parsed.fragment) in pages[target].ids,(name,'âncora ausente',link)
         print(f'{name}: conteúdo essencial, links, recursos e estrutura válidos.')
-    resources=['portfolio.css','portfolio-experience.css','portfolio-premium.css','portfolio.js','portfolio-premium.js','receipt-loader.mjs','receipt-core.mjs','receipt-demo.mjs','data/gallery-data.mjs',*[str(path.relative_to(ROOT)) for path in sorted((ROOT/'interactions').glob('*.mjs'))]]
+    resources=['portfolio.bundle.css','portfolio.js','portfolio-premium.js','receipt-loader.mjs','receipt-core.mjs','receipt-demo.mjs','data/gallery-data.mjs',*[str(path.relative_to(ROOT)) for path in sorted((ROOT/'interactions').glob('*.mjs'))]]
     # Inspect CSS dependencies too: HTML-only checks miss local fonts and imports.
     for resource in resources:
         if not resource.endswith('.css'): continue

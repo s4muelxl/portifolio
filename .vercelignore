@@ -20,6 +20,10 @@ START.txt
 VERIFICACAO_FINAL.txt
 CONTINUAR_PORTFOLIO.md
 tsconfig.check.json
+styles/
+package.json
+package-lock.json
+artifacts/
 
 # Build-time/editorial metadata not imported by the browser.
 data/projects.mjs

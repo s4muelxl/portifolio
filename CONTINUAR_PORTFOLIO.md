@@ -16,16 +16,25 @@ Continue as melhorias do meu portfólio em https://www.s4muelxl.com, repositóri
 - Cache de assets com revalidação e ajustes de contraste e âncoras.
 - 13 testes aprovados; CI com Chromium/WebKit e matriz visual de nove larguras aprovado.
 
-## Rodada 2: implementação e homologação
+## Rodada 2 concluída
 
-Branch: improve/accessibility-performance-20261025. Antes de continuar, conferir se a branch já foi integrada à main.
+PR #14 integrado; produção confirmada no commit 87cddf8ac6f6d76885b4a01a0820b40abaac7eb9.
 
 - Código separado em módulos de navegação, foco, galerias, contato, prefetch e posição de leitura. O carregamento das galerias é isolado do menu.
 - Manrope e Fira Code locais em WOFF2, com licenças, hash e preload da fonte principal.
 - Estado de erro recuperável no lightbox, foco consistente e economia de dados nos preloads.
 - Núcleo de recibos com contratos JSDoc e verificação TypeScript estrita; não se trata de tipagem de toda a aplicação DOM.
 - Testes locais: 13 testes e contratos estritos aprovados. A matriz de navegador cobre falhas de imagem/módulos, fontes locais e economia de dados.
-- Situação de CI, merge e deploy: consultar a PR da branch e o deploy correspondente. Não considerar a rodada publicada somente por este documento existir.
+- CI Chromium/WebKit e nove larguras aprovados antes da integração.
+
+## Rodada 3: implementação e homologação
+
+Branch: improve/design-system-a11y-20261025. Consultar sua PR, CI e deploy para o estado exato.
+
+- CSS organizado em fontes legíveis em styles/ e consolidado em portfolio.bundle.css. Manter a ordem da cascata e regenerar com npm run build:css.
+- Ferramentas de desenvolvimento com versões fixadas em package-lock.json; o site permanece estático na Vercel.
+- Auditoria axe em Chromium/WebKit, navegação por skip link e reflow; Lighthouse mobile simulado nas duas páginas.
+- Relatórios são artefatos do workflow, não dados reais de usuários. Corrigir as violações encontradas antes de integrar.
 
 ## Pendências da auditoria
 
