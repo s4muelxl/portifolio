@@ -58,7 +58,7 @@ def run():
             assert (ROOT/target).is_file(),(name,'link local ausente',link)
             if parsed.fragment and target in pages:assert unquote(parsed.fragment) in pages[target].ids,(name,'âncora ausente',link)
         print(f'{name}: conteúdo essencial, links, recursos e estrutura válidos.')
-    resources=['portfolio.css','portfolio-experience.css','portfolio-premium.css','portfolio.js','portfolio-premium.js','receipt-core.mjs','receipt-demo.mjs','data/gallery-data.mjs']
+    resources=['portfolio.css','portfolio-experience.css','portfolio-premium.css','portfolio.js','portfolio-premium.js','receipt-loader.mjs','receipt-core.mjs','receipt-demo.mjs','data/gallery-data.mjs','interactions/reveal.mjs','interactions/certificates.mjs']
     total=sum((ROOT/file).stat().st_size for file in resources)
     assert total<110_000,('orçamento de CSS/JS excedido',total)
     for file in resources:

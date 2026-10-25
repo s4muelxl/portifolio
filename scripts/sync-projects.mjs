@@ -26,7 +26,9 @@ export function casePanel(project) {
     <div class="engineering-body">
     <div class="engineering-notes"><div><span>A escolha</span><p>${escape(project.decision)}</p></div><div><span>O cuidado necessário</span><p>${escape(project.tradeoff)}</p></div></div>
     ${diagram}
-    <a class="engineering-source" href="${escape(project.source)}" target="_blank" rel="noopener noreferrer">Consultar a base técnica no GitHub <span aria-hidden="true">↗</span></a>
+    ${project.visibility === 'private'
+      ? '<p class="engineering-source">Código privado. As decisões e capturas estão apresentadas neste estudo de caso.</p>'
+      : `<a class="engineering-source" href="${escape(project.source)}" target="_blank" rel="noopener noreferrer">Consultar a base técnica no GitHub <span aria-hidden="true">↗</span></a>`}
     </div>
   </details>`.replace(/[ \t]+$/gm,'');
 }

@@ -1,5 +1,4 @@
 import {galleryConfigs} from './data/gallery-data.mjs?v=20261023c';
-import {initReceiptDemos} from './receipt-demo.mjs?v=20261023c';
 
 'use strict';
 
@@ -15,7 +14,6 @@ for (const eventName of ['pageswap', 'pagereveal']) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  initReceiptDemos();
   const $ = selector => document.querySelector(selector);
   const mobileViewport = window.matchMedia('(max-width: 1080px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -115,14 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
         else {
           const area = document.createElement('textarea');
           area.value = value; area.setAttribute('readonly',''); area.style.position='fixed'; area.style.opacity='0';
-          document.body.append(area); area.select(); document.execCommand('copy'); area.remove();
+          document.body.append(area);
+          try {
+            area.select();
+            if (!document.execCommand('copy')) throw new Error('Clipboard indisponível');
+          } finally {
+            area.remove();
+            copyEmail.focus({preventScroll: true});
+          }
         }
         copyEmail.textContent = 'E-mail copiado ✓';
         copyEmail.classList.add('is-copied');
         if (copyStatus) copyStatus.textContent = 'E-mail copiado para a área de transferência.';
         setTimeout(() => { copyEmail.textContent = originalLabel; copyEmail.classList.remove('is-copied'); }, 1800);
       } catch {
-        if (copyStatus) copyStatus.textContent = 'Não foi possível copiar o e-mail.';
+        if (copyStatus) copyStatus.textContent = `Não foi possível copiar. E-mail: ${value}`;
       }
     });
   }
@@ -175,26 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', scheduleReadingPosition, {passive: true});
   window.addEventListener('load', scheduleReadingPosition, {once: true});
   updateReadingPosition();
-
-  const revealElements = [...document.querySelectorAll('.reveal')];
-  if ('IntersectionObserver' in window && !reducedMotion.matches) {
-    const revealObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.remove('reveal-pending');
-      entry.target.classList.add('is-visible');
-      revealObserver.unobserve(entry.target);
-    }), {threshold: .03, rootMargin: '0px 0px 32px'});
-    revealElements.filter(element => !element.closest('.hero-grid, .projects-title-grid')).forEach((element, index) => {
-      element.style.setProperty('--reveal-delay', `${(index % 3) * 55}ms`);
-      element.classList.add('reveal-pending');
-      revealObserver.observe(element);
-    });
-    reducedMotion.addEventListener('change', event => {
-      if (!event.matches) return;
-      revealObserver.disconnect();
-      revealElements.forEach(element => element.classList.remove('reveal-pending'));
-    });
-  }
 
   const closeViewer = () => {
     if (!activeGallery || !mediaLightbox) return;
