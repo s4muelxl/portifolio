@@ -2,6 +2,8 @@ import {setInert, trapFocus} from './focus.mjs';
 
 /** Mobile menu owns its visibility, focus and background isolation. */
 export function initNavigation({canOpen = () => true} = {}) {
+  // Older browsers retain the visible, static navigation instead of hiding it.
+  if (!window.matchMedia('(scripting: enabled)').matches) return {close() {}, isOpen: () => false};
   const $ = selector => document.querySelector(selector);
   const mobileViewport = window.matchMedia('(max-width: 1080px)');
   const navToggle = $('#navToggle');
@@ -52,7 +54,7 @@ export function initNavigation({canOpen = () => true} = {}) {
   navBackdrop?.addEventListener('click', () => closeNav(true));
   navMenu?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
     const wasOpen = menuOpen;
-    closeNav(false);
+    closeNav(wasOpen);
     if (wasOpen && link.hash && (link.pathname === window.location.pathname || link.getAttribute('href').startsWith('#'))) {
       const target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
       if (target instanceof HTMLElement) {
@@ -64,10 +66,16 @@ export function initNavigation({canOpen = () => true} = {}) {
     }
   }));
   mobileViewport.addEventListener('change', () => {
+    const focused = document.activeElement;
     if (!mobileViewport.matches) closeNav(false);
     syncMenuVisibility();
+    if (mobileViewport.matches && !menuOpen && navMenu?.contains(focused)) {
+      navToggle?.focus({preventScroll: true});
+    } else if (!mobileViewport.matches && focused === navToggle) {
+      (navMenu?.querySelector('.nav-link[aria-current]') || navMenu?.querySelector('.nav-link'))?.focus({preventScroll: true});
+    }
   });
-  window.addEventListener('pagehide', () => closeNav(false));
+  window.addEventListener('pagehide', () => closeNav(true));
   syncMenuVisibility();
 
   document.addEventListener('keydown', event => {

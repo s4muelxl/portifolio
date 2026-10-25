@@ -80,6 +80,7 @@ jobs:
           trap 'kill "$CURRENT_PID" "$BASELINE_PID" 2>/dev/null || true' EXIT
           node scripts/visual-regression.mjs
           node scripts/browser-behavior.mjs
+          node scripts/navigation-stability.mjs
           AUDIT_STATUS=0
           node scripts/a11y-audit.mjs || AUDIT_STATUS=$?
           node scripts/performance-audit.mjs || AUDIT_STATUS=$?
