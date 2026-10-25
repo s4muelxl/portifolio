@@ -2,6 +2,7 @@ import {MAX_ITEMS, calculateReceipt, formatMoney, formatQuantity, receiptText} f
 
 export function initReceiptDemos() {
   document.querySelectorAll('[data-receipt-demo]').forEach(root => {
+    if (root.dataset.initialized === 'true') return;
     const form = root.querySelector('form');
     const list = root.querySelector('[data-demo-items]');
     const template = root.querySelector('template');
@@ -11,8 +12,19 @@ export function initReceiptDemos() {
     const total = root.querySelector('[data-demo-total]');
     const download = root.querySelector('[data-demo-download]');
     const add = root.querySelector('[data-demo-add]');
+    const fallback = root.querySelector('[data-demo-fallback]');
+    const enhanced = root.querySelector('[data-demo-enhanced]');
+    const previewClient = root.querySelector('[data-demo-client]');
+    const previewPayment = root.querySelector('[data-demo-payment]');
+    const previewState = root.querySelector('[data-demo-preview-state]');
+    if (!(form instanceof HTMLFormElement) || !(template instanceof HTMLTemplateElement)
+        || !template.content.firstElementChild || !list || !error || !status || !preview
+        || !total || !download || !add || !fallback || !enhanced
+        || !previewClient || !previewPayment || !previewState) return;
     const client = form.elements.namedItem('client');
     const payment = form.elements.namedItem('payment');
+    if (!(client instanceof HTMLInputElement) || !(payment instanceof HTMLSelectElement)) return;
+    root.dataset.initialized = 'true';
     let lastReceipt = null;
     let downloadUrl = null;
 
@@ -49,19 +61,19 @@ export function initReceiptDemos() {
         });
         preview.replaceChildren(fragment);
         total.textContent = formatMoney(receipt.total);
-        root.querySelector('[data-demo-client]').textContent = client.value.trim() || 'Consumidor Final';
-        root.querySelector('[data-demo-payment]').textContent = payment.value;
+        previewClient.textContent = client.value.trim() || 'Consumidor Final';
+        previewPayment.textContent = payment.value;
         error.hidden = true;
         error.textContent = '';
         download.disabled = false;
         root.dataset.state = 'valid';
-        root.querySelector('[data-demo-preview-state]').textContent = 'Prévia atualizada';
+        previewState.textContent = 'Prévia atualizada';
         lastReceipt = receipt;
         return true;
       } catch (exception) {
         download.disabled = true;
         root.dataset.state = 'invalid';
-        root.querySelector('[data-demo-preview-state]').textContent = 'Confira os campos para atualizar';
+        previewState.textContent = 'Confira os campos para atualizar';
         lastReceipt = null;
         if (showError) {
           error.textContent = exception.message;
@@ -117,8 +129,8 @@ export function initReceiptDemos() {
 
     if (update()) {
       form.hidden = false;
-      root.querySelector('[data-demo-fallback]').hidden = true;
-      root.querySelector('[data-demo-enhanced]').hidden = false;
+      fallback.hidden = true;
+      enhanced.hidden = false;
     }
   });
 }

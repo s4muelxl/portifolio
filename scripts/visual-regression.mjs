@@ -15,8 +15,11 @@ const viewports=[
   ['mobile-390',390,844],
   ['tablet-768',768,1024],
   ['tablet-1024',1024,768],
+  ['breakpoint-1080',1080,810],
+  ['breakpoint-1081',1081,810],
   ['desktop-1440',1440,900],
   ['desktop-1920',1920,1080],
+  ['ultrawide-2560',2560,1440],
 ];
 
 const routes=[
@@ -119,7 +122,7 @@ try{
           await compareImages(baseFile,currentFile,diffFile,stem);
         }
 
-        if(width<=1024){
+        if(width<=1080){
           for(const [page,label] of [[baseline,'baseline'],[current,'current']]){
             await page.evaluate(()=>scrollTo(0,0));
             await page.locator('#navToggle').click();
@@ -202,4 +205,4 @@ if(failures.length){
   console.error('\nVisual QA falhou:\n- '+failures.join('\n- '));
   process.exit(1);
 }
-console.log('\nVisual QA: 6 viewports + iPhone/WebKit + Instagram in-app aprovados.');
+console.log('\nVisual QA: 9 viewports + iPhone/WebKit + Instagram in-app aprovados.');

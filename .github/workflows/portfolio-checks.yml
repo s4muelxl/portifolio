@@ -23,6 +23,9 @@ jobs:
         run: |
           node --check portfolio.js
           node --check portfolio-premium.js
+          node --check interactions/reveal.mjs
+          node --check interactions/certificates.mjs
+          node --check receipt-loader.mjs
           node --check receipt-core.mjs
           node --check receipt-demo.mjs
           node --check scripts/visual-regression.mjs
@@ -69,6 +72,7 @@ jobs:
           BASELINE_PID=$!
           trap 'kill "$CURRENT_PID" "$BASELINE_PID" 2>/dev/null || true' EXIT
           node scripts/visual-regression.mjs
+          node scripts/browser-behavior.mjs
       - name: Upload visual QA artifacts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2

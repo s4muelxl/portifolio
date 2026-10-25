@@ -2,7 +2,7 @@
 // Existing project descriptions remain in their original HTML.
 export const projects = [
   {
-    id: 'nexo', homeId: 'projeto-nexo', title: 'NEXO', repo: 'https://github.com/s4muelxl/nexo',
+    id: 'nexo', homeId: 'projeto-nexo', title: 'NEXO', visibility: 'private', repo: 'https://github.com/s4muelxl/nexo',
     source: 'https://github.com/s4muelxl/nexo/blob/main/package.json',
     question: 'Como manter vários domínios em uma experiência coerente?',
     decision: 'Separar estado local e dados remotos: Zustand organiza a interface; TanStack Query trata consultas e sincronização.',
@@ -20,7 +20,7 @@ export const projects = [
     }
   },
   {
-    id: 'cbcdegelo', homeId: 'projeto-cbcdegelo', title: 'Cabeça de Gelo', repo: 'https://github.com/s4muelxl/cbcdegelo',
+    id: 'cbcdegelo', homeId: 'projeto-cbcdegelo', title: 'Cabeça de Gelo', visibility: 'private', repo: 'https://github.com/s4muelxl/cbcdegelo',
     source: 'https://github.com/s4muelxl/cbcdegelo/blob/main/README.md',
     question: 'Como separar o controle da sala do transporte de mídia?',
     decision: 'A aplicação organiza salas e credenciais; o LiveKit SFU distribui voz e compartilhamento de tela entre participantes.',

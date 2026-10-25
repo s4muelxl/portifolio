@@ -60,7 +60,11 @@ test('hero prioriza proposta, foto e duas ações sem resumo redundante',async()
 });
 test('cases expõem evidências concretas de reconexão e regra de cotação',async()=>{
   const cases=await readFile(new URL('projetos.html',root),'utf8');
-  assert.ok(cases.includes('tests/rtc-reconnection-media.test.ts'));
+  for (const html of [cases, await readFile(new URL('index.html',root),'utf8')]) {
+    assert.doesNotMatch(html, /href="https:\/\/github\.com\/s4muelxl\/(?:nexo|cbcdegelo)(?:["/])/);
+    assert.ok(html.includes('Código privado'));
+  }
+  assert.ok(cases.includes('reconciliação da mídia após reconexão'));
   assert.ok(cases.includes('src/domain/validations.ts'));
   assert.ok(cases.includes('src/domain/calculations.test.ts'));
   assert.ok(cases.includes('R$ 240,00'));
