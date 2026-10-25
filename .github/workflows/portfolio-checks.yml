@@ -19,6 +19,8 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '24'
+      - name: Install pinned development tools
+        run: npm ci --ignore-scripts --no-audit --no-fund
       - name: JavaScript syntax
         run: |
           node --check portfolio.js
@@ -34,8 +36,10 @@ jobs:
         run: node --test tests/*.test.mjs
       - name: Generated components
         run: node scripts/sync-projects.mjs --check
+      - name: Generated stylesheet
+        run: npm run check:css
       - name: Strict JavaScript contracts
-        run: npx --yes --package typescript@5.9.3 tsc --project tsconfig.check.json
+        run: npm run typecheck
       - name: Content, links and resource budget
         run: python3 scripts/check-site.py
 
@@ -54,7 +58,7 @@ jobs:
           node-version: '24'
       - name: Install visual QA dependencies
         run: |
-          npm install --no-save --no-package-lock playwright@1.56.1 pixelmatch@7.1.0 pngjs@7.0.0
+          npm ci --ignore-scripts --no-audit --no-fund
           npx playwright install --with-deps chromium webkit
       - name: Compare responsive rendering with baseline commit
         env:
@@ -69,18 +73,22 @@ jobs:
           fi
           echo "Visual baseline: $BASELINE_REF | change commit: $VISUAL_HEAD_REF | allow intended update: $ALLOW_VISUAL_CHANGE"
           git worktree add --detach /tmp/portfolio-baseline "$BASELINE_REF"
-          python3 -m http.server 4173 --bind 127.0.0.1 --directory . >/tmp/portfolio-current.log 2>&1 &
+          python3 scripts/serve-audit.py --port 4173 --directory . >/tmp/portfolio-current.log 2>&1 &
           CURRENT_PID=$!
-          python3 -m http.server 4174 --bind 127.0.0.1 --directory /tmp/portfolio-baseline >/tmp/portfolio-baseline.log 2>&1 &
+          python3 scripts/serve-audit.py --port 4174 --directory /tmp/portfolio-baseline >/tmp/portfolio-baseline.log 2>&1 &
           BASELINE_PID=$!
           trap 'kill "$CURRENT_PID" "$BASELINE_PID" 2>/dev/null || true' EXIT
           node scripts/visual-regression.mjs
           node scripts/browser-behavior.mjs
+          AUDIT_STATUS=0
+          node scripts/a11y-audit.mjs || AUDIT_STATUS=$?
+          node scripts/performance-audit.mjs || AUDIT_STATUS=$?
+          exit "$AUDIT_STATUS"
       - name: Upload visual QA artifacts
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: portfolio-visual-qa
-          path: artifacts/visual
+          path: artifacts/
           if-no-files-found: ignore
           retention-days: 14
