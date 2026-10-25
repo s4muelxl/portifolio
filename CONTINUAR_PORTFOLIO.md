@@ -39,14 +39,24 @@ PR #15 integrado; produção confirmada no commit 7fd785d1fe0b2a8d25e41735eb54d8
 - A medição local passou a servir texto com gzip. Não comparar diretamente as pontuações dessa configuração com as execuções anteriores sem compressão.
 - CI aprovado: 13 testes, nove larguras, comportamento Chromium/WebKit e 36 estados axe sem violações. Lighthouse mobile local com gzip: inicial 97, cases 99 em performance; não são métricas reais de usuários.
 
-## Rodada 4: estabilidade e foco
+## Rodada 4 concluída
 
-Branch: improve/navigation-stability-20261025. Consultar sua PR, CI e deploy antes de assumir publicação.
+PR #16 integrado; produção confirmada no commit 2cc63638de3237841b5c2c90d1fefbf46e60a5d2.
 
 - Geometria do menu mobile definida pela capacidade CSS scripting desde a primeira renderização, sem aguardar a classe aplicada por módulo. Sem scripting, os links permanecem na navegação estática.
 - Foco transferido para um controle visível ao cruzar o breakpoint, baixar o currículo e fechar o menu no pagehide.
 - Regressões no CI para módulo atrasado, navegação sem JavaScript, troca de largura e download com foco.
 - Comparar CLS em laboratório no mesmo servidor com gzip e consultar o relatório do commit auditado; não atribuir essas medições à produção.
+
+## Rodada 5: leitura e storytelling dos cases
+
+Branch: improve/case-storytelling-20261025. Consultar sua PR, CI e deploy para o estado exato.
+
+- Resumo dos cinco cases: problema, minha contribuição e como verificar, com link direto para a evidência.
+- Narrativas completas em components/cases/*.html, geradas dentro do painel nativo já existente; links de código, galerias e demonstração continuam visíveis fora dele.
+- Fotos existentes da BMI9 também no case, identificadas como contexto do cliente. Não são fotos do desenvolvimento do software.
+- Removida a repetição decorativa de “decisão e trade-offs” na página inicial e regras CSS sem uso.
+- Novos testes de leitura em quatro larguras e dois navegadores, abertura por teclado e conteúdo sem JavaScript; axe inclui painéis expandidos.
 
 ## Pendências da auditoria
 

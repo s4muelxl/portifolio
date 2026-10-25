@@ -5,7 +5,13 @@ const base = 'http://127.0.0.1:4173';
 
 async function verifyMenu(page) {
   const toggle = page.locator('#navToggle');
+  const isInViewport = async () => {
+    const box = await toggle.boundingBox();
+    return box && box.y >= -1 && box.y + box.height <= page.viewportSize().height + 1;
+  };
+  assert.ok(await isInViewport(), 'menu toggle must remain visible after scrolling');
   await toggle.click();
+  assert.ok(await isInViewport(), 'menu toggle must remain visible while scroll is locked');
   assert.equal(await toggle.getAttribute('aria-expanded'), 'true');
   assert.equal(await page.locator('main').evaluate(el => el.inert), true);
   const links = page.locator('#navMenu a');
@@ -59,6 +65,7 @@ for (const [name, engine] of [['chromium', chromium], ['webkit', webkit]]) {
       await page.waitForFunction(() => document.querySelector('[data-demo-total]').textContent.replace(/\s/g, ' ') === 'R$ 79,85');
       await demo.locator('[name="price"]').first().fill('-1');
       assert.equal(await demo.locator('[data-demo-download]').isDisabled(), true);
+      await verifyMenu(page);
       await page.emulateMedia({reducedMotion: 'no-preference'});
     }
     assert.deepEqual(errors, [], `${name}: unhandled errors`);

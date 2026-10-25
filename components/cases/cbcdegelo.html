@@ -1,0 +1,59 @@
+<div class="case-columns case-columns-deep">
+  <div>
+    <h3>Contexto e problema</h3>
+    <p>
+      Salas de voz e compartilhamento de tela precisam continuar simples para
+      quem usa, mesmo quando conexão, tracks e qualidade de mídia mudam em tempo
+      real.
+    </p>
+  </div>
+  <div>
+    <h3>Minha responsabilidade</h3>
+    <p>
+      Implementei o fluxo de salas, permissões e interface e integrei o cliente
+      WebRTC/LiveKit com reconexão e diagnóstico. O LiveKit fornece o SFU e as
+      primitivas de transporte e distribuição de mídia; a aplicação orquestra
+      como esses recursos entram no produto.
+    </p>
+  </div>
+  <div>
+    <h3>Decisão de implementação</h3>
+    <ul>
+      <li>Controle de sala e credenciais separado do ciclo de vida da mídia</li>
+      <li>LiveKit SFU para distribuir voz e tela entre participantes</li>
+      <li>
+        Simulcast, leitura de RTC stats e políticas de recuperação ao redor do
+        transporte
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>Alternativas e limitações</h3>
+    <p>
+      Uma topologia P2P seria mais simples para poucos participantes, mas
+      aumenta conexões entre pares conforme a sala cresce. A SFU reduz esse
+      acoplamento entre clientes, ao custo de depender do serviço de mídia e
+      tratar reconexão, qualidade e limpeza de tracks com cuidado.
+    </p>
+  </div>
+  <div>
+    <h3>Entrega e validação</h3>
+    <ul>
+      <li>Vitest, typecheck, lint e auditorias de RTC no fluxo de release</li>
+      <li>Teste dedicado reconcilia mídia remota após reconexão do LiveKit</li>
+      <li>
+        Diagnóstico registra ICE, RTC stats e marcos de sessão sem atribuir ao
+        app capacidades nativas do LiveKit
+      </li>
+    </ul>
+  </div>
+</div>
+<p class="case-code-note">
+  Código privado. O case descreve a integração LiveKit, o teste de reconciliação
+  da mídia após reconexão e o diagnóstico de conexão.
+</p>
+<p class="case-limit">
+  <strong>Escopo do case.</strong> Simulações de carga são apresentadas como
+  simulações; metas de latência e qualidade não são tratadas como resultado de
+  produção sem medição correspondente.
+</p>

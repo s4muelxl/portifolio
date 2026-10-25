@@ -21,6 +21,7 @@ VERIFICACAO_FINAL.txt
 CONTINUAR_PORTFOLIO.md
 tsconfig.check.json
 styles/
+components/
 package.json
 package-lock.json
 artifacts/

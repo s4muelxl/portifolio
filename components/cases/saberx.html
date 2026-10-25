@@ -1,0 +1,52 @@
+<div class="case-columns case-columns-deep">
+  <div>
+    <h3>Contexto e problema</h3>
+    <p>
+      O SaberX substitui um mapa de cotação em planilha por um sistema com
+      produtos, fornecedores, cotações, compras, vendas, histórico e regras de
+      validação.
+    </p>
+  </div>
+  <div>
+    <h3>Minha responsabilidade</h3>
+    <p>
+      Implementei a experiência web, o motor de cálculo e validação e a
+      integração com Supabase para autenticação, persistência e isolamento por
+      organização.
+    </p>
+  </div>
+  <div>
+    <h3>Decisão de implementação</h3>
+    <ul>
+      <li>React, TypeScript e Vite no frontend</li>
+      <li>Supabase Auth, PostgreSQL e RLS multi-tenant</li>
+      <li>
+        Regras de cálculo e elegibilidade isoladas no domínio para serem
+        testáveis fora da interface
+      </li>
+    </ul>
+  </div>
+  <div>
+    <h3>Alternativas e limitações</h3>
+    <p>
+      Escolher apenas o menor valor nominal seria simples, mas incorreto quando
+      a proposta não atende à quantidade ou ao produto solicitado. A comparação
+      aceita somente cotações elegíveis; as políticas de acesso também precisam
+      evoluir junto com o modelo de dados.
+    </p>
+  </div>
+  <div>
+    <h3>Entrega e validação</h3>
+    <p>
+      O teste do domínio usa um caso concreto: uma proposta de R$ 240,00 com
+      apenas 2 barras para uma necessidade de 26,94 é classificada como
+      QUANTIDADE_INSUFICIENTE e fica fora da comparação; entre as propostas
+      válidas, o menor total esperado é R$ 3.338,14.
+    </p>
+  </div>
+</div>
+<p class="case-limit">
+  <strong>Escopo do case.</strong> A regra demonstrada é uma validação de
+  software coberta por teste; não representa economia comercial ou resultado
+  financeiro medido.
+</p>
