@@ -16,9 +16,9 @@ for (const [name, engine] of [['chromium', chromium], ['webkit', webkit]]) {
       });
       try {
         await page.goto(base + path, {waitUntil: 'commit'});
-        // Wait for CSS/fonts while keeping the enhancement entry point pending.
+        // Wait for CSS while keeping the enhancement entry point pending.
+        // document.fonts.ready can wait for document loading and deadlock this gate.
         await page.waitForFunction(() => getComputedStyle(document.querySelector('.nav-menu')).position === 'fixed');
-        await page.evaluate(() => document.fonts.ready);
         const before = await page.locator('main').boundingBox();
         assert.ok(before);
         assert.equal(await page.locator('#navMenu').isVisible(), false);
