@@ -7,9 +7,10 @@ Portfólio publicado em **https://www.s4muelxl.com**, com página inicial e estu
 - `index.html`: apresentação, projetos, competências, 15 cursos/certificações, formação e contato.
 - `projetos.html`: contexto, decisões técnicas, implementação e validação dos cinco projetos.
 - `portfolio.css`: sistema visual compartilhado em preto, branco e cinza, com layouts responsivos e versão para impressão.
-- `portfolio.js`: navegação, foco, leitura de seção e galerias.
+- `portfolio.js`: entrada das interações; inicializa cada responsabilidade separadamente.
 - `portfolio-premium.js`: entrada independente dos aprimoramentos visuais.
-- `interactions/`: revelação única de conteúdo e expansão das formações no mobile.
+- `interactions/`: módulos de navegação, foco, galerias/lightbox, contato, posição de leitura, prefetch, revelação e formações no mobile.
+- `assets/fonts/`: fontes variáveis locais Manrope e Fira Code em WOFF2, com licenças e nomes identificados por hash.
 - `portfolio-experience.css`: apresentação específica de projetos, demonstração, arquitetura e transições entre páginas.
 - `data/gallery-data.mjs`: arquivos e legendas das galerias, compartilhados pelas duas páginas.
 - `data/projects.mjs`: metadados, decisões de engenharia, fontes e diagramas simplificados dos cinco projetos.
@@ -37,6 +38,7 @@ Arquivos com sufixos `v2` a `v8` são versões anteriores e não são carregados
 - Skip link, estados de foco e preferência por movimento reduzido. O conteúdo continua disponível sem JavaScript.
 - Um único efeito de entrada de 240 ms; mudança para movimento reduzido revela todo o conteúdo pendente. O fundo não acompanha o cursor e as galerias não usam parallax de rolagem.
 - Layouts com dimensões reservadas para imagens e fallback para fontes do sistema.
+- Fontes hospedadas no próprio site; o preload prioriza Manrope. Não há requisições de fontes a serviços externos.
 - Links canônicos e Open Graph mantidos em `www.s4muelxl.com`.
 - Monograma vetorial SA e apresentações distintas: celular para NEXO, janela desktop para Cabeça de Gelo e contexto de cliente para BMI9.
 - Áreas expansíveis com decisões técnicas e três diagramas de arquitetura, disponíveis mesmo sem JavaScript.
@@ -66,7 +68,9 @@ O workflow `Portfolio checks` executa essas verificações em pushes e pull requ
 - 13 testes automatizados, conteúdo essencial, cinco projetos, 15 cursos/certificações e 27 capturas.
 - A matriz do CI inclui 320, 390, 768, 1024, 1080, 1081, 1440, 1920 e 2560px, mais smoke tests WebKit e Instagram simulado. Consulte o resultado do workflow para confirmar a execução de cada revisão.
 - `scripts/browser-behavior.mjs` cobre teclado e foco no menu/lightbox, mudança de movimento reduzido em execução, recibo fracionado e falha de rede/markup da demonstração, em Chromium e WebKit.
-- CSS/JavaScript locais: aproximadamente 105 kB de fonte. Execute `scripts/check-site.py` para o inventário exato e gzip estimado. Isto não mede latência ou Core Web Vitals.
+- Os testes de navegador também cobrem erro de imagem no lightbox, modo inicial inválido, economia de dados e ausência de requisições ao Google Fonts.
+- CSS/JavaScript locais: aproximadamente 109 kB de fonte. Execute `scripts/check-site.py` para o inventário exato e gzip estimado. Isto não mede latência ou Core Web Vitals.
+- O núcleo de recibos possui contratos JSDoc verificados com TypeScript estrito: `npx --yes --package typescript@5.9.3 tsc --project tsconfig.check.json`. Essa verificação cobre o núcleo, não todos os módulos DOM.
 - Assets exigem revalidação. O currículo também usa uma nova URL para não depender da expiração de caches imutáveis anteriores.
 
 O currículo pode ser reconstruído com Python, ReportLab e DejaVu Sans:
@@ -86,6 +90,8 @@ python3 -m http.server 8000
 ```
 
 As alterações são publicadas pela integração Git do projeto **samuelalves** na Vercel. O repositório e os domínios existentes são preservados.
+
+O registro `CONTINUAR_PORTFOLIO.md` contém o estado do trabalho, pendências e uma mensagem para continuar no chat normal caso os créditos acabem. Ele não é incluído no deploy público.
 
 ## Validação
 
