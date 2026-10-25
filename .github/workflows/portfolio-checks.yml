@@ -25,6 +25,7 @@ jobs:
           node --check portfolio-premium.js
           node --check interactions/reveal.mjs
           node --check interactions/certificates.mjs
+          for file in interactions/*.mjs; do node --check "$file"; done
           node --check receipt-loader.mjs
           node --check receipt-core.mjs
           node --check receipt-demo.mjs
@@ -33,6 +34,8 @@ jobs:
         run: node --test tests/*.test.mjs
       - name: Generated components
         run: node scripts/sync-projects.mjs --check
+      - name: Strict JavaScript contracts
+        run: npx --yes --package typescript@5.9.3 tsc --project tsconfig.check.json
       - name: Content, links and resource budget
         run: python3 scripts/check-site.py
 

@@ -1,6 +1,11 @@
 // Browser demonstration of the original Python CLI's input → calculation → text flow.
+// @ts-check
+/** @typedef {{description: unknown, quantity: unknown, price: unknown}} ReceiptInput */
+/** @typedef {{description: string, quantity: number, unitPrice: number, subtotal: number}} ReceiptItem */
+/** @typedef {{items: ReceiptItem[], total: number}} Receipt */
 export const MAX_ITEMS = 12;
 
+/** @param {unknown} value @param {number} precision @param {string} label */
 function decimalUnits(value, precision, label) {
   const input = String(value ?? '').trim().replace(/^r\$\s*/i, '');
   let normalized = input;
@@ -16,27 +21,32 @@ function decimalUnits(value, precision, label) {
   return units;
 }
 
+/** @param {unknown} value */
 export function parseMoney(value) {
   const cents = decimalUnits(value, 2, 'Preço');
   if (cents > 99_999_999) throw new Error('Preço: máximo de R$ 999.999,99 por unidade.');
   return cents;
 }
 
+/** @param {unknown} value */
 export function parseQuantity(value) {
   const units = decimalUnits(value, 3, 'Quantidade');
   if (units <= 0 || units > 9_999_000) throw new Error('Quantidade: use um valor entre 0,001 e 9.999.');
   return units;
 }
 
+/** @param {number} cents */
 export function formatMoney(cents) {
   if (!Number.isSafeInteger(cents) || cents < 0) throw new Error('Total monetário inválido.');
   return new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(cents / 100);
 }
 
+/** @param {number} milliUnits */
 export function formatQuantity(milliUnits) {
   return new Intl.NumberFormat('pt-BR', {maximumFractionDigits: 3}).format(milliUnits / 1000);
 }
 
+/** @param {ReceiptInput[]} items @returns {Receipt} */
 export function calculateReceipt(items) {
   if (!Array.isArray(items) || !items.length || items.length > MAX_ITEMS) throw new Error(`Adicione entre 1 e ${MAX_ITEMS} itens.`);
   const calculated = items.map((item, index) => {
@@ -53,6 +63,7 @@ export function calculateReceipt(items) {
   return {items: calculated, total};
 }
 
+/** @param {{client?: unknown, payment?: unknown, receipt: Receipt, date?: Date}} options */
 export function receiptText({client, payment, receipt, date = new Date()}) {
   const customer = String(client ?? '').trim().slice(0, 70) || 'Consumidor Final';
   const method = String(payment ?? '').trim().slice(0, 30) || 'Não informado';

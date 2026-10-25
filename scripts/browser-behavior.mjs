@@ -24,9 +24,16 @@ for (const [name, engine] of [['chromium', chromium], ['webkit', webkit]]) {
     const context = await browser.newContext({viewport: {width: 390, height: 844}, reducedMotion: 'no-preference'});
     const page = await context.newPage();
     const errors = [];
+    const externalFontRequests = [];
     page.on('pageerror', error => errors.push(error.message));
+    page.on('request', request => {
+      if (/fonts\.(googleapis|gstatic)\.com/.test(request.url())) externalFontRequests.push(request.url());
+    });
     for (const route of ['/', '/projetos.html']) {
       await page.goto(base + route, {waitUntil: 'networkidle'});
+      await page.evaluate(() => document.fonts.ready);
+      assert.equal(await page.evaluate(() => document.fonts.check('650 16px Manrope')), true);
+      assert.equal(await page.evaluate(() => document.fonts.check('500 12px "Fira Code"')), true);
       await verifyMenu(page);
       // Change the preference while below-the-fold elements are still pending.
       await page.emulateMedia({reducedMotion: 'reduce'});
@@ -55,16 +62,19 @@ for (const [name, engine] of [['chromium', chromium], ['webkit', webkit]]) {
       await page.emulateMedia({reducedMotion: 'no-preference'});
     }
     assert.deepEqual(errors, [], `${name}: unhandled errors`);
+    assert.deepEqual(externalFontRequests, [], `${name}: fonts must load locally`);
     await context.close();
 
     // A failed optional import must leave navigation and static receipt usable.
-    for (const brokenDemo of ['network', 'markup']) {
+    for (const brokenDemo of ['network', 'markup', 'galleryModule']) {
       const failureContext = await browser.newContext({viewport: {width: 390, height: 844}, reducedMotion: 'reduce'});
       const failurePage = await failureContext.newPage();
       const unhandled = [];
       failurePage.on('pageerror', error => unhandled.push(error.message));
       if (brokenDemo === 'network') {
         await failurePage.route('**/receipt-demo.mjs*', route => route.abort());
+      } else if (brokenDemo === 'galleryModule') {
+        await failurePage.route('**/interactions/galleries.mjs', route => route.abort());
       } else {
         await failurePage.route(base + '/', async route => {
           const response = await route.fetch();
@@ -74,10 +84,52 @@ for (const [name, engine] of [['chromium', chromium], ['webkit', webkit]]) {
       }
       await failurePage.goto(base, {waitUntil: 'networkidle'});
       await verifyMenu(failurePage);
-      assert.equal(await failurePage.locator('[data-demo-fallback]').isVisible(), true);
+      if (brokenDemo !== 'galleryModule') {
+        assert.equal(await failurePage.locator('[data-demo-fallback]').isVisible(), true);
+      }
       assert.deepEqual(unhandled, [], `${name}/${brokenDemo}: unhandled errors`);
       await failureContext.close();
     }
+    const mediaContext = await browser.newContext({viewport: {width: 390, height: 844}, reducedMotion: 'reduce'});
+    const mediaPage = await mediaContext.newPage();
+    const mediaErrors = [];
+    mediaPage.on('pageerror', error => mediaErrors.push(error.message));
+    await mediaPage.route('**/assets/gallery/**', route => route.abort());
+    await mediaPage.goto(base, {waitUntil: 'networkidle'});
+    await mediaPage.locator('[data-carousel-open]').first().click();
+    await mediaPage.locator('.media-error-message').waitFor({state: 'visible'});
+    await mediaPage.keyboard.press('ArrowRight');
+    await mediaPage.locator('.media-error-message').waitFor({state: 'visible'});
+    await mediaPage.keyboard.press('Escape');
+    await verifyMenu(mediaPage);
+    assert.deepEqual(mediaErrors, [], `${name}: media failures must remain recoverable`);
+    await mediaContext.close();
+
+    const dataContext = await browser.newContext({viewport: {width: 390, height: 844}, reducedMotion: 'reduce'});
+    await dataContext.addInitScript(() => {
+      Object.defineProperty(navigator, 'connection', {value: {saveData: true, effectiveType: '2g'}, configurable: true});
+    });
+    const dataPage = await dataContext.newPage();
+    const neighborRequests = [];
+    dataPage.on('request', request => {
+      if (/nexo-(02|13)-/.test(request.url())) neighborRequests.push(request.url());
+    });
+    await dataPage.route(base + '/', async route => {
+      const response = await route.fetch();
+      await route.fulfill({response, body: (await response.text()).replace('data-mode="mobile"', 'data-mode="invalid"')});
+    });
+    await dataPage.goto(base, {waitUntil: 'networkidle'});
+    const nexo = dataPage.locator('[data-carousel="nexo"]');
+    assert.equal(await nexo.getAttribute('data-mode'), 'mobile');
+    await nexo.scrollIntoViewIfNeeded();
+    await dataPage.waitForFunction(() => {
+      const image = document.querySelector('[data-carousel-frame]');
+      return image.complete && image.naturalWidth > 0;
+    });
+    assert.deepEqual(neighborRequests, [], `${name}: saveData must prevent neighbor prefetch`);
+    assert.equal(await dataPage.locator('link[data-portfolio-prefetch]').count(), 0);
+    await verifyMenu(dataPage);
+    await dataContext.close();
     console.log(`${name}: keyboard, lightbox, live reduced motion, receipt and optional-failure isolation passed.`);
   } finally {
     await browser.close();
