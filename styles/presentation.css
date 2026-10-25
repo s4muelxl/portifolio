@@ -441,7 +441,7 @@ body::before {
 }
 .case-detail {
   position: relative;
-  padding: clamp(100px, 11vw, 156px) 0;
+  padding: clamp(64px, 7vw, 100px) 0;
   border-top-color: rgb(255 255 255/0.15);
 }
 .case-detail > header h2 {
